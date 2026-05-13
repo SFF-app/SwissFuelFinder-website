@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swiss Fuel Finder — Stop Guessing. Start Saving.</title>
+  <meta name="description" content="The only Swiss fuel app that calculates if a detour is actually worth it. Save up to 15 CHF per tank with smart math tailored to your vehicle.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0A0A0A;
+      --bg-card:   #141414;
+      --bg-card-2: #1C1C1C;
+      --red:       #CC1F1F;
+      --red-dark:  #9A1515;
+      --green:     #22C55E;
+      --amber:     #F59E0B;
+      --white:     #FFFFFF;
+      --grey:      #888888;
+      --grey-lt:   #CCCCCC;
+      --border:    #242424;
+      --border-lt: #333333;
+      --display:   'Barlow Condensed', sans-serif;
+      --body:      'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      height: 64px;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .nav-brand-name {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .nav-brand-name em { color: var(--red); font-style: normal; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--grey-lt);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(204,31,31,0.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero > * { position: relative; }
+
+    .hero-logo {
+      width: 110px;
+      height: 110px;
+      border-radius: 26px;
+      object-fit: cover;
+      margin-bottom: 2rem;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 24px 64px rgba(204,31,31,0.25);
+      animation: floatIn .8s cubic-bezier(.22,.97,.44,1) both;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.1rem;
+      animation: floatIn .8s .12s cubic-bezier(.22,.97,.44,1) both;
+    }
+
+    .hero-headline {
+      font-family: var(--display);
+      font-size: clamp(56px, 9.5vw, 104px);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      animation: floatIn .8s .22s cubic-bezier(.22,.97,.44,1) both;
+    }
+    .hero-headline .green { color: var(--green); }
+
+    .hero-sub {
+      max-width: 520px;
+      font-size: 18px;
+      color: var(--grey-lt);
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+      animation: floatIn .8s .32s cubic-bezier(.22,.97,.44,1) both;
+    }
+
+    .savings-widget {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-lt);
+      border-radius: 18px;
+      padding: 1.4rem 3rem;
+      margin-bottom: 2.5rem;
+      animation: floatIn .8s .42s cubic-bezier(.22,.97,.44,1) both;
+    }
+    .savings-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+    .savings-amount {
+      font-family: var(--display);
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--green);
+      letter-spacing: -0.01em;
+    }
+    .savings-amount sup {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--grey);
+      margin-left: 4px;
+      vertical-align: baseline;
+    }
+    .savings-sub {
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    .platform-row {
+      display: flex;
+      gap: 1rem;
+      animation: floatIn .8s .52s cubic-bezier(.22,.97,.44,1) both;
+    }
+    .platform-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 20px;
+      border: 1px solid var(--border-lt);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      background: var(--bg-card);
+      transition: border-color .2s, background .2s;
+    }
+    .platform-btn svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    .platform-btn:hover {
+      border-color: var(--grey);
+      background: var(--bg-card-2);
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .sec-label {
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.8rem;
+    }
+
+    .sec-title {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 900;
+      line-height: 1.02;
+      margin-bottom: 1rem;
+    }
+
+    .sec-sub {
+      font-size: 17px;
+      color: var(--grey-lt);
+      max-width: 580px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+    }
+
+    /* ── DIFFERENCE ── */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .diff-col {
+      padding: 2.5rem;
+      background: var(--bg-card);
+    }
+    .diff-col.sff-col {
+      background: #0D1911;
+      border-left: 1px solid var(--border);
+    }
+
+    .diff-col-header {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .diff-col-header::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .diff-col-header.others { color: var(--grey); }
+    .diff-col-header.sff-h  { color: var(--green); }
+
+    .diff-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .diff-ico {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .diff-ico.x   { background: rgba(204,31,31,0.14); color: #FF5A5A; }
+    .diff-ico.chk { background: rgba(34,197,94,0.14); color: var(--green); }
+
+    .diff-item .muted  { color: var(--grey); }
+    .diff-item .bright { color: var(--white); }
+    .diff-item .g { color: var(--green); font-weight: 600; }
+
+    /* ── HOW IT WORKS ── */
+    .how-wrap {
+      background: var(--bg-card);
+      padding: 5rem 2rem;
+    }
+    .how-inner { max-width: 1100px; margin: 0 auto; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .step {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      position: relative;
+    }
+    .step-bar {
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+    }
+    .step:nth-child(1) .step-bar { background: var(--red); }
+    .step:nth-child(2) .step-bar { background: var(--amber); }
+    .step:nth-child(3) .step-bar { background: var(--green); }
+
+    .step-num {
+      font-family: var(--display);
+      font-size: 86px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--border-lt);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .step-title {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.65rem;
+    }
+    .step-desc {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.65;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--red-dark);
+      padding: 3.5rem 2rem;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-n {
+      font-family: var(--display);
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .stat-l {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SCREENSHOTS ── */
+    .shots-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .phones {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 3rem;
+      margin-top: 3.5rem;
+    }
+
+    .phone-wrap { position: relative; }
+    .phone-wrap:first-child { transform: rotate(-5deg) translateY(18px); }
+    .phone-wrap:last-child  { transform: rotate(5deg)  translateY(18px); }
+
+    .phone-shell {
+      width: 255px;
+      height: 510px;
+      border-radius: 38px;
+      border: 6px solid #2C2C2C;
+      overflow: hidden;
+      background: #111;
+      box-shadow:
+        0 0 0 1px #3C3C3C,
+        0 40px 90px rgba(0,0,0,0.75);
+      position: relative;
+    }
+    .phone-shell::before {
+      content: '';
+      position: absolute;
+      top: 11px; left: 50%;
+      transform: translateX(-50%);
+      width: 58px; height: 5px;
+      background: #2C2C2C;
+      border-radius: 3px;
+      z-index: 10;
+    }
+    .phone-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .callout {
+      position: absolute;
+      padding: 9px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
+    .callout-g {
+      background: rgba(34,197,94,0.10);
+      border: 1px solid rgba(34,197,94,0.28);
+      color: var(--green);
+      top: 55px;
+      right: -145px;
+    }
+    .callout-r {
+      background: rgba(204,31,31,0.10);
+      border: 1px solid rgba(204,31,31,0.28);
+      color: #FF6868;
+      bottom: 90px;
+      left: -155px;
+    }
+
+    /* ── FEATURES ── */
+    .feat-wrap {
+      background: var(--bg-card);
+      padding: 5rem 2rem;
+    }
+    .feat-inner { max-width: 1100px; margin: 0 auto; }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .feat-card {
+      background: var(--bg-card);
+      padding: 2.25rem;
+    }
+    .feat-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 1.25rem;
+    }
+    .feat-title {
+      font-family: var(--display);
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .feat-desc {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.65;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 1.75rem;
+      padding: 1rem 2.25rem;
+      border: 1px solid var(--border-lt);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 500;
+      background: var(--bg-card);
+      transition: border-color .2s, background .2s;
+    }
+    .contact-email:hover {
+      border-color: var(--red);
+      background: var(--bg-card-2);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--grey);
+      font-size: 13px;
+    }
+    .foot-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .foot-links a {
+      color: var(--grey-lt);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .foot-links a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .diff-grid  { grid-template-columns: 1fr; }
+      .diff-col.sff-col { border-left: none; border-top: 1px solid var(--border); }
+      .steps      { grid-template-columns: 1fr; }
+      .feat-grid  { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .phones     { flex-direction: column; align-items: center; }
+      .phone-wrap:first-child,
+      .phone-wrap:last-child { transform: none; }
+      .callout { display: none; }
+    }
+    @media (max-width: 540px) {
+      nav { padding: 0 1.25rem; }
+      .nav-brand-name { display: none; }
+      .platform-row { flex-direction: column; align-items: center; }
+      .feat-grid  { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-n { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <img src="assets/logo.png" alt="SFF logo">
+      <span class="nav-brand-name">Swiss Fuel <em>Finder</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="legal.html">Legal</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <img src="assets/logo.png" alt="Swiss Fuel Finder" class="hero-logo">
+    <p class="hero-eyebrow">Switzerland's Smartest Fuel App</p>
+    <h1 class="hero-headline">
+      Stop Guessing.<br>
+      <span class="green">Start Saving.</span>
+    </h1>
+    <p class="hero-sub">
+      Most apps show you the cheapest price. SFF calculates if the detour is
+      <em>actually worth it</em> — using your tank size and fuel consumption.
+    </p>
+    <div class="savings-widget">
+      <span class="savings-label">Maximum savings per full tank</span>
+      <span class="savings-amount" id="counter">0.00<sup>CHF</sup></span>
+      <span class="savings-sub">Calculated to your vehicle profile</span>
+    </div>
+    <div class="platform-row">
+      <a href="#" class="platform-btn">
+        <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.22.14-2.22 1.3-2.2 3.88.04 3.07 2.69 4.1 2.72 4.11-.07.19zm-3.71-17c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+      <a href="#" class="platform-btn">
+        <svg viewBox="0 0 24 24"><path d="M3.18 23.76a2 2 0 0 0 2.13-.22l11.5-6.65-2.54-2.55zM20.84 10.6L17.6 8.74l-2.85 2.85 2.85 2.85 3.27-1.88a1.74 1.74 0 0 0 0-3zm-17.66.78L15.66 4.7l-2.54-2.54L3.18.22A1.74 1.74 0 0 0 1 1.95v19.1a1.74 1.74 0 0 0 2.18 1.83z"/></svg>
+        Google Play
+      </a>
+    </div>
+  </section>
+
+  <!-- DIFFERENCE -->
+  <section class="section reveal">
+    <p class="sec-label">Why SFF is different</p>
+    <h2 class="sec-title">Other apps show you the price.<br>SFF tells you the truth.</h2>
+    <p class="sec-sub">The nearest station is rarely the most profitable one. SFF does the maths so you don't have to.</p>
+    <div class="diff-grid">
+      <div class="diff-col">
+        <p class="diff-col-header others">Other fuel apps</p>
+        <ul class="diff-list">
+          <li class="diff-item">
+            <span class="diff-ico x">✕</span>
+            <span class="muted">Show the cheapest price at the pump — nothing else</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico x">✕</span>
+            <span class="muted">Ignore the fuel cost of getting there</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico x">✕</span>
+            <span class="muted">Treat every car the same regardless of tank or consumption</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico x">✕</span>
+            <span class="muted">List closed or private stations that waste your time</span>
+          </li>
+        </ul>
+      </div>
+      <div class="diff-col sff-col">
+        <p class="diff-col-header sff-h">Swiss Fuel Finder</p>
+        <ul class="diff-list">
+          <li class="diff-item">
+            <span class="diff-ico chk">✓</span>
+            <span class="bright">Calculates your real <strong>Net Profit</strong> — savings after detour cost</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico chk">✓</span>
+            <span class="bright">Uses <strong>your vehicle profile</strong> for personalised maths</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico chk">✓</span>
+            <span class="bright">Stamps stations as <span class="g">WORTH THE DETOUR</span> or not</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico chk">✓</span>
+            <span class="bright">Community-verified prices, synced 3× daily from official sources</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-wrap">
+    <div class="how-inner">
+      <p class="sec-label reveal">How it works</p>
+      <h2 class="sec-title reveal" style="margin-bottom:3rem;">Three steps to smarter refuelling</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="step-bar"></span>
+          <span class="step-num">01</span>
+          <h3 class="step-title">Set Your Vehicle Profile</h3>
+          <p class="step-desc">Enter your tank size and average fuel consumption once. SFF uses this to personalise every single calculation to your car — not someone else's.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step-bar"></span>
+          <span class="step-num">02</span>
+          <h3 class="step-title">See Stations Near You</h3>
+          <p class="step-desc">3,989+ stations updated 3× daily from official Swiss sources. Advanced filters and community reports remove closed or private stations automatically.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step-bar"></span>
+          <span class="step-num">03</span>
+          <h3 class="step-title">Act on Real Numbers</h3>
+          <p class="step-desc">Each station shows your estimated net CHF savings — not just the price per litre. Drive only when it's genuinely worth it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="reveal">
+        <p class="stat-n">3,989+</p>
+        <p class="stat-l">Stations across Switzerland</p>
+      </div>
+      <div class="reveal">
+        <p class="stat-n">3×</p>
+        <p class="stat-l">Price updates per day</p>
+      </div>
+      <div class="reveal">
+        <p class="stat-n">4</p>
+        <p class="stat-l">Languages supported</p>
+      </div>
+      <div class="reveal">
+        <p class="stat-n">15 CHF</p>
+        <p class="stat-l">Max savings per tank</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREENSHOTS -->
+  <section class="shots-section">
+    <p class="sec-label reveal">See it in action</p>
+    <h2 class="sec-title reveal">Built for the Swiss driver</h2>
+    <p class="sec-sub reveal">Every screen is designed to give you the right answer at a glance. "Worth the detour?" answered in seconds.</p>
+    <div class="phones reveal">
+      <div class="phone-wrap">
+        <span class="callout callout-r">← Net savings for your car</span>
+        <div class="phone-shell">
+          <img src="assets/screenshot1.jpg" alt="SFF showing nearby stations with net savings">
+        </div>
+      </div>
+      <div class="phone-wrap">
+        <span class="callout callout-g">Worth the detour ✓ →</span>
+        <div class="phone-shell">
+          <img src="assets/screenshot2.jpg" alt="SFF showing VAUT LE DÉTOUR and station comparison">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <div class="feat-wrap" id="features">
+    <div class="feat-inner">
+      <p class="sec-label reveal">What's inside</p>
+      <h2 class="sec-title reveal" style="margin-bottom:3rem;">Every feature earns its place</h2>
+      <div class="feat-grid">
+        <div class="feat-card reveal">
+          <div class="feat-icon" style="background:rgba(204,31,31,0.10);">⛽</div>
+          <h3 class="feat-title">Official Swiss Data</h3>
+          <p class="feat-desc">3,989+ stations synced from official Swiss sources three times daily. Always accurate, always current — no user-submitted guesses.</p>
+        </div>
+        <div class="feat-card reveal">
+          <div class="feat-icon" style="background:rgba(34,197,94,0.10);">🧮</div>
+          <h3 class="feat-title">Smart Net Savings</h3>
+          <p class="feat-desc">We calculate the real profit after factoring in the detour. The nearest station is not always the most profitable one — SFF finds the one that is.</p>
+        </div>
+        <div class="feat-card reveal">
+          <div class="feat-icon" style="background:rgba(245,158,11,0.10);">👥</div>
+          <h3 class="feat-title">Community Verified</h3>
+          <p class="feat-desc">Real drivers update prices in real time. Each price shows a "Verified by User" count so you know exactly how fresh it is.</p>
+        </div>
+        <div class="feat-card reveal">
+          <div class="feat-icon" style="background:rgba(100,149,237,0.10);">🌐</div>
+          <h3 class="feat-title">Fully Localised</h3>
+          <p class="feat-desc">English, Deutsch, Français, and Italiano. SFF speaks all four Swiss national languages — switch anytime from settings.</p>
+        </div>
+        <div class="feat-card reveal">
+          <div class="feat-icon" style="background:rgba(34,197,94,0.10);">🚫</div>
+          <h3 class="feat-title">No Junk Stations</h3>
+          <p class="feat-desc">Advanced filters and community reports automatically remove closed or private stations. Every result in your list is a real option.</p>
+        </div>
+        <div class="feat-card reveal">
+          <div class="feat-icon" style="background:rgba(204,31,31,0.10);">🚗</div>
+          <h3 class="feat-title">Your Car, Your Maths</h3>
+          <p class="feat-desc">Set your tank size and consumption once. From that point, every calculation is tailored precisely to your vehicle — not a generic average.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <p class="sec-label">Get in touch</p>
+    <h2 class="sec-title">Have a question?</h2>
+    <p class="sec-sub" style="margin: 0 auto 0; text-align:center;">We're always happy to hear from users — feedback, bug reports, or just to say hello.</p>
+    <a href="mailto:info@swissfuelfinder.com" class="contact-email">
+      ✉&nbsp; info@swissfuelfinder.com
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-links">
+      <a href="#">Home</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+      <a href="legal.html">Legal</a>
+    </div>
+    <p>© 2025 Swiss Fuel Finder. All rights reserved.</p>
+  </footer>
+
+  <script>
+    /* Scroll reveal */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* CHF counter */
+    function runCounter(el, target, dur) {
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.childNodes[0].nodeValue = (target * ease).toFixed(2);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    setTimeout(() => {
+      const c = document.getElementById('counter');
+      runCounter(c, 15, 1600);
+    }, 900);
+  </script>
+</body>
+</html>
