@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --bg:        #0A0A0A;
       --bg-card:   #141414;
@@ -27,220 +28,622 @@
       --display:   'Barlow Condensed', sans-serif;
       --body:      'DM Sans', sans-serif;
     }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--white); font-family: var(--body); font-size: 16px; line-height: 1.65; overflow-x: hidden; }
 
-    /* NAV */
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
     nav {
-      position: fixed; inset: 0 0 auto 0; z-index: 100;
-      height: 64px; padding: 0 2.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(10,10,10,0.90); backdrop-filter: blur(14px);
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      height: 64px;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-    .nav-brand img { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
-    .nav-brand-name { font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: 0.04em; color: var(--white); }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .nav-brand-name {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
     .nav-brand-name em { color: var(--red); font-style: normal; }
-    .nav-right { display: flex; align-items: center; gap: 1.75rem; }
-    .nav-links { list-style: none; display: flex; gap: 2rem; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--grey-lt); text-decoration: none; letter-spacing: 0.02em; transition: color .2s; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--grey-lt);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color .2s;
+    }
     .nav-links a:hover { color: var(--white); }
 
-    /* LANGUAGE SWITCHER */
-    .lang-switcher { display: flex; gap: 2px; background: var(--bg-card); border: 1px solid var(--border-lt); border-radius: 8px; padding: 3px; }
-    .lang-btn { background: none; border: none; color: var(--grey); font-family: var(--body); font-size: 12px; font-weight: 600; letter-spacing: 0.05em; padding: 5px 9px; border-radius: 5px; cursor: pointer; transition: color .15s, background .15s; line-height: 1; }
-    .lang-btn:hover { color: var(--white); }
-    .lang-btn.active { background: var(--red); color: var(--white); }
-
-    /* HERO — FIX: no min-height, flex-start, compact top padding */
+    /* ── HERO ── */
     .hero {
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      padding: calc(64px + 0.5rem) 2rem 2rem;
-      position: relative; overflow: hidden;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
     }
+
     .hero-glow {
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 700px; height: 200px;
-      background: radial-gradient(circle at 50% 10%, rgba(204,31,31,0.11) 0%, transparent 65%);
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(204,31,31,0.10) 0%, transparent 65%);
       pointer-events: none;
     }
+
     .hero > * { position: relative; }
+
     .hero-logo {
-      width: 110px; height: 110px; border-radius: 26px; object-fit: cover; margin-bottom: 1.75rem;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 24px 64px rgba(204,31,31,0.25);
+      width: 110px;
+      height: 110px;
+      border-radius: 26px;
+      object-fit: cover;
+      margin-bottom: 2rem;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 24px 64px rgba(204,31,31,0.25);
       animation: floatIn .8s cubic-bezier(.22,.97,.44,1) both;
     }
+
     .hero-eyebrow {
-      font-family: var(--display); font-size: 14px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--red);
-      margin-bottom: 1rem; animation: floatIn .8s .1s cubic-bezier(.22,.97,.44,1) both;
+      font-family: var(--display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.1rem;
+      animation: floatIn .8s .12s cubic-bezier(.22,.97,.44,1) both;
     }
+
     .hero-headline {
-      font-family: var(--display); font-size: clamp(56px, 9.5vw, 104px); font-weight: 900;
-      line-height: 0.92; letter-spacing: -0.01em; margin-bottom: 1.5rem;
-      animation: floatIn .8s .2s cubic-bezier(.22,.97,.44,1) both;
+      font-family: var(--display);
+      font-size: clamp(56px, 9.5vw, 104px);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      animation: floatIn .8s .22s cubic-bezier(.22,.97,.44,1) both;
     }
     .hero-headline .green { color: var(--green); }
+
     .hero-sub {
-      max-width: 520px; font-size: 18px; color: var(--grey-lt); line-height: 1.65;
-      margin-bottom: 2.25rem; animation: floatIn .8s .3s cubic-bezier(.22,.97,.44,1) both;
+      max-width: 520px;
+      font-size: 18px;
+      color: var(--grey-lt);
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+      animation: floatIn .8s .32s cubic-bezier(.22,.97,.44,1) both;
     }
+
     .savings-widget {
-      display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
-      background: var(--bg-card); border: 1px solid var(--border-lt); border-radius: 18px;
-      padding: 1.4rem 3rem; margin-bottom: 2.25rem;
-      animation: floatIn .8s .4s cubic-bezier(.22,.97,.44,1) both;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-lt);
+      border-radius: 18px;
+      padding: 1.4rem 3rem;
+      margin-bottom: 2.5rem;
+      animation: floatIn .8s .42s cubic-bezier(.22,.97,.44,1) both;
     }
-    .savings-label { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey); }
-    .savings-amount { font-family: var(--display); font-size: 58px; font-weight: 900; line-height: 1; color: var(--green); letter-spacing: -0.01em; }
-    .savings-amount sup { font-size: 24px; font-weight: 700; color: var(--grey); margin-left: 4px; vertical-align: baseline; }
-    .savings-sub { font-size: 13px; color: var(--grey); }
-    .platform-row { display: flex; gap: 1rem; animation: floatIn .8s .5s cubic-bezier(.22,.97,.44,1) both; }
-    .platform-btn { display: inline-flex; align-items: center; gap: 9px; padding: 10px 20px; border: 1px solid var(--border-lt); border-radius: 10px; text-decoration: none; color: var(--white); font-size: 14px; font-weight: 500; background: var(--bg-card); transition: border-color .2s, background .2s; }
-    .platform-btn svg { width: 17px; height: 17px; fill: currentColor; flex-shrink: 0; }
-    .platform-btn:hover { border-color: var(--grey); background: var(--bg-card-2); }
+    .savings-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+    .savings-amount {
+      font-family: var(--display);
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--green);
+      letter-spacing: -0.01em;
+    }
+    .savings-amount sup {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--grey);
+      margin-left: 4px;
+      vertical-align: baseline;
+    }
+    .savings-sub {
+      font-size: 13px;
+      color: var(--grey);
+    }
 
-    /* SECTION BASE */
-    .section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+    .platform-row {
+      display: flex;
+      gap: 1rem;
+      animation: floatIn .8s .52s cubic-bezier(.22,.97,.44,1) both;
+    }
+    .platform-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 20px;
+      border: 1px solid var(--border-lt);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      background: var(--bg-card);
+      transition: border-color .2s, background .2s;
+    }
+    .platform-btn svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    .platform-btn:hover {
+      border-color: var(--grey);
+      background: var(--bg-card-2);
+    }
 
-    /* FIX: sec-label enlarged from 11px to 15px */
-    .sec-label { font-family: var(--display); font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; }
-    .sec-title { font-family: var(--display); font-size: clamp(36px, 5vw, 58px); font-weight: 900; line-height: 1.02; margin-bottom: 1rem; }
-    .sec-sub { font-size: 17px; color: var(--grey-lt); max-width: 580px; line-height: 1.65; margin-bottom: 3rem; }
+    /* ── SECTION BASE ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
 
-    /* DIFFERENCE */
-    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
-    .diff-col { padding: 2.5rem; background: var(--bg-card); }
-    .diff-col.sff-col { background: #0D1911; border-left: 1px solid var(--border); }
-    .diff-col-header { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 8px; }
-    .diff-col-header::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .sec-label {
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.8rem;
+    }
+
+    .sec-title {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 900;
+      line-height: 1.02;
+      margin-bottom: 1rem;
+    }
+
+    .sec-sub {
+      font-size: 17px;
+      color: var(--grey-lt);
+      max-width: 580px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+    }
+
+    /* ── DIFFERENCE ── */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .diff-col {
+      padding: 2.5rem;
+      background: var(--bg-card);
+    }
+    .diff-col.sff-col {
+      background: #0D1911;
+      border-left: 1px solid var(--border);
+    }
+
+    .diff-col-header {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .diff-col-header::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
     .diff-col-header.others { color: var(--grey); }
     .diff-col-header.sff-h  { color: var(--green); }
-    .diff-list { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
-    .diff-item { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.55; }
-    .diff-ico { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+
+    .diff-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .diff-ico {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
     .diff-ico.x   { background: rgba(204,31,31,0.14); color: #FF5A5A; }
-    .diff-ico.chk { background: rgba(34,197,94,0.14);  color: var(--green); }
+    .diff-ico.chk { background: rgba(34,197,94,0.14); color: var(--green); }
+
     .diff-item .muted  { color: var(--grey); }
     .diff-item .bright { color: var(--white); }
     .diff-item .g { color: var(--green); font-weight: 600; }
 
-    /* HOW IT WORKS */
-    .how-wrap { background: var(--bg-card); padding: 5rem 2rem; }
+    /* ── HOW IT WORKS ── */
+    .how-wrap {
+      background: var(--bg-card);
+      padding: 5rem 2rem;
+    }
     .how-inner { max-width: 1100px; margin: 0 auto; }
-    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-radius: 18px; overflow: hidden; }
-    .step { background: var(--bg-card); padding: 2.5rem; position: relative; }
-    .step-bar { position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .step {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      position: relative;
+    }
+    .step-bar {
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+    }
     .step:nth-child(1) .step-bar { background: var(--red); }
     .step:nth-child(2) .step-bar { background: var(--amber); }
     .step:nth-child(3) .step-bar { background: var(--green); }
-    .step-num { font-family: var(--display); font-size: 86px; font-weight: 900; line-height: 1; color: var(--border-lt); margin-bottom: 1rem; display: block; }
-    .step-title { font-family: var(--display); font-size: 22px; font-weight: 800; letter-spacing: 0.01em; margin-bottom: 0.65rem; }
-    .step-desc { font-size: 14px; color: var(--grey); line-height: 1.65; }
 
-    /* STATS */
-    .stats-strip { background: var(--red-dark); padding: 3.5rem 2rem; }
-    .stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; text-align: center; }
-    .stat-n { font-family: var(--display); font-size: 52px; font-weight: 900; line-height: 1; color: var(--white); margin-bottom: 0.3rem; }
-    .stat-l { font-size: 13px; color: rgba(255,255,255,0.65); font-weight: 500; letter-spacing: 0.04em; }
+    .step-num {
+      font-family: var(--display);
+      font-size: 86px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--border-lt);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .step-title {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.65rem;
+    }
+    .step-desc {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.65;
+    }
 
-    /* SCREENSHOTS */
-    .shots-section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
-    .phones { display: flex; justify-content: center; align-items: flex-end; gap: 3rem; margin-top: 3.5rem; }
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--red-dark);
+      padding: 3.5rem 2rem;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-n {
+      font-family: var(--display);
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .stat-l {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SCREENSHOTS ── */
+    .shots-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .phones {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 3rem;
+      margin-top: 3.5rem;
+    }
+
     .phone-wrap { position: relative; }
     .phone-wrap:first-child { transform: rotate(-5deg) translateY(18px); }
     .phone-wrap:last-child  { transform: rotate(5deg)  translateY(18px); }
-    .phone-shell { width: 255px; height: 510px; border-radius: 38px; border: 6px solid #2C2C2C; overflow: hidden; background: #111; box-shadow: 0 0 0 1px #3C3C3C, 0 40px 90px rgba(0,0,0,0.75); position: relative; }
-    .phone-shell::before { content: ''; position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 58px; height: 5px; background: #2C2C2C; border-radius: 3px; z-index: 10; }
-    .phone-shell img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-    .callout { position: absolute; padding: 9px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; white-space: nowrap; letter-spacing: 0.02em; pointer-events: none; }
-    .callout-g { background: rgba(34,197,94,0.10); border: 1px solid rgba(34,197,94,0.28); color: var(--green); top: 55px; right: -155px; }
-    .callout-r { background: rgba(204,31,31,0.10); border: 1px solid rgba(204,31,31,0.28); color: #FF6868; bottom: 90px; left: -160px; }
 
-    /* FEATURES */
-    .feat-wrap { background: var(--bg-card); padding: 5rem 2rem; }
+    .phone-shell {
+      width: 255px;
+      height: 510px;
+      border-radius: 38px;
+      border: 6px solid #2C2C2C;
+      overflow: hidden;
+      background: #111;
+      box-shadow:
+        0 0 0 1px #3C3C3C,
+        0 40px 90px rgba(0,0,0,0.75);
+      position: relative;
+    }
+    .phone-shell::before {
+      content: '';
+      position: absolute;
+      top: 11px; left: 50%;
+      transform: translateX(-50%);
+      width: 58px; height: 5px;
+      background: #2C2C2C;
+      border-radius: 3px;
+      z-index: 10;
+    }
+    .phone-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .callout {
+      position: absolute;
+      padding: 9px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
+    .callout-g {
+      background: rgba(34,197,94,0.10);
+      border: 1px solid rgba(34,197,94,0.28);
+      color: var(--green);
+      top: 55px;
+      right: -145px;
+    }
+    .callout-r {
+      background: rgba(204,31,31,0.10);
+      border: 1px solid rgba(204,31,31,0.28);
+      color: #FF6868;
+      bottom: 90px;
+      left: -155px;
+    }
+
+    /* ── FEATURES ── */
+    .feat-wrap {
+      background: var(--bg-card);
+      padding: 5rem 2rem;
+    }
     .feat-inner { max-width: 1100px; margin: 0 auto; }
-    .feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-radius: 18px; overflow: hidden; }
-    .feat-card { background: var(--bg-card); padding: 2.25rem; }
-    .feat-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 1.25rem; }
-    .feat-title { font-family: var(--display); font-size: 21px; font-weight: 800; letter-spacing: 0.01em; margin-bottom: 0.5rem; }
-    .feat-desc { font-size: 14px; color: var(--grey); line-height: 1.65; }
 
-    /* CONTACT */
-    .contact-section { max-width: 680px; margin: 0 auto; padding: 7rem 2rem; text-align: center; }
-    .contact-email { display: inline-flex; align-items: center; gap: 10px; margin-top: 1.75rem; padding: 1rem 2.25rem; border: 1px solid var(--border-lt); border-radius: 12px; text-decoration: none; color: var(--white); font-size: 16px; font-weight: 500; background: var(--bg-card); transition: border-color .2s, background .2s; }
-    .contact-email:hover { border-color: var(--red); background: var(--bg-card-2); }
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .feat-card {
+      background: var(--bg-card);
+      padding: 2.25rem;
+    }
+    .feat-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 1.25rem;
+    }
+    .feat-title {
+      font-family: var(--display);
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .feat-desc {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.65;
+    }
 
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--grey); font-size: 13px; }
-    .foot-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 0.75rem; }
-    .foot-links a { color: var(--grey-lt); text-decoration: none; transition: color .2s; }
+    /* ── CONTACT ── */
+    .contact-section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 1.75rem;
+      padding: 1rem 2.25rem;
+      border: 1px solid var(--border-lt);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 500;
+      background: var(--bg-card);
+      transition: border-color .2s, background .2s;
+    }
+    .contact-email:hover {
+      border-color: var(--red);
+      background: var(--bg-card-2);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--grey);
+      font-size: 13px;
+    }
+    .foot-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .foot-links a {
+      color: var(--grey-lt);
+      text-decoration: none;
+      transition: color .2s;
+    }
     .foot-links a:hover { color: var(--white); }
 
-    /* ANIMATIONS */
-    @keyframes floatIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.in { opacity: 1; transform: translateY(0); }
+    /* ── ANIMATIONS ── */
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-    /* RESPONSIVE */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
-      .diff-grid { grid-template-columns: 1fr; }
+      .diff-grid  { grid-template-columns: 1fr; }
       .diff-col.sff-col { border-left: none; border-top: 1px solid var(--border); }
-      .steps { grid-template-columns: 1fr; }
-      .feat-grid { grid-template-columns: 1fr 1fr; }
-      .stats-inner { grid-template-columns: repeat(2,1fr); }
-      .phones { flex-direction: column; align-items: center; }
-      .phone-wrap:first-child, .phone-wrap:last-child { transform: none; }
+      .steps      { grid-template-columns: 1fr; }
+      .feat-grid  { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .phones     { flex-direction: column; align-items: center; }
+      .phone-wrap:first-child,
+      .phone-wrap:last-child { transform: none; }
       .callout { display: none; }
     }
-    @media (max-width: 620px) {
+    @media (max-width: 540px) {
       nav { padding: 0 1.25rem; }
-      .nav-links { display: none; }
       .nav-brand-name { display: none; }
       .platform-row { flex-direction: column; align-items: center; }
-      .feat-grid { grid-template-columns: 1fr; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
-      .stat-n { font-size: 38px; }
-      .savings-widget { padding: 1.2rem 2rem; }
+      .feat-grid  { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-n { font-size: 40px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
     <a href="#" class="nav-brand">
       <img src="assets/logo.png" alt="SFF logo">
       <span class="nav-brand-name">Swiss Fuel <em>Finder</em></span>
     </a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#features" data-i18n="nav-features">Features</a></li>
-        <li><a href="#contact"  data-i18n="nav-contact">Contact</a></li>
-        <li><a href="legal.html" data-i18n="nav-legal">Legal</a></li>
-      </ul>
-      <div class="lang-switcher">
-        <button class="lang-btn" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="fr">FR</button>
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="it">IT</button>
-      </div>
-    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="legal.html">Legal</a></li>
+    </ul>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-glow"></div>
     <img src="assets/logo.png" alt="Swiss Fuel Finder" class="hero-logo">
-    <p class="hero-eyebrow" data-i18n="hero-eyebrow">Switzerland's Smartest Fuel App</p>
+    <p class="hero-eyebrow">Switzerland's Smartest Fuel App</p>
     <h1 class="hero-headline">
-      <span data-i18n="hero-h1-l1">Stop Guessing.</span><br>
-      <span class="green" data-i18n="hero-h1-l2">Start Saving.</span>
+      Stop Guessing.<br>
+      <span class="green">Start Saving.</span>
     </h1>
-    <p class="hero-sub" data-i18n="hero-sub">Most apps show you the cheapest price. SFF calculates if the detour is <em>actually worth it</em> — using your tank size and fuel consumption.</p>
+    <p class="hero-sub">
+      Most apps show you the cheapest price. SFF calculates if the detour is
+      <em>actually worth it</em> — using your tank size and fuel consumption.
+    </p>
     <div class="savings-widget">
-      <span class="savings-label" data-i18n="savings-label">Maximum savings per full tank</span>
+      <span class="savings-label">Maximum savings per full tank</span>
       <span class="savings-amount" id="counter">0.00<sup>CHF</sup></span>
-      <span class="savings-sub" data-i18n="savings-sub">Calculated to your vehicle profile</span>
+      <span class="savings-sub">Calculated to your vehicle profile</span>
     </div>
     <div class="platform-row">
       <a href="#" class="platform-btn">
@@ -254,321 +657,214 @@
     </div>
   </section>
 
+  <!-- DIFFERENCE -->
   <section class="section reveal">
-    <p class="sec-label" data-i18n="diff-label">Why SFF is different</p>
-    <h2 class="sec-title" data-i18n="diff-title">Other apps show you the price.<br>SFF tells you the truth.</h2>
-    <p class="sec-sub" data-i18n="diff-sub">The nearest station is rarely the most profitable one. SFF does the maths so you don't have to.</p>
+    <p class="sec-label">Why SFF is different</p>
+    <h2 class="sec-title">Other apps show you the price.<br>SFF tells you the truth.</h2>
+    <p class="sec-sub">The nearest station is rarely the most profitable one. SFF does the maths so you don't have to.</p>
     <div class="diff-grid">
       <div class="diff-col">
-        <p class="diff-col-header others" data-i18n="diff-h-others">Other fuel apps</p>
+        <p class="diff-col-header others">Other fuel apps</p>
         <ul class="diff-list">
-          <li class="diff-item"><span class="diff-ico x">✕</span><span class="muted" data-i18n="diff-o-1">Show the cheapest price at the pump — nothing else</span></li>
-          <li class="diff-item"><span class="diff-ico x">✕</span><span class="muted" data-i18n="diff-o-2">Ignore the fuel cost of getting there</span></li>
-          <li class="diff-item"><span class="diff-ico x">✕</span><span class="muted" data-i18n="diff-o-3">Treat every car the same regardless of tank or consumption</span></li>
-          <li class="diff-item"><span class="diff-ico x">✕</span><span class="muted" data-i18n="diff-o-4">List closed or private stations that waste your time</span></li>
+          <li class="diff-item">
+            <span class="diff-ico x">✕</span>
+            <span class="muted">Show the cheapest price at the pump — nothing else</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico x">✕</span>
+            <span class="muted">Ignore the fuel cost of getting there</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico x">✕</span>
+            <span class="muted">Treat every car the same regardless of tank or consumption</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico x">✕</span>
+            <span class="muted">List closed or private stations that waste your time</span>
+          </li>
         </ul>
       </div>
       <div class="diff-col sff-col">
         <p class="diff-col-header sff-h">Swiss Fuel Finder</p>
         <ul class="diff-list">
-          <li class="diff-item"><span class="diff-ico chk">✓</span><span class="bright" data-i18n="diff-s-1">Calculates your real <strong>Net Profit</strong> — savings after detour cost</span></li>
-          <li class="diff-item"><span class="diff-ico chk">✓</span><span class="bright" data-i18n="diff-s-2">Uses <strong>your vehicle profile</strong> for personalised maths</span></li>
-          <li class="diff-item"><span class="diff-ico chk">✓</span><span class="bright" data-i18n="diff-s-3">Stamps stations as <span class="g">WORTH THE DETOUR</span> or not</span></li>
-          <li class="diff-item"><span class="diff-ico chk">✓</span><span class="bright" data-i18n="diff-s-4">Community-verified prices, synced 3× daily from official sources</span></li>
+          <li class="diff-item">
+            <span class="diff-ico chk">✓</span>
+            <span class="bright">Calculates your real <strong>Net Profit</strong> — savings after detour cost</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico chk">✓</span>
+            <span class="bright">Uses <strong>your vehicle profile</strong> for personalised maths</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico chk">✓</span>
+            <span class="bright">Stamps stations as <span class="g">WORTH THE DETOUR</span> or not</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-ico chk">✓</span>
+            <span class="bright">Community-verified prices, synced 3× daily from official sources</span>
+          </li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
   <div class="how-wrap">
     <div class="how-inner">
-      <p class="sec-label reveal" data-i18n="how-label">How it works</p>
-      <h2 class="sec-title reveal" style="margin-bottom:3rem;" data-i18n="how-title">Three steps to smarter refuelling</h2>
+      <p class="sec-label reveal">How it works</p>
+      <h2 class="sec-title reveal" style="margin-bottom:3rem;">Three steps to smarter refuelling</h2>
       <div class="steps">
         <div class="step reveal">
-          <span class="step-bar"></span><span class="step-num">01</span>
-          <h3 class="step-title" data-i18n="step1-title">Set Your Vehicle Profile</h3>
-          <p class="step-desc" data-i18n="step1-desc">Enter your tank size and average fuel consumption once. SFF uses this to personalise every single calculation to your car — not someone else's.</p>
+          <span class="step-bar"></span>
+          <span class="step-num">01</span>
+          <h3 class="step-title">Set Your Vehicle Profile</h3>
+          <p class="step-desc">Enter your tank size and average fuel consumption once. SFF uses this to personalise every single calculation to your car — not someone else's.</p>
         </div>
         <div class="step reveal">
-          <span class="step-bar"></span><span class="step-num">02</span>
-          <h3 class="step-title" data-i18n="step2-title">See Stations Near You</h3>
-          <p class="step-desc" data-i18n="step2-desc">3,989+ stations updated 3× daily from official Swiss sources. Advanced filters and community reports remove closed or private stations automatically.</p>
+          <span class="step-bar"></span>
+          <span class="step-num">02</span>
+          <h3 class="step-title">See Stations Near You</h3>
+          <p class="step-desc">3,989+ stations updated 3× daily from official Swiss sources. Advanced filters and community reports remove closed or private stations automatically.</p>
         </div>
         <div class="step reveal">
-          <span class="step-bar"></span><span class="step-num">03</span>
-          <h3 class="step-title" data-i18n="step3-title">Act on Real Numbers</h3>
-          <p class="step-desc" data-i18n="step3-desc">Each station shows your estimated net CHF savings — not just the price per litre. Drive only when it's genuinely worth it.</p>
+          <span class="step-bar"></span>
+          <span class="step-num">03</span>
+          <h3 class="step-title">Act on Real Numbers</h3>
+          <p class="step-desc">Each station shows your estimated net CHF savings — not just the price per litre. Drive only when it's genuinely worth it.</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- STATS STRIP -->
   <div class="stats-strip">
     <div class="stats-inner">
-      <div class="reveal"><p class="stat-n">3,989+</p><p class="stat-l" data-i18n="stat-l-1">Stations across Switzerland</p></div>
-      <div class="reveal"><p class="stat-n">3×</p><p class="stat-l" data-i18n="stat-l-2">Price updates per day</p></div>
-      <div class="reveal"><p class="stat-n">4</p><p class="stat-l" data-i18n="stat-l-3">Languages supported</p></div>
-      <div class="reveal"><p class="stat-n">15 CHF</p><p class="stat-l" data-i18n="stat-l-4">Max savings per tank</p></div>
+      <div class="reveal">
+        <p class="stat-n">3,989+</p>
+        <p class="stat-l">Stations across Switzerland</p>
+      </div>
+      <div class="reveal">
+        <p class="stat-n">3×</p>
+        <p class="stat-l">Price updates per day</p>
+      </div>
+      <div class="reveal">
+        <p class="stat-n">4</p>
+        <p class="stat-l">Languages supported</p>
+      </div>
+      <div class="reveal">
+        <p class="stat-n">15 CHF</p>
+        <p class="stat-l">Max savings per tank</p>
+      </div>
     </div>
   </div>
 
+  <!-- SCREENSHOTS -->
   <section class="shots-section">
-    <p class="sec-label reveal" data-i18n="shots-label">See it in action</p>
-    <h2 class="sec-title reveal" data-i18n="shots-title">Built for the Swiss driver</h2>
-    <p class="sec-sub reveal" data-i18n="shots-sub">"Worth the detour?" — answered at a glance, in seconds.</p>
+    <p class="sec-label reveal">See it in action</p>
+    <h2 class="sec-title reveal">Built for the Swiss driver</h2>
+    <p class="sec-sub reveal">Every screen is designed to give you the right answer at a glance. "Worth the detour?" answered in seconds.</p>
     <div class="phones reveal">
       <div class="phone-wrap">
-        <span class="callout callout-r" data-i18n="callout-r">← Net savings for your car</span>
-        <div class="phone-shell"><img src="assets/screenshot1.jpg" alt="SFF app screen 1"></div>
+        <span class="callout callout-r">← Net savings for your car</span>
+        <div class="phone-shell">
+          <img src="assets/screenshot1.jpg" alt="SFF showing nearby stations with net savings">
+        </div>
       </div>
       <div class="phone-wrap">
-        <span class="callout callout-g" data-i18n="callout-g">Worth the detour ✓ →</span>
-        <div class="phone-shell"><img src="assets/screenshot2.jpg" alt="SFF app screen 2"></div>
+        <span class="callout callout-g">Worth the detour ✓ →</span>
+        <div class="phone-shell">
+          <img src="assets/screenshot2.jpg" alt="SFF showing VAUT LE DÉTOUR and station comparison">
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- FEATURES -->
   <div class="feat-wrap" id="features">
     <div class="feat-inner">
-      <p class="sec-label reveal" data-i18n="feat-label">What's inside</p>
-      <h2 class="sec-title reveal" style="margin-bottom:3rem;" data-i18n="feat-title">Every feature earns its place</h2>
+      <p class="sec-label reveal">What's inside</p>
+      <h2 class="sec-title reveal" style="margin-bottom:3rem;">Every feature earns its place</h2>
       <div class="feat-grid">
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(204,31,31,0.10);">⛽</div>
-          <h3 class="feat-title" data-i18n="feat1-title">Official Swiss Data</h3>
-          <p class="feat-desc" data-i18n="feat1-desc">3,989+ stations synced from official Swiss sources three times daily. Always accurate, always current — no guesswork.</p>
+          <h3 class="feat-title">Official Swiss Data</h3>
+          <p class="feat-desc">3,989+ stations synced from official Swiss sources three times daily. Always accurate, always current — no user-submitted guesses.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(34,197,94,0.10);">🧮</div>
-          <h3 class="feat-title" data-i18n="feat2-title">Smart Net Savings</h3>
-          <p class="feat-desc" data-i18n="feat2-desc">We calculate real profit after factoring in the detour. The nearest station is not always the most profitable — SFF finds the one that is.</p>
+          <h3 class="feat-title">Smart Net Savings</h3>
+          <p class="feat-desc">We calculate the real profit after factoring in the detour. The nearest station is not always the most profitable one — SFF finds the one that is.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(245,158,11,0.10);">👥</div>
-          <h3 class="feat-title" data-i18n="feat3-title">Community Verified</h3>
-          <p class="feat-desc" data-i18n="feat3-desc">Real drivers update prices in real time. Each price shows a "Verified by User" count so you know exactly how fresh it is.</p>
+          <h3 class="feat-title">Community Verified</h3>
+          <p class="feat-desc">Real drivers update prices in real time. Each price shows a "Verified by User" count so you know exactly how fresh it is.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(100,149,237,0.10);">🌐</div>
-          <h3 class="feat-title" data-i18n="feat4-title">Fully Localised</h3>
-          <p class="feat-desc" data-i18n="feat4-desc">English, Deutsch, Français, and Italiano. SFF speaks all four Swiss national languages — switch anytime from settings.</p>
+          <h3 class="feat-title">Fully Localised</h3>
+          <p class="feat-desc">English, Deutsch, Français, and Italiano. SFF speaks all four Swiss national languages — switch anytime from settings.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(34,197,94,0.10);">🚫</div>
-          <h3 class="feat-title" data-i18n="feat5-title">No Junk Stations</h3>
-          <p class="feat-desc" data-i18n="feat5-desc">Advanced filters and community reports automatically remove closed or private stations. Every result in your list is a real option.</p>
+          <h3 class="feat-title">No Junk Stations</h3>
+          <p class="feat-desc">Advanced filters and community reports automatically remove closed or private stations. Every result in your list is a real option.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(204,31,31,0.10);">🚗</div>
-          <h3 class="feat-title" data-i18n="feat6-title">Your Car, Your Maths</h3>
-          <p class="feat-desc" data-i18n="feat6-desc">Set your tank size and consumption once. Every calculation is then tailored precisely to your vehicle — not a generic average.</p>
+          <h3 class="feat-title">Your Car, Your Maths</h3>
+          <p class="feat-desc">Set your tank size and consumption once. From that point, every calculation is tailored precisely to your vehicle — not a generic average.</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- CONTACT -->
   <section class="contact-section" id="contact">
-    <p class="sec-label" data-i18n="contact-label">Get in touch</p>
-    <h2 class="sec-title" data-i18n="contact-title">Have a question?</h2>
-    <p class="sec-sub" style="margin:0 auto;text-align:center;" data-i18n="contact-sub">We're always happy to hear from users — feedback, bug reports, or just to say hello.</p>
-    <a href="mailto:info@swissfuelfinder.com" class="contact-email">✉&nbsp; info@swissfuelfinder.com</a>
+    <p class="sec-label">Get in touch</p>
+    <h2 class="sec-title">Have a question?</h2>
+    <p class="sec-sub" style="margin: 0 auto 0; text-align:center;">We're always happy to hear from users — feedback, bug reports, or just to say hello.</p>
+    <a href="mailto:info@swissfuelfinder.com" class="contact-email">
+      ✉&nbsp; info@swissfuelfinder.com
+    </a>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="foot-links">
-      <a href="#"          data-i18n="foot-home">Home</a>
-      <a href="#features"  data-i18n="foot-features">Features</a>
-      <a href="#contact"   data-i18n="foot-contact">Contact</a>
-      <a href="legal.html" data-i18n="foot-legal">Legal</a>
+      <a href="#">Home</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+      <a href="legal.html">Legal</a>
+      <a href="legal-notice.html" data-i18n="foot-legal-notice">Legal Notice</a>
     </div>
-    <p data-i18n="footer-copy">© 2025 Swiss Fuel Finder. WTRH. Chemin du Bois de la Fontaine 19, 1007 Lausanne. All rights reserved.</p>
+    <p>© 2025 Swiss Fuel Finder. All rights reserved.</p>
   </footer>
 
   <script>
-  const T = {
-    en: {
-      'nav-features':'Features','nav-contact':'Contact','nav-legal':'Legal',
-      'hero-eyebrow':"Switzerland's Smartest Fuel App",
-      'hero-h1-l1':'Stop Guessing.','hero-h1-l2':'Start Saving.',
-      'hero-sub':'Most apps show you the cheapest price. SFF calculates if the detour is <em>actually worth it</em> — using your tank size and fuel consumption.',
-      'savings-label':'Maximum savings per full tank','savings-sub':'Calculated to your vehicle profile',
-      'diff-label':'Why SFF is different',
-      'diff-title':'Other apps show you the price.<br>SFF tells you the truth.',
-      'diff-sub':"The nearest station is rarely the most profitable one. SFF does the maths so you don't have to.",
-      'diff-h-others':'Other fuel apps',
-      'diff-o-1':'Show the cheapest price at the pump — nothing else',
-      'diff-o-2':'Ignore the fuel cost of getting there',
-      'diff-o-3':'Treat every car the same regardless of tank or consumption',
-      'diff-o-4':'List closed or private stations that waste your time',
-      'diff-s-1':'Calculates your real <strong>Net Profit</strong> — savings after detour cost',
-      'diff-s-2':'Uses <strong>your vehicle profile</strong> for personalised maths',
-      'diff-s-3':'Stamps stations as <span class="g">WORTH THE DETOUR</span> or not',
-      'diff-s-4':'Community-verified prices, synced 3× daily from official sources',
-      'how-label':'How it works','how-title':'Three steps to smarter refuelling',
-      'step1-title':'Set Your Vehicle Profile','step1-desc':"Enter your tank size and average fuel consumption once. SFF uses this to personalise every single calculation to your car — not someone else's.",
-      'step2-title':'See Stations Near You','step2-desc':'3,989+ stations updated 3× daily from official Swiss sources. Advanced filters and community reports remove closed or private stations automatically.',
-      'step3-title':'Act on Real Numbers','step3-desc':"Each station shows your estimated net CHF savings — not just the price per litre. Drive only when it's genuinely worth it.",
-      'stat-l-1':'Stations across Switzerland','stat-l-2':'Price updates per day','stat-l-3':'Languages supported','stat-l-4':'Max savings per tank',
-      'shots-label':'See it in action','shots-title':'Built for the Swiss driver','shots-sub':'"Worth the detour?" — answered at a glance, in seconds.',
-      'callout-g':'Worth the detour ✓ →','callout-r':'← Net savings for your car',
-      'feat-label':"What's inside",'feat-title':'Every feature earns its place',
-      'feat1-title':'Official Swiss Data','feat1-desc':'3,989+ stations synced from official Swiss sources three times daily. Always accurate, always current — no guesswork.',
-      'feat2-title':'Smart Net Savings','feat2-desc':'We calculate real profit after factoring in the detour. The nearest station is not always the most profitable — SFF finds the one that is.',
-      'feat3-title':'Community Verified','feat3-desc':'Real drivers update prices in real time. Each price shows a "Verified by User" count so you know exactly how fresh it is.',
-      'feat4-title':'Fully Localised','feat4-desc':'English, Deutsch, Français, and Italiano. SFF speaks all four Swiss national languages — switch anytime from settings.',
-      'feat5-title':'No Junk Stations','feat5-desc':'Advanced filters and community reports automatically remove closed or private stations. Every result in your list is a real option.',
-      'feat6-title':'Your Car, Your Maths','feat6-desc':'Set your tank size and consumption once. Every calculation is then tailored precisely to your vehicle — not a generic average.',
-      'contact-label':'Get in touch','contact-title':'Have a question?','contact-sub':"We're always happy to hear from users — feedback, bug reports, or just to say hello.",
-      'foot-home':'Home','foot-features':'Features','foot-contact':'Contact','foot-legal':'Legal',
-      'footer-copy':'© 2025 Swiss Fuel Finder. All rights reserved.',
-    },
-    fr: {
-      'nav-features':'Fonctionnalités','nav-contact':'Contact','nav-legal':'Légal',
-      'hero-eyebrow':"L'app carburant la plus intelligente de Suisse",
-      'hero-h1-l1':'Stop aux Doutes.','hero-h1-l2':'Place aux Économies.',
-      'hero-sub':'La plupart des apps affichent le prix le moins cher. SFF calcule si le détour <em>vaut vraiment la peine</em> — selon votre réservoir et votre consommation.',
-      'savings-label':'Économies maximales par plein','savings-sub':'Calculées selon votre profil de véhicule',
-      'diff-label':'Pourquoi SFF est différent',
-      'diff-title':'Les autres apps affichent le prix.<br>SFF vous dit la vérité.',
-      'diff-sub':'La station la plus proche est rarement la plus rentable. SFF fait le calcul à votre place.',
-      'diff-h-others':'Autres apps carburant',
-      'diff-o-1':"Affichent le prix le moins cher à la pompe — rien d'autre",
-      'diff-o-2':'Ignorent le coût du carburant pour rejoindre la station',
-      'diff-o-3':'Traitent chaque voiture de la même façon',
-      'diff-o-4':'Listent des stations fermées ou privées qui font perdre du temps',
-      'diff-s-1':'Calcule votre vrai <strong>bénéfice net</strong> — économies déduction faite du détour',
-      'diff-s-2':'Utilise <strong>votre profil de véhicule</strong> pour un calcul personnalisé',
-      'diff-s-3':'Classe les stations <span class="g">VAUT LE DÉTOUR</span> ou non',
-      'diff-s-4':'Prix vérifiés par la communauté, synchronisés 3× par jour depuis des sources officielles',
-      'how-label':'Comment ça marche','how-title':'Trois étapes pour ravitailler plus intelligemment',
-      'step1-title':'Configurez votre profil','step1-desc':'Saisissez une fois la taille de votre réservoir et votre consommation moyenne. SFF personnalise chaque calcul pour votre voiture — pas pour une autre.',
-      'step2-title':'Voyez les stations proches','step2-desc':'Plus de 3 989 stations mises à jour 3× par jour depuis des sources officielles suisses. Les stations fermées ou privées sont filtrées automatiquement.',
-      'step3-title':'Agissez sur de vrais chiffres','step3-desc':'Chaque station affiche vos économies nettes estimées en CHF — pas seulement le prix au litre. Faites le détour uniquement quand cela vaut vraiment la peine.',
-      'stat-l-1':'Stations en Suisse','stat-l-2':'Mises à jour de prix par jour','stat-l-3':'Langues supportées','stat-l-4':'Économies max par plein',
-      'shots-label':'Voyez-le en action','shots-title':'Conçu pour le conducteur suisse','shots-sub':'"Vaut le détour ?" — répondu d\'un coup d\'œil, en quelques secondes.',
-      'callout-g':'Vaut le détour ✓ →','callout-r':'← Bénéfice net pour votre voiture',
-      'feat-label':'Ce qui est inclus','feat-title':"Chaque fonctionnalité a sa raison d'être",
-      'feat1-title':'Données officielles suisses','feat1-desc':'Plus de 3 989 stations synchronisées depuis des sources officielles suisses, trois fois par jour. Toujours précis, toujours à jour.',
-      'feat2-title':'Bénéfice net intelligent','feat2-desc':"Nous calculons le vrai profit en tenant compte du détour. La station la plus proche n'est pas toujours la plus rentable — SFF trouve celle qui l'est.",
-      'feat3-title':'Vérifié par la communauté','feat3-desc':'De vrais conducteurs mettent à jour les prix en temps réel. Chaque prix affiche un compteur "Vérifié par utilisateur" pour connaître sa fraîcheur.',
-      'feat4-title':'Entièrement localisé','feat4-desc':'Anglais, Deutsch, Français et Italiano. SFF parle les quatre langues nationales suisses — changez à tout moment dans les paramètres.',
-      'feat5-title':'Aucune station inutile','feat5-desc':'Les filtres avancés et les signalements de la communauté suppriment automatiquement les stations fermées ou privées. Chaque résultat est une vraie option.',
-      'feat6-title':'Votre voiture, votre calcul','feat6-desc':'Saisissez une fois votre réservoir et votre consommation. À partir de là, chaque calcul est adapté précisément à votre véhicule.',
-      'contact-label':'Nous contacter','contact-title':'Une question ?','contact-sub':"Nous sommes toujours heureux d'entendre nos utilisateurs — retours, bugs ou juste pour dire bonjour.",
-      'foot-home':'Accueil','foot-features':'Fonctionnalités','foot-contact':'Contact','foot-legal':'Légal',
-      'footer-copy':'© 2025 Swiss Fuel Finder. Tous droits réservés.',
-    },
-    de: {
-      'nav-features':'Funktionen','nav-contact':'Kontakt','nav-legal':'Rechtliches',
-      'hero-eyebrow':'Die intelligenteste Tankstellen-App der Schweiz',
-      'hero-h1-l1':'Schluss mit Raten.','hero-h1-l2':'Jetzt Sparen.',
-      'hero-sub':'Die meisten Apps zeigen Ihnen den günstigsten Preis. SFF berechnet, ob der Umweg <em>wirklich lohnt</em> — basierend auf Ihrem Tank und Verbrauch.',
-      'savings-label':'Maximale Ersparnis pro Tankfüllung','savings-sub':'Berechnet für Ihr Fahrzeugprofil',
-      'diff-label':'Warum SFF anders ist',
-      'diff-title':'Andere Apps zeigen den Preis.<br>SFF sagt Ihnen die Wahrheit.',
-      'diff-sub':'Die nächste Tankstelle ist selten die rentabelste. SFF erledigt die Rechnung — damit Sie es nicht müssen.',
-      'diff-h-others':'Andere Kraftstoff-Apps',
-      'diff-o-1':'Zeigen nur den günstigsten Preis an der Zapfsäule',
-      'diff-o-2':'Ignorieren den Kraftstoffkosten der Anfahrt',
-      'diff-o-3':'Behandeln jedes Auto gleich, unabhängig von Tank und Verbrauch',
-      'diff-o-4':'Listen geschlossene oder private Stationen, die Zeit verschwenden',
-      'diff-s-1':'Berechnet Ihren echten <strong>Nettogewinn</strong> — Ersparnis abzüglich Umwegkosten',
-      'diff-s-2':'Nutzt <strong>Ihr Fahrzeugprofil</strong> für personalisierte Berechnungen',
-      'diff-s-3':'Markiert Stationen als <span class="g">UMWEG LOHNT SICH</span> oder nicht',
-      'diff-s-4':'Gemeinschaftlich geprüfte Preise, 3× täglich von offiziellen Quellen aktualisiert',
-      'how-label':'So funktioniert es','how-title':'Drei Schritte zum klügeren Tanken',
-      'step1-title':'Fahrzeugprofil einrichten','step1-desc':'Geben Sie einmalig Tankgrösse und Durchschnittsverbrauch ein. SFF nutzt dies, um jede Berechnung auf Ihr Auto zuzuschneiden — nicht auf irgendjemand anderen.',
-      'step2-title':'Tankstellen in der Nähe','step2-desc':"Über 3'989 Stationen, 3× täglich von offiziellen Schweizer Quellen aktualisiert. Geschlossene oder private Stationen werden automatisch herausgefiltert.",
-      'step3-title':'Auf echte Zahlen reagieren','step3-desc':'Jede Station zeigt Ihre geschätzte Nettoersparnis in CHF — nicht nur den Literpreis. Fahren Sie nur, wenn sich der Umweg wirklich lohnt.',
-      'stat-l-1':'Stationen in der Schweiz','stat-l-2':'Preisaktualisierungen pro Tag','stat-l-3':'Unterstützte Sprachen','stat-l-4':'Max. Ersparnis pro Füllung',
-      'shots-label':'In Aktion sehen','shots-title':'Für den Schweizer Autofahrer gebaut','shots-sub':'"Lohnt der Umweg?" — auf einen Blick beantwortet, in Sekunden.',
-      'callout-g':'Umweg lohnt sich ✓ →','callout-r':'← Nettoersparnis für Ihr Auto',
-      'feat-label':'Was drin steckt','feat-title':'Jede Funktion verdient ihren Platz',
-      'feat1-title':'Offizielle Schweizer Daten','feat1-desc':"Über 3'989 Stationen, dreimal täglich von offiziellen Schweizer Quellen synchronisiert. Immer genau, immer aktuell.",
-      'feat2-title':'Intelligente Nettoersparnis','feat2-desc':'Wir berechnen den echten Gewinn nach Abzug der Umwegkosten. Die nächste Station ist nicht immer die rentabelste — SFF findet die, die es ist.',
-      'feat3-title':'Gemeinschaftlich geprüft','feat3-desc':'Echte Fahrer aktualisieren Preise in Echtzeit. Jeder Preis zeigt einen „Vom Nutzer geprüft"-Zähler, damit Sie wissen, wie aktuell er ist.',
-      'feat4-title':'Vollständig lokalisiert','feat4-desc':'Englisch, Deutsch, Français und Italiano. SFF spricht alle vier Schweizer Landessprachen — jederzeit in den Einstellungen wechselbar.',
-      'feat5-title':'Keine Phantomstationen','feat5-desc':'Erweiterte Filter und Community-Meldungen entfernen geschlossene oder private Stationen automatisch. Jedes Ergebnis ist eine echte Option.',
-      'feat6-title':'Ihr Auto, Ihre Rechnung','feat6-desc':'Geben Sie einmalig Tank und Verbrauch ein. Ab diesem Punkt wird jede Berechnung präzise auf Ihr Fahrzeug zugeschnitten.',
-      'contact-label':'Kontakt','contact-title':'Haben Sie eine Frage?','contact-sub':'Wir freuen uns immer über Nachrichten — Feedback, Fehlerberichte oder einfach ein Hallo.',
-      'foot-home':'Startseite','foot-features':'Funktionen','foot-contact':'Kontakt','foot-legal':'Rechtliches',
-      'footer-copy':'© 2025 Swiss Fuel Finder. Alle Rechte vorbehalten.',
-    },
-    it: {
-      'nav-features':'Funzioni','nav-contact':'Contatto','nav-legal':'Legale',
-      'hero-eyebrow':"L'app carburante più intelligente della Svizzera",
-      'hero-h1-l1':'Basta Indovinare.','hero-h1-l2':'Inizia a Risparmiare.',
-      'hero-sub':'La maggior parte delle app mostra solo il prezzo più basso. SFF calcola se la deviazione <em>vale davvero la pena</em> — in base al vostro serbatoio e consumo.',
-      'savings-label':'Risparmio massimo per pieno','savings-sub':'Calcolato per il vostro profilo veicolo',
-      'diff-label':'Perché SFF è diverso',
-      'diff-title':'Le altre app mostrano il prezzo.<br>SFF vi dice la verità.',
-      'diff-sub':'La stazione più vicina è raramente quella più redditizia. SFF fa i calcoli al posto vostro.',
-      'diff-h-others':'Altre app carburante',
-      'diff-o-1':'Mostrano solo il prezzo più basso alla pompa',
-      'diff-o-2':'Ignorano il costo del carburante per raggiungerla',
-      'diff-o-3':'Trattano ogni auto allo stesso modo',
-      'diff-o-4':'Elencano stazioni chiuse o private che fanno perdere tempo',
-      'diff-s-1':'Calcola il vostro vero <strong>profitto netto</strong> — risparmio dopo il costo della deviazione',
-      'diff-s-2':'Usa <strong>il vostro profilo veicolo</strong> per calcoli personalizzati',
-      'diff-s-3':'Indica le stazioni come <span class="g">VALE LA DEVIAZIONE</span> o no',
-      'diff-s-4':'Prezzi verificati dalla community, aggiornati 3× al giorno da fonti ufficiali',
-      'how-label':'Come funziona','how-title':'Tre passi per fare rifornimento in modo più intelligente',
-      'step1-title':'Configurate il vostro profilo','step1-desc':'Inserite una volta la capacità del serbatoio e il consumo medio. SFF usa questi dati per personalizzare ogni calcolo per la vostra auto.',
-      'step2-title':'Vedete le stazioni vicine','step2-desc':'Oltre 3.989 stazioni aggiornate 3× al giorno da fonti ufficiali svizzere. Le stazioni chiuse o private vengono rimosse automaticamente.',
-      'step3-title':'Agite su numeri reali','step3-desc':'Ogni stazione mostra il risparmio netto stimato in CHF — non solo il prezzo al litro. Fate la deviazione solo quando ne vale davvero la pena.',
-      'stat-l-1':'Stazioni in Svizzera','stat-l-2':'Aggiornamenti prezzi al giorno','stat-l-3':'Lingue supportate','stat-l-4':'Risparmio max per pieno',
-      'shots-label':'Vedila in azione','shots-title':'Costruita per il guidatore svizzero','shots-sub':'"Vale la deviazione?" — risposta a colpo d\'occhio, in pochi secondi.',
-      'callout-g':'Vale la deviazione ✓ →','callout-r':'← Risparmio netto per la vostra auto',
-      'feat-label':"Cosa c'è dentro",'feat-title':'Ogni funzione guadagna il suo posto',
-      'feat1-title':'Dati ufficiali svizzeri','feat1-desc':'Oltre 3.989 stazioni sincronizzate da fonti ufficiali svizzere tre volte al giorno. Sempre preciso, sempre aggiornato.',
-      'feat2-title':'Risparmio netto intelligente','feat2-desc':'Calcoliamo il profitto reale tenendo conto della deviazione. La stazione più vicina non è sempre la più redditizia — SFF trova quella che lo è.',
-      'feat3-title':'Verificato dalla community','feat3-desc':'Guidatori reali aggiornano i prezzi in tempo reale. Ogni prezzo mostra un contatore "Verificato dall\'utente" per sapere quanto è aggiornato.',
-      'feat4-title':'Completamente localizzato','feat4-desc':'Inglese, Deutsch, Français e Italiano. SFF parla tutte e quattro le lingue nazionali svizzere — cambiate in qualsiasi momento nelle impostazioni.',
-      'feat5-title':'Nessuna stazione inutile','feat5-desc':"Filtri avanzati e segnalazioni della community rimuovono automaticamente le stazioni chiuse o private. Ogni risultato è un'opzione reale.",
-      'feat6-title':'La vostra auto, i vostri calcoli','feat6-desc':'Inserite una volta serbatoio e consumo. Da quel momento, ogni calcolo è adattato con precisione al vostro veicolo.',
-      'contact-label':'Contattaci','contact-title':'Avete una domanda?','contact-sub':'Siamo sempre felici di sentire i nostri utenti — feedback, segnalazioni di bug o solo per salutare.',
-      'foot-home':'Home','foot-features':'Funzioni','foot-contact':'Contatto','foot-legal':'Legale',
-      'footer-copy':'© 2025 Swiss Fuel Finder. Tutti i diritti riservati.',
+    /* Scroll reveal */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* CHF counter */
+    function runCounter(el, target, dur) {
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.childNodes[0].nodeValue = (target * ease).toFixed(2);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     }
-  };
-
-  function setLang(lang) {
-    if (!T[lang]) return;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
-    });
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-    document.documentElement.lang = lang;
-    try { localStorage.setItem('sff-lang', lang); } catch(e) {}
-  }
-
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
-
-  // Auto-detect: saved pref → browser language → English
-  (function() {
-    let saved; try { saved = localStorage.getItem('sff-lang'); } catch(e) {}
-    const browser = (navigator.language || 'en').slice(0,2).toLowerCase();
-    setLang((saved && T[saved]) ? saved : (T[browser] ? browser : 'en'));
-  })();
-
-  // Scroll reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // CHF counter
-  setTimeout(() => {
-    const c = document.getElementById('counter');
-    const s = performance.now();
-    (function tick(now) {
-      const p = Math.min((now-s)/1600,1), ease = 1-Math.pow(1-p,3);
-      c.childNodes[0].nodeValue = (15*ease).toFixed(2);
-      if (p<1) requestAnimationFrame(tick);
-    })(s);
-  }, 600);
+    setTimeout(() => {
+      const c = document.getElementById('counter');
+      runCounter(c, 15, 1600);
+    }, 900);
   </script>
 </body>
 </html>
