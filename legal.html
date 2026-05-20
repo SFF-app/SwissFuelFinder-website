@@ -11,20 +11,11 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:        #0A0A0A;
-      --bg-card:   #141414;
-      --bg-card-2: #1C1C1C;
-      --red:       #CC1F1F;
-      --green:     #22C55E;
-      --white:     #FFFFFF;
-      --grey:      #888888;
-      --grey-lt:   #CCCCCC;
-      --border:    #242424;
-      --border-lt: #333333;
-      --display:   'Barlow Condensed', sans-serif;
-      --body:      'DM Sans', sans-serif;
+      --bg: #0A0A0A; --bg-card: #141414; --bg-card-2: #1C1C1C;
+      --red: #CC1F1F; --green: #22C55E; --white: #FFFFFF;
+      --grey: #888888; --grey-lt: #CCCCCC; --border: #242424; --border-lt: #333333;
+      --display: 'Barlow Condensed', sans-serif; --body: 'DM Sans', sans-serif;
     }
-
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--white); font-family: var(--body); min-height: 100dvh; display: flex; flex-direction: column; line-height: 1.65; }
 
@@ -34,8 +25,6 @@
     .nav-brand img { width: 32px; height: 32px; border-radius: 7px; object-fit: cover; }
     .nav-brand-name { font-family: var(--display); font-weight: 800; font-size: 17px; letter-spacing: 0.04em; color: var(--white); }
     .nav-brand-name em { color: var(--red); font-style: normal; }
-
-    /* LANG SWITCHER */
     .lang-switcher { display: flex; gap: 2px; background: var(--bg-card); border: 1px solid var(--border-lt); border-radius: 8px; padding: 3px; }
     .lang-btn { background: none; border: none; color: var(--grey); font-family: var(--body); font-size: 12px; font-weight: 600; letter-spacing: 0.05em; padding: 5px 9px; border-radius: 5px; cursor: pointer; transition: color .15s, background .15s; line-height: 1; }
     .lang-btn:hover { color: var(--white); }
@@ -43,120 +32,41 @@
 
     /* MAIN */
     main { flex: 1; max-width: 740px; margin: 0 auto; padding: 4rem 2rem 5rem; width: 100%; }
-
     .page-label { font-family: var(--display); font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; }
-
     h1 { font-family: var(--display); font-size: clamp(48px, 8vw, 68px); font-weight: 900; line-height: 0.95; margin-bottom: 1rem; }
-
     .intro { font-size: 16px; color: var(--grey-lt); line-height: 1.65; margin-bottom: 3rem; max-width: 560px; }
 
-    /* DOCUMENT CARD */
+    /* DOCUMENT CARD — full link card */
     .doc-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-lt);
-      border-radius: 16px;
-      overflow: hidden;
+      display: flex; align-items: stretch;
+      background: var(--bg-card); border: 1px solid var(--border-lt);
+      border-radius: 16px; overflow: hidden;
       margin-bottom: 1.25rem;
+      text-decoration: none; color: var(--white);
       transition: border-color .2s;
     }
-    .doc-card:hover { border-color: #444; }
+    .doc-card:hover { border-color: var(--red); }
 
-    .doc-card-header {
-      padding: 1.5rem 1.75rem 1.25rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
+    /* Coloured left accent stripe */
+    .doc-card-stripe { width: 4px; flex-shrink: 0; }
+    .doc-card-stripe.green { background: var(--green); }
+    .doc-card-stripe.red   { background: var(--red); }
+    .doc-card-stripe.amber { background: #F59E0B; }
 
-    .doc-icon {
-      width: 42px; height: 42px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
+    .doc-card-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 1.75rem; gap: 1rem; flex: 1; }
 
-    .doc-info { flex: 1; }
+    .doc-card-left { display: flex; align-items: center; gap: 14px; }
 
-    .doc-title {
-      font-family: var(--display);
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      margin-bottom: 0.3rem;
-    }
+    .doc-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
 
-    .doc-desc { font-size: 14px; color: var(--grey); line-height: 1.5; }
+    .doc-title { font-family: var(--display); font-size: 24px; font-weight: 800; letter-spacing: 0.01em; margin-bottom: 0.25rem; }
+    .doc-desc  { font-size: 13px; color: var(--grey); line-height: 1.45; }
 
-    /* LANGUAGE BUTTONS INSIDE CARD */
-    .doc-lang-row {
-      padding: 0 1.75rem 1.5rem;
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-
-    .doc-lang-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 16px;
-      border: 1px solid var(--border-lt);
-      border-radius: 9px;
-      text-decoration: none;
-      color: var(--grey-lt);
-      font-size: 13px;
-      font-weight: 600;
-      background: var(--bg-card-2);
-      transition: border-color .2s, background .2s, color .2s;
-      letter-spacing: 0.02em;
-    }
-
-    .doc-lang-btn:hover {
-      border-color: var(--red);
-      background: #1A1010;
-      color: var(--white);
-    }
-
-    .doc-lang-btn .flag { font-size: 16px; line-height: 1; }
-    .doc-lang-btn .lang-code { font-family: var(--display); font-size: 15px; font-weight: 800; letter-spacing: 0.06em; }
-    .doc-lang-btn .lang-name { font-size: 12px; color: var(--grey); font-weight: 500; }
-
-    .doc-card-divider { height: 1px; background: var(--border); margin: 0 1.75rem; }
-
-    /* LEGAL NOTICE CARD — single link style */
-    .notice-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--bg-card);
-      border: 1px solid var(--border-lt);
-      border-radius: 16px;
-      padding: 1.5rem 1.75rem;
-      text-decoration: none;
-      color: var(--white);
-      margin-bottom: 1.25rem;
-      transition: border-color .2s, background .2s;
-      gap: 1rem;
-    }
-    .notice-card:hover { border-color: var(--red); background: #1A1010; }
-
-    .notice-card-left { display: flex; align-items: center; gap: 14px; }
-
-    .notice-card-info .notice-card-title {
-      font-family: var(--display);
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      margin-bottom: 0.3rem;
-    }
-    .notice-card-info .notice-card-desc { font-size: 14px; color: var(--grey); }
-
-    .notice-card-arrow { font-size: 22px; color: var(--grey); flex-shrink: 0; }
+    .doc-arrow { font-size: 20px; color: var(--grey); flex-shrink: 0; transition: color .2s, transform .2s; }
+    .doc-card:hover .doc-arrow { color: var(--white); transform: translateX(4px); }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--grey); flex-wrap: wrap; gap: 0.5rem; }
+    footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--grey); flex-wrap: wrap; gap: .5rem; }
     .foot-links { display: flex; gap: 1.5rem; }
     .foot-links a, footer a { color: var(--grey-lt); text-decoration: none; transition: color .2s; }
     .foot-links a:hover, footer a:hover { color: var(--white); }
@@ -164,8 +74,6 @@
     @media (max-width: 560px) {
       nav { padding: 0 1.25rem; }
       .nav-brand-name { display: none; }
-      .doc-lang-row { gap: 0.5rem; }
-      .doc-lang-btn .lang-name { display: none; }
       footer { flex-direction: column; text-align: center; }
       .foot-links { justify-content: center; flex-wrap: wrap; }
     }
@@ -189,94 +97,51 @@
   <main>
     <p class="page-label" data-i18n="page-label">Legal</p>
     <h1 data-i18n="page-title">Terms &amp;<br>Privacy</h1>
-    <p class="intro" data-i18n="page-intro">All legal documents for Swiss Fuel Finder are available in English, Français, Deutsch, and Italiano. Select your language to open the document.</p>
+    <p class="intro" data-i18n="page-intro">All legal documents are available in English, Français, Deutsch, and Italiano. Select a document — you can choose your language once inside.</p>
 
     <!-- PRIVACY POLICY -->
-    <div class="doc-card">
-      <div class="doc-card-header">
-        <div class="doc-icon" style="background:rgba(34,197,94,0.10);">🔒</div>
-        <div class="doc-info">
-          <p class="doc-title" data-i18n="privacy-title">Privacy Policy</p>
-          <p class="doc-desc" data-i18n="privacy-desc">How we collect, use, and protect your personal data — in accordance with the Swiss nDSG and GDPR.</p>
+    <a href="privacy.html" class="doc-card">
+      <span class="doc-card-stripe green"></span>
+      <div class="doc-card-inner">
+        <div class="doc-card-left">
+          <div class="doc-icon" style="background:rgba(34,197,94,0.10);">🔒</div>
+          <div>
+            <p class="doc-title" data-i18n="privacy-title">Privacy Policy</p>
+            <p class="doc-desc" data-i18n="privacy-desc">Data collection, processing, your rights — nDSG & GDPR compliant. Available in 4 languages.</p>
+          </div>
         </div>
+        <span class="doc-arrow">→</span>
       </div>
-      <div class="doc-card-divider"></div>
-      <div class="doc-lang-row">
-        <a href="https://github.com/SFF-app/SwissFuelFinder-legal/blob/main/Swiss_Fuel_Finder_Privacy_EN.md"
-           target="_blank" rel="noopener" class="doc-lang-btn">
-          <span class="flag">🇬🇧</span>
-          <span class="lang-code">EN</span>
-          <span class="lang-name">English</span>
-        </a>
-        <a href="https://github.com/SFF-app/SwissFuelFinder-legal/blob/main/Swiss_Fuel_Finder_Privacy_FR.md"
-           target="_blank" rel="noopener" class="doc-lang-btn">
-          <span class="flag">🇫🇷</span>
-          <span class="lang-code">FR</span>
-          <span class="lang-name">Français</span>
-        </a>
-        <a href="https://github.com/SFF-app/SwissFuelFinder-legal/blob/main/Swiss_Fuel_Finder_Privacy_DE.md"
-           target="_blank" rel="noopener" class="doc-lang-btn">
-          <span class="flag">🇩🇪</span>
-          <span class="lang-code">DE</span>
-          <span class="lang-name">Deutsch</span>
-        </a>
-        <a href="https://github.com/SFF-app/SwissFuelFinder-legal/blob/main/Swiss_Fuel_Finder_Privacy_IT.md"
-           target="_blank" rel="noopener" class="doc-lang-btn">
-          <span class="flag">🇮🇹</span>
-          <span class="lang-code">IT</span>
-          <span class="lang-name">Italiano</span>
-        </a>
-      </div>
-    </div>
+    </a>
 
-    <!-- GTC / TERMS -->
-    <div class="doc-card">
-      <div class="doc-card-header">
-        <div class="doc-icon" style="background:rgba(204,31,31,0.10);">📋</div>
-        <div class="doc-info">
-          <p class="doc-title" data-i18n="gtc-title">General Terms & Conditions</p>
-          <p class="doc-desc" data-i18n="gtc-desc">The rules and conditions governing your use of the Swiss Fuel Finder application and services.</p>
+    <!-- GTC -->
+    <a href="gtc.html" class="doc-card">
+      <span class="doc-card-stripe red"></span>
+      <div class="doc-card-inner">
+        <div class="doc-card-left">
+          <div class="doc-icon" style="background:rgba(204,31,31,0.10);">📋</div>
+          <div>
+            <p class="doc-title" data-i18n="gtc-title">General Terms &amp; Conditions</p>
+            <p class="doc-desc" data-i18n="gtc-desc">Rules, subscriptions, liability, and governing law. Available in 4 languages.</p>
+          </div>
         </div>
+        <span class="doc-arrow">→</span>
       </div>
-      <div class="doc-card-divider"></div>
-      <div class="doc-lang-row">
-        <a href="https://github.com/SFF-app/SwissFuelFinder-legal/blob/main/Swiss_Fuel_Finder_GTC_EN.md"
-           target="_blank" rel="noopener" class="doc-lang-btn">
-          <span class="flag">🇬🇧</span>
-          <span class="lang-code">EN</span>
-          <span class="lang-name">English</span>
-        </a>
-        <a href="https://github.com/SFF-app/SwissFuelFinder-legal/blob/main/Swiss_Fuel_Finder_GTC_FR.md"
-           target="_blank" rel="noopener" class="doc-lang-btn">
-          <span class="flag">🇫🇷</span>
-          <span class="lang-code">FR</span>
-          <span class="lang-name">Français</span>
-        </a>
-        <a href="https://github.com/SFF-app/SwissFuelFinder-legal/blob/main/Swiss_Fuel_Finder_GTC_DE.md"
-           target="_blank" rel="noopener" class="doc-lang-btn">
-          <span class="flag">🇩🇪</span>
-          <span class="lang-code">DE</span>
-          <span class="lang-name">Deutsch</span>
-        </a>
-        <a href="https://github.com/SFF-app/SwissFuelFinder-legal/blob/main/Swiss_Fuel_Finder_GTC_IT.md"
-           target="_blank" rel="noopener" class="doc-lang-btn">
-          <span class="flag">🇮🇹</span>
-          <span class="lang-code">IT</span>
-          <span class="lang-name">Italiano</span>
-        </a>
-      </div>
-    </div>
+    </a>
 
     <!-- LEGAL NOTICE -->
-    <a href="legal-notice.html" class="notice-card">
-      <div class="notice-card-left">
-        <div class="doc-icon" style="background:rgba(245,158,11,0.10);">🏢</div>
-        <div class="notice-card-info">
-          <p class="notice-card-title" data-i18n="notice-title">Legal Notice</p>
-          <p class="notice-card-desc" data-i18n="notice-desc">Publisher information, applicable law, disclaimers and intellectual property — available in 4 languages.</p>
+    <a href="legal-notice.html" class="doc-card">
+      <span class="doc-card-stripe amber"></span>
+      <div class="doc-card-inner">
+        <div class="doc-card-left">
+          <div class="doc-icon" style="background:rgba(245,158,11,0.10);">🏢</div>
+          <div>
+            <p class="doc-title" data-i18n="notice-title">Legal Notice</p>
+            <p class="doc-desc" data-i18n="notice-desc">Publisher information, applicable law, and intellectual property. Available in 4 languages.</p>
+          </div>
         </div>
+        <span class="doc-arrow">→</span>
       </div>
-      <span class="notice-card-arrow">→</span>
     </a>
 
   </main>
@@ -294,54 +159,50 @@
     en: {
       'page-label':    'Legal',
       'page-title':    'Terms &amp;<br>Privacy',
-      'page-intro':    'All legal documents for Swiss Fuel Finder are available in English, Français, Deutsch, and Italiano. Select your language to open the document.',
+      'page-intro':    'All legal documents are available in English, Français, Deutsch, and Italiano. Select a document — you can choose your language once inside.',
       'privacy-title': 'Privacy Policy',
-      'privacy-desc':  'How we collect, use, and protect your personal data — in accordance with the Swiss nDSG and GDPR.',
-      'gtc-title':     'General Terms & Conditions',
-      'gtc-desc':      'The rules and conditions governing your use of the Swiss Fuel Finder application and services.',
+      'privacy-desc':  'Data collection, processing, your rights — nDSG & GDPR compliant. Available in 4 languages.',
+      'gtc-title':     'General Terms &amp; Conditions',
+      'gtc-desc':      'Rules, subscriptions, liability, and governing law. Available in 4 languages.',
       'notice-title':  'Legal Notice',
-      'notice-desc':   'Publisher information, applicable law, disclaimers and intellectual property — available in 4 languages.',
-      'foot-home':     'Home',
-      'footer-copy':   '© 2025 WTRH — Swiss Fuel Finder',
+      'notice-desc':   'Publisher information, applicable law, and intellectual property. Available in 4 languages.',
+      'foot-home': 'Home', 'footer-copy': '© 2025 WTRH — Swiss Fuel Finder',
     },
     fr: {
       'page-label':    'Légal',
       'page-title':    'CGU &amp;<br>Confidentialité',
-      'page-intro':    'Tous les documents légaux de Swiss Fuel Finder sont disponibles en Français, English, Deutsch et Italiano. Sélectionnez votre langue pour ouvrir le document.',
+      'page-intro':    'Tous les documents légaux sont disponibles en Français, English, Deutsch et Italiano. Sélectionnez un document — vous pourrez choisir la langue à l\'intérieur.',
       'privacy-title': 'Politique de confidentialité',
-      'privacy-desc':  'Comment nous collectons, utilisons et protégeons vos données personnelles — conformément à la nLPD suisse et au RGPD.',
+      'privacy-desc':  'Collecte de données, traitement, vos droits — conformité nLPD & RGPD. Disponible en 4 langues.',
       'gtc-title':     'Conditions générales d\'utilisation',
-      'gtc-desc':      'Les règles et conditions régissant votre utilisation de l\'application et des services Swiss Fuel Finder.',
+      'gtc-desc':      'Règles, abonnements, responsabilité et droit applicable. Disponible en 4 langues.',
       'notice-title':  'Mentions légales',
-      'notice-desc':   'Informations sur l\'éditeur, droit applicable, clauses de non-responsabilité et propriété intellectuelle — disponibles en 4 langues.',
-      'foot-home':     'Accueil',
-      'footer-copy':   '© 2025 WTRH — Swiss Fuel Finder',
+      'notice-desc':   'Informations sur l\'éditeur, droit applicable et propriété intellectuelle. Disponible en 4 langues.',
+      'foot-home': 'Accueil', 'footer-copy': '© 2025 WTRH — Swiss Fuel Finder',
     },
     de: {
       'page-label':    'Rechtliches',
       'page-title':    'AGB &amp;<br>Datenschutz',
-      'page-intro':    'Alle rechtlichen Dokumente von Swiss Fuel Finder sind auf Deutsch, English, Français und Italiano verfügbar. Wählen Sie Ihre Sprache, um das Dokument zu öffnen.',
+      'page-intro':    'Alle Rechtsdokumente sind auf Deutsch, English, Français und Italiano verfügbar. Wählen Sie ein Dokument — Sie können die Sprache im Dokument selbst wählen.',
       'privacy-title': 'Datenschutzerklärung',
-      'privacy-desc':  'Wie wir Ihre personenbezogenen Daten erheben, verwenden und schützen — gemäss dem Schweizer nDSG und der DSGVO.',
+      'privacy-desc':  'Datenerhebung, Verarbeitung, Ihre Rechte — konform mit nDSG & DSGVO. In 4 Sprachen verfügbar.',
       'gtc-title':     'Allgemeine Geschäftsbedingungen',
-      'gtc-desc':      'Die Regeln und Bedingungen für die Nutzung der Swiss Fuel Finder Anwendung und Dienste.',
+      'gtc-desc':      'Regeln, Abonnements, Haftung und anwendbares Recht. In 4 Sprachen verfügbar.',
       'notice-title':  'Impressum',
-      'notice-desc':   'Angaben zum Herausgeber, anwendbares Recht, Haftungsausschluss und geistiges Eigentum — in 4 Sprachen verfügbar.',
-      'foot-home':     'Startseite',
-      'footer-copy':   '© 2025 WTRH — Swiss Fuel Finder',
+      'notice-desc':   'Angaben zum Herausgeber, anwendbares Recht und geistiges Eigentum. In 4 Sprachen verfügbar.',
+      'foot-home': 'Startseite', 'footer-copy': '© 2025 WTRH — Swiss Fuel Finder',
     },
     it: {
       'page-label':    'Legale',
       'page-title':    'CGC &amp;<br>Privacy',
-      'page-intro':    'Tutti i documenti legali di Swiss Fuel Finder sono disponibili in Italiano, English, Français e Deutsch. Selezionate la vostra lingua per aprire il documento.',
+      'page-intro':    'Tutti i documenti legali sono disponibili in Italiano, English, Français e Deutsch. Selezionate un documento — potete scegliere la lingua al suo interno.',
       'privacy-title': 'Informativa sulla privacy',
-      'privacy-desc':  'Come raccogliamo, utilizziamo e proteggiamo i vostri dati personali — in conformità con la nLPD svizzera e il GDPR.',
+      'privacy-desc':  'Raccolta dati, trattamento, i vostri diritti — conformità nLPD & GDPR. Disponibile in 4 lingue.',
       'gtc-title':     'Condizioni generali di contratto',
-      'gtc-desc':      'Le regole e le condizioni che disciplinano l\'utilizzo dell\'applicazione e dei servizi Swiss Fuel Finder.',
+      'gtc-desc':      'Regole, abbonamenti, responsabilità e legge applicabile. Disponibile in 4 lingue.',
       'notice-title':  'Avviso legale',
-      'notice-desc':   'Informazioni sull\'editore, diritto applicabile, esclusioni di responsabilità e proprietà intellettuale — disponibili in 4 lingue.',
-      'foot-home':     'Home',
-      'footer-copy':   '© 2025 WTRH — Swiss Fuel Finder',
+      'notice-desc':   'Informazioni sull\'editore, diritto applicabile e proprietà intellettuale. Disponibile in 4 lingue.',
+      'foot-home': 'Home', 'footer-copy': '© 2025 WTRH — Swiss Fuel Finder',
     }
   };
 
@@ -361,7 +222,8 @@
   (function() {
     let saved; try { saved = localStorage.getItem('sff-lang'); } catch(e) {}
     const browser = (navigator.language || 'en').slice(0,2).toLowerCase();
-    setLang((saved && T[saved]) ? saved : (T[browser] ? browser : 'en'));
+    const langs = ['en','fr','de','it'];
+    setLang((saved && langs.includes(saved)) ? saved : (langs.includes(browser) ? browser : 'en'));
   })();
   </script>
 </body>

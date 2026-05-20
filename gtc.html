@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Terms & Conditions — Swiss Fuel Finder</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #141414; --bg-card-2: #1C1C1C;
+      --red: #CC1F1F; --green: #22C55E; --white: #FFFFFF;
+      --grey: #888888; --grey-lt: #CCCCCC; --border: #242424; --border-lt: #333333;
+      --display: 'Barlow Condensed', sans-serif; --body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: var(--body); min-height: 100dvh; display: flex; flex-direction: column; line-height: 1.65; }
+    nav { height: 64px; padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand img { width: 32px; height: 32px; border-radius: 7px; object-fit: cover; }
+    .nav-brand-name { font-family: var(--display); font-weight: 800; font-size: 17px; letter-spacing: 0.04em; color: var(--white); }
+    .nav-brand-name em { color: var(--red); font-style: normal; }
+    .nav-back { font-size: 13px; color: var(--grey); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .2s; }
+    .nav-back:hover { color: var(--white); }
+    main { flex: 1; max-width: 820px; margin: 0 auto; padding: 3rem 2rem 5rem; width: 100%; }
+    .page-header { margin-bottom: 2rem; }
+    .page-label { font-family: var(--display); font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
+    h1 { font-family: var(--display); font-size: clamp(36px, 6vw, 56px); font-weight: 900; line-height: 0.95; margin-bottom: 0.75rem; }
+    .page-meta { font-size: 13px; color: var(--grey); }
+    .lang-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 2.5rem; background: var(--bg-card); border: 1px solid var(--border-lt); border-radius: 12px; padding: 6px; }
+    .lang-tab { flex: 1; min-width: 80px; display: flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 14px; border: none; border-radius: 8px; cursor: pointer; font-family: var(--body); font-size: 14px; font-weight: 600; color: var(--grey); background: none; transition: color .15s, background .15s; white-space: nowrap; }
+    .lang-tab .flag { font-size: 18px; }
+    .lang-tab:hover { color: var(--white); background: var(--bg-card-2); }
+    .lang-tab.active { background: var(--red); color: var(--white); }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    .legal-section { margin-bottom: 1.25rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .legal-sec-head { padding: 1.2rem 1.75rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    .legal-sec-num { font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); flex-shrink: 0; min-width: 24px; }
+    .legal-sec-title { font-family: var(--display); font-size: 19px; font-weight: 800; letter-spacing: 0.01em; }
+    .legal-sec-body { padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+    .legal-text { font-size: 15px; color: var(--grey-lt); line-height: 1.7; }
+    .legal-text strong { color: var(--white); font-weight: 600; }
+    .legal-subsec-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--grey-lt); letter-spacing: 0.05em; text-transform: uppercase; padding-top: 0.25rem; }
+    .legal-callout { background: rgba(204,31,31,0.06); border: 1px solid rgba(204,31,31,0.18); border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: var(--grey-lt); line-height: 1.7; }
+    .legal-callout strong { color: var(--white); }
+    .legal-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .legal-list li { font-size: 15px; color: var(--grey-lt); line-height: 1.65; display: flex; gap: 10px; align-items: flex-start; }
+    .legal-list li::before { content: '·'; color: var(--red); font-weight: 900; font-size: 20px; line-height: 1.3; flex-shrink: 0; }
+    .legal-list li strong { color: var(--white); font-weight: 600; }
+    .price-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .price-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+    .price-label { font-size: 14px; color: var(--grey-lt); font-weight: 500; }
+    .price-amount { font-family: var(--display); font-size: 20px; font-weight: 800; color: var(--green); }
+    .price-note { font-family: var(--body); font-size: 12px; font-weight: 400; color: var(--grey); margin-left: 4px; }
+    .contact-block { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; font-size: 14px; color: var(--grey-lt); line-height: 1.7; }
+    .contact-block a { color: var(--grey-lt); text-decoration: underline; text-underline-offset: 3px; }
+    .contact-block a:hover { color: var(--white); }
+    footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--grey); flex-wrap: wrap; gap: .5rem; }
+    footer a { color: var(--grey-lt); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--white); }
+    @media (max-width: 560px) {
+      nav { padding: 0 1.25rem; }
+      .nav-brand-name { display: none; }
+      .lang-tab span:not(.flag) { display: none; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo.png" alt="SFF">
+    <span class="nav-brand-name">Swiss Fuel <em>Finder</em></span>
+  </a>
+  <a href="legal.html" class="nav-back">← Legal</a>
+</nav>
+
+<main>
+  <div class="page-header">
+    <p class="page-label">Legal</p>
+    <h1>General Terms &amp; Conditions</h1>
+    <p class="page-meta">Last updated: May 2026 · WTRH, Switzerland</p>
+  </div>
+
+  <div class="lang-tabs">
+    <button class="lang-tab" data-lang="en"><span class="flag">🇬🇧</span><span>English</span></button>
+    <button class="lang-tab" data-lang="fr"><span class="flag">🇫🇷</span><span>Français</span></button>
+    <button class="lang-tab" data-lang="de"><span class="flag">🇩🇪</span><span>Deutsch</span></button>
+    <button class="lang-tab" data-lang="it"><span class="flag">🇮🇹</span><span>Italiano</span></button>
+  </div>
+
+  <!-- ══════════════ ENGLISH ══════════════ -->
+  <div class="lang-content" data-lang="en">
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">01</span><span class="legal-sec-title">Scope and Operator</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">These General Terms and Conditions (<strong>"GTC"</strong>) govern the legal relationship between <strong>WTRH, Switzerland</strong> (<strong>"Operator"</strong>) and the users (<strong>"User"</strong>) of the mobile application <strong>"Swiss Fuel Finder"</strong> (<strong>"App"</strong>).</p>
+        <p class="legal-text">By downloading or using the App, the User accepts these GTC in their entirety. Any conflicting terms provided by the User are explicitly excluded.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Services and "As-Is" Provision</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">2.1 Nature of Information</p>
+        <p class="legal-text">The App provides a platform for comparing fuel prices and locations based on community-sourced data, public sources, and independent technical aggregation of third-party data.</p>
+        <p class="legal-subsec-title">2.2 Accuracy and Third-Party Interruption</p>
+        <p class="legal-text">Information regarding prices, opening hours, and fuel availability is subject to rapid change. The Operator provides this data on an <strong>"as-is"</strong> basis. No guarantee is given for the accuracy, completeness, or real-time validity of the data.</p>
+        <div class="legal-callout">The User acknowledges that the App relies on third-party data interfaces that are not under the Operator's control. The Operator reserves the right to suspend or modify services without notice if a data source becomes unavailable, restricted, or blocked by a third party.</div>
+        <p class="legal-subsec-title">2.3 Savings Estimates</p>
+        <p class="legal-text">Calculations of "Net Savings" are indicative estimates. They do not constitute a financial guarantee or a binding offer.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">03</span><span class="legal-sec-title">User Accounts and Good Faith</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">3.1 Mandatory Registration</p>
+        <p class="legal-text">Access to price updates and personalized features requires a login via a Google Account.</p>
+        <p class="legal-subsec-title">3.2 Duty of Good Faith (Art. 2 ZGB)</p>
+        <p class="legal-text">Users agree to provide price updates in good faith. The intentional entry of false data is a breach of contract and will result in a permanent ban.</p>
+        <p class="legal-subsec-title">3.3 User Pseudos</p>
+        <p class="legal-text">Usernames ("Pseudos") must not infringe on third-party trademarks or public order. The use of official brand names or "Admin" titles is prohibited.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">04</span><span class="legal-sec-title">Subscriptions and Price Disclosure</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">4.1 Pricing and VAT</p>
+        <p class="legal-text">All prices for Premium features are indicated in <strong>Swiss Francs (CHF)</strong> and include the statutory <strong>Swiss VAT of 8.1%</strong> in accordance with the Swiss Price Disclosure Ordinance (PBV).</p>
+        <div class="price-list">
+          <div class="price-row"><span class="price-label">Monthly Subscription</span><span class="price-amount">CHF 2.50<span class="price-note">incl. VAT</span></span></div>
+          <div class="price-row"><span class="price-label">Lifetime Purchase</span><span class="price-amount">CHF 10.99<span class="price-note">incl. VAT</span></span></div>
+        </div>
+        <p class="legal-subsec-title">4.2 Payments</p>
+        <ul class="legal-list">
+          <li><div><strong>App Store / Google Play:</strong> Subject to the respective platform's terms.</div></li>
+          <li><div><strong>TWINT (Payrexx AG):</strong> The User must provide their SFF Pseudo for manual activation. The Operator is not liable for delays caused by incorrect Pseudo entry.</div></li>
+        </ul>
+        <p class="legal-subsec-title">4.3 No Refunds</p>
+        <p class="legal-text">Pursuant to Swiss law, the right of withdrawal does not apply to digital content once performance has begun with the User's prior express consent. All sales are final, except in cases of proven technical non-performance by the Operator. Statutory rights of withdrawal or refund under Swiss consumer law remain unaffected in cases of service non-performance.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">05</span><span class="legal-sec-title">Limitation of Liability (Art. 100 & 101 CO)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">5.1 General Limit</p>
+        <p class="legal-text">The Operator is liable only for damages caused by <strong>unlawful intent or gross negligence</strong>. Liability for slight or medium negligence is excluded to the maximum extent permitted by <strong>Art. 100 para. 1 of the Swiss Code of Obligations</strong>.</p>
+        <p class="legal-subsec-title">5.2 Auxiliary Persons</p>
+        <p class="legal-text">Liability for auxiliary persons (Art. 101 CO), such as third-party hosting providers or data contributors, is <strong>entirely excluded</strong>.</p>
+        <p class="legal-subsec-title">5.3 Data Provenance and Indirect Damages</p>
+        <div class="legal-callout">The Operator does not claim ownership of the fuel price data and acts solely as an independent technical aggregator. Any discrepancies between the App's data and the actual price at the pump are due to the technical limitations of third-party synchronization. The User uses the data at their own risk.</div>
+        <p class="legal-text">Liability for indirect damages, lost profits, data loss, or damages resulting from driving decisions/traffic violations is explicitly excluded.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">06</span><span class="legal-sec-title">Data Protection (nFADP Compliance)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">6.1 Privacy Policy</p>
+        <p class="legal-text">The processing of personal data is governed by the <strong>SFF Privacy Policy</strong>.</p>
+        <p class="legal-subsec-title">6.2 Data Export Disclosure</p>
+        <p class="legal-text">The User acknowledges and consents that personal data (e.g., Google ID, payment logs) may be processed on servers located in the <strong>European Union (EU)</strong> or the <strong>United States (USA)</strong>, provided that adequate safeguards (such as Standard Contractual Clauses) are in place to meet <strong>nFADP</strong> requirements.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Intellectual Property and Anti-Reverse Engineering</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">The App's source code, design, and the "Swiss Fuel Finder" logo are the exclusive property of WTRH. Any unauthorized reproduction or reverse engineering is a violation of the <strong>Federal Act on Copyright and Related Rights (URG)</strong>.</p>
+        <div class="legal-callout">The use of automated systems or software to extract data from this App ("screen scraping" or "API hooking") for commercial purposes is strictly prohibited and constitutes a violation of the Federal Act against Unfair Competition (UWG).</div>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">08</span><span class="legal-sec-title">Modifications to GTC</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">The Operator reserves the right to amend these GTC at any time. Users will be notified of significant changes via an in-app prompt. Continued use following notification constitutes acceptance of the revised terms.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">09</span><span class="legal-sec-title">Governing Law and Jurisdiction</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">9.1 Applicable Law</p>
+        <p class="legal-text">These GTC and all disputes arising therefrom are subject exclusively to <strong>Swiss Substantive Law</strong>, excluding the UN Convention on Contracts for the International Sale of Goods (CISG).</p>
+        <p class="legal-subsec-title">9.2 Exclusive Jurisdiction</p>
+        <p class="legal-text">The exclusive place of jurisdiction for all legal proceedings is <strong>Lausanne (Vaud), Switzerland</strong>. For consumers, mandatory statutory places of jurisdiction remain reserved.</p>
+        <div class="contact-block">Contact: WTRH, Switzerland · <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div>
+      </div>
+    </div>
+
+  </div><!-- /EN -->
+
+  <!-- ══════════════ FRANÇAIS ══════════════ -->
+  <div class="lang-content" data-lang="fr">
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">01</span><span class="legal-sec-title">Champ d'application et Opérateur</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">Les présentes Conditions Générales (<strong>"CG"</strong>) régissent les relations juridiques entre <strong>WTRH, Suisse</strong> (<strong>"Opérateur"</strong>) et les utilisateurs (<strong>"Utilisateur"</strong>) de l'application mobile <strong>"Swiss Fuel Finder"</strong> (<strong>"Application"</strong>).</p>
+        <p class="legal-text">En téléchargeant ou en utilisant l'Application, l'Utilisateur accepte les présentes CG dans leur intégralité. Toute condition conflictuelle fournie par l'Utilisateur est explicitement exclue.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Services et fourniture "en l'état"</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">2.1 Nature des informations</p>
+        <p class="legal-text">L'Application fournit une plateforme de comparaison des prix des carburants et des emplacements basée sur des données communautaires, des sources publiques et une agrégation technique indépendante de données tierces.</p>
+        <p class="legal-subsec-title">2.2 Exactitude et interruption par des tiers</p>
+        <p class="legal-text">Les informations concernant les prix, les heures d'ouverture et la disponibilité des carburants sont sujettes à des changements rapides. L'Opérateur fournit ces données <strong>"en l'état"</strong>. Aucune garantie n'est donnée quant à l'exactitude, l'exhaustivité ou la validité en temps réel des données.</p>
+        <div class="legal-callout">L'Utilisateur reconnaît que l'Application repose sur des interfaces de données tierces qui ne sont pas sous le contrôle de l'Opérateur. L'Opérateur se réserve le droit de suspendre ou de modifier les services sans préavis si une source de données devient indisponible, restreinte ou bloquée par un tiers.</div>
+        <p class="legal-subsec-title">2.3 Estimations d'économies</p>
+        <p class="legal-text">Les calculs d'"Économies nettes" sont des estimations indicatives. Ils ne constituent pas une garantie financière ou une offre ferme.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">03</span><span class="legal-sec-title">Comptes utilisateurs et bonne foi</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">3.1 Enregistrement obligatoire</p>
+        <p class="legal-text">L'accès aux mises à jour de prix et aux fonctionnalités personnalisées nécessite une connexion via un compte Google.</p>
+        <p class="legal-subsec-title">3.2 Devoir de bonne foi (Art. 2 CC)</p>
+        <p class="legal-text">Les utilisateurs acceptent de fournir des mises à jour de prix de bonne foi. La saisie intentionnelle de données fausses constitue une violation contractuelle et entraînera un bannissement permanent.</p>
+        <p class="legal-subsec-title">3.3 Pseudos des utilisateurs</p>
+        <p class="legal-text">Les noms d'utilisateur ("Pseudos") ne doivent pas enfreindre les marques de tiers ou l'ordre public. L'utilisation de noms de marques officiels ou de titres "Admin" est interdite.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">04</span><span class="legal-sec-title">Abonnements et indication des prix (OIP)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">4.1 Tarification et TVA</p>
+        <p class="legal-text">Tous les prix des fonctionnalités Premium sont indiqués en <strong>Francs Suisses (CHF)</strong> et incluent la <strong>TVA suisse légale de 8,1 %</strong> conformément à l'Ordonnance sur l'indication des prix (OIP).</p>
+        <div class="price-list">
+          <div class="price-row"><span class="price-label">Abonnement mensuel</span><span class="price-amount">CHF 2.50<span class="price-note">TVA incl.</span></span></div>
+          <div class="price-row"><span class="price-label">Achat à vie</span><span class="price-amount">CHF 10.99<span class="price-note">TVA incl.</span></span></div>
+        </div>
+        <p class="legal-subsec-title">4.2 Paiements</p>
+        <ul class="legal-list">
+          <li><div><strong>App Store / Google Play :</strong> Soumis aux conditions des plateformes respectives.</div></li>
+          <li><div><strong>TWINT (Payrexx AG) :</strong> L'Utilisateur doit fournir son Pseudo SFF pour une activation manuelle. L'Opérateur n'est pas responsable des retards causés par une saisie de Pseudo incorrecte.</div></li>
+        </ul>
+        <p class="legal-subsec-title">4.3 Aucun remboursement</p>
+        <p class="legal-text">Conformément au droit suisse, le droit de rétractation ne s'applique pas aux contenus numériques une fois que l'exécution a commencé avec le consentement exprès préalable de l'Utilisateur. Toutes les ventes sont finales, sauf en cas de non-performance technique prouvée par l'Opérateur. Les droits légaux de rétractation ou de remboursement en vertu du droit suisse de la consommation ne sont pas affectés en cas de non-exécution du service.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">05</span><span class="legal-sec-title">Limitation de responsabilité (Art. 100 & 101 CO)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">5.1 Limite générale</p>
+        <p class="legal-text">L'Opérateur n'est responsable que des dommages causés par un <strong>dol ou une négligence grave</strong>. La responsabilité pour négligence légère ou moyenne est exclue dans toute la mesure permise par l'<strong>Art. 100 al. 1 du Code des obligations suisse</strong>.</p>
+        <p class="legal-subsec-title">5.2 Auxiliaires</p>
+        <p class="legal-text">La responsabilité pour les auxiliaires (Art. 101 CO), tels que les fournisseurs d'hébergement tiers ou les contributeurs de données, est <strong>entièrement exclue</strong>.</p>
+        <p class="legal-subsec-title">5.3 Provenance des données et dommages indirects</p>
+        <div class="legal-callout">L'Opérateur ne revendique pas la propriété des données de prix des carburants et agit uniquement en tant qu'agrégateur technique indépendant. Toute divergence entre les données de l'Application et le prix réel à la pompe est due aux limitations techniques de la synchronisation tierce. L'Utilisateur utilise les données à ses propres risques.</div>
+        <p class="legal-text">La responsabilité pour les dommages indirects, la perte de profits, la perte de données ou les dommages résultant de décisions de conduite/infractions au code de la route est explicitement exclue.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">06</span><span class="legal-sec-title">Protection des données (Conformité LPD)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">6.1 Politique de confidentialité</p>
+        <p class="legal-text">Le traitement des données personnelles est régi par la <strong>Politique de confidentialité de SFF</strong>.</p>
+        <p class="legal-subsec-title">6.2 Divulgation de l'exportation de données</p>
+        <p class="legal-text">L'Utilisateur reconnaît et consent à ce que les données personnelles (par exemple, identifiant Google, journaux de paiement) puissent être traitées sur des serveurs situés dans l'<strong>Union Européenne (UE)</strong> ou aux <strong>États-Unis (USA)</strong>, à condition que des garanties adéquates (telles que des clauses contractuelles types) soient en place pour répondre aux exigences de la <strong>LPD</strong>.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Propriété intellectuelle et interdiction d'ingénierie inverse</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">Le code source, le design et le logo "Swiss Fuel Finder" de l'Application sont la propriété exclusive de WTRH. Toute reproduction non autorisée ou ingénierie inverse constitue une violation de la <strong>Loi fédérale sur le droit d'auteur et les droits voisins (LDA)</strong>.</p>
+        <div class="legal-callout">L'utilisation de systèmes automatisés ou de logiciels pour extraire des données de cette Application ("screen scraping" ou "API hooking") à des fins commerciales est strictement interdite et constitue une violation de la Loi fédérale contre la concurrence déloyale (LCD).</div>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">08</span><span class="legal-sec-title">Modifications des CG</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">L'Opérateur se réserve le droit de modifier les présentes CG à tout moment. Les Utilisateurs seront informés des changements importants via une notification dans l'Application. L'utilisation continue après notification constitue une acceptation des conditions révisées.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">09</span><span class="legal-sec-title">Droit applicable et juridiction</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">9.1 Droit applicable</p>
+        <p class="legal-text">Les présentes CG et tous les litiges en découlant sont exclusivement soumis au <strong>Droit matériel suisse</strong>, à l'exclusion de la Convention des Nations Unies sur les contrats de vente internationale de marchandises (CVIM).</p>
+        <p class="legal-subsec-title">9.2 Juridiction exclusive</p>
+        <p class="legal-text">Le for exclusif pour toute procédure judiciaire est <strong>Lausanne (Vaud), Suisse</strong>. Pour les consommateurs, les fors impératifs prévus par la loi restent réservés.</p>
+        <div class="contact-block">Contact : WTRH, Suisse · <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div>
+      </div>
+    </div>
+
+  </div><!-- /FR -->
+
+  <!-- ══════════════ DEUTSCH ══════════════ -->
+  <div class="lang-content" data-lang="de">
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">01</span><span class="legal-sec-title">Geltungsbereich und Betreiber</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">Diese Allgemeinen Geschäftsbedingungen (<strong>"AGB"</strong>) regeln das Rechtsverhältnis zwischen <strong>WTRH, Schweiz</strong> (<strong>"Betreiber"</strong>) und den Nutzern (<strong>"Nutzer"</strong>) der mobilen Applikation <strong>"Swiss Fuel Finder"</strong> (<strong>"App"</strong>).</p>
+        <p class="legal-text">Durch das Herunterladen oder die Nutzung der App akzeptiert der Nutzer diese AGB vollumfänglich. Etwaige entgegenstehende Bedingungen des Nutzers werden ausdrücklich ausgeschlossen.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Leistungen und Bereitstellung "wie besehen"</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">2.1 Art der Informationen</p>
+        <p class="legal-text">Die App bietet eine Plattform zum Vergleich von Treibstoffpreisen und Standorten basierend auf Community-Daten, öffentlichen Quellen und unabhängiger technischer Aggregation von Drittdaten.</p>
+        <p class="legal-subsec-title">2.2 Genauigkeit und Unterbrechung durch Dritte</p>
+        <p class="legal-text">Informationen zu Preisen, Öffnungszeiten und Treibstoffverfügbarkeit unterliegen schnellen Änderungen. Der Betreiber stellt diese Daten ohne Gewähr (<strong>"wie besehen"</strong>) zur Verfügung. Es wird keine Garantie für die Richtigkeit, Vollständigkeit oder Echtzeit-Gültigkeit der Daten übernommen.</p>
+        <div class="legal-callout">Der Nutzer nimmt zur Kenntnis, dass die App auf Datenschnittstellen Dritter angewiesen ist, die nicht der Kontrolle des Betreibers unterliegen. Der Betreiber behält sich das Recht vor, Dienste ohne Vorankündigung einzustellen oder zu ändern, falls eine Datenquelle nicht mehr verfügbar ist, eingeschränkt oder durch einen Dritten blockiert wird.</div>
+        <p class="legal-subsec-title">2.3 Ersparnisberechnungen</p>
+        <p class="legal-text">Berechnungen von "Netto-Ersparnissen" sind indikative Schätzungen. Sie stellen keine finanzielle Garantie oder ein verbindliches Angebot dar.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">03</span><span class="legal-sec-title">Nutzerkonten und Treu und Glauben</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">3.1 Registrierungspflicht</p>
+        <p class="legal-text">Der Zugriff auf Preisaktualisierungen und personalisierte Funktionen erfordert eine Anmeldung über ein Google-Konto.</p>
+        <p class="legal-subsec-title">3.2 Pflicht zu Treu und Glauben (Art. 2 ZGB)</p>
+        <p class="legal-text">Nutzer verpflichten sich, Preisaktualisierungen in gutem Glauben bereitzustellen. Die vorsätzliche Eingabe falscher Daten stellt einen Vertragsbruch dar und führt zu einer dauerhaften Sperre.</p>
+        <p class="legal-subsec-title">3.3 Nutzer-Pseudos</p>
+        <p class="legal-text">Benutzernamen ("Pseudos") dürfen keine Markenrechte Dritter oder die öffentliche Ordnung verletzen. Die Verwendung offizieller Markennamen oder "Admin"-Titel ist untersagt.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">04</span><span class="legal-sec-title">Abonnements und Preisbekanntgabe (PBV)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">4.1 Preise und MwSt.</p>
+        <p class="legal-text">Alle Preise für Premium-Funktionen sind in <strong>Schweizer Franken (CHF)</strong> angegeben und enthalten die gesetzliche <strong>Schweizer Mehrwertsteuer (MwSt.) von 8,1 %</strong> gemäss der Schweizer Preisbekanntgabeverordnung (PBV).</p>
+        <div class="price-list">
+          <div class="price-row"><span class="price-label">Monatliches Abonnement</span><span class="price-amount">CHF 2.50<span class="price-note">inkl. MwSt.</span></span></div>
+          <div class="price-row"><span class="price-label">Lebenslanger Kauf</span><span class="price-amount">CHF 10.99<span class="price-note">inkl. MwSt.</span></span></div>
+        </div>
+        <p class="legal-subsec-title">4.2 Zahlungen</p>
+        <ul class="legal-list">
+          <li><div><strong>App Store / Google Play:</strong> Unterliegt den Bedingungen der jeweiligen Plattform.</div></li>
+          <li><div><strong>TWINT (Payrexx AG):</strong> Der Nutzer muss sein SFF-Pseudo für die manuelle Aktivierung angeben. Der Betreiber haftet nicht für Verzögerungen durch fehlerhafte Pseudo-Eingabe.</div></li>
+        </ul>
+        <p class="legal-subsec-title">4.3 Keine Rückerstattung</p>
+        <p class="legal-text">Nach Schweizer Recht besteht bei digitalen Inhalten kein Widerrufsrecht, sobald die Ausführung mit der ausdrücklichen Zustimmung des Nutzers begonnen hat. Alle Verkäufe sind endgültig, ausser bei nachgewiesener technischer Nichterfüllung durch den Betreiber. Gesetzliche Widerrufs- oder Rückerstattungsrechte nach Schweizer Konsumentenschutzrecht bleiben bei Nichterfüllung der Leistung unberührt.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">05</span><span class="legal-sec-title">Haftungsbeschränkung (Art. 100 & 101 OR)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">5.1 Allgemeine Beschränkung</p>
+        <p class="legal-text">Der Betreiber haftet nur für Schäden, die durch <strong>rechtswidrige Absicht oder grobe Fahrlässigkeit</strong> verursacht wurden. Die Haftung für leichte oder mittlere Fahrlässigkeit wird im maximal zulässigen Umfang gemäss <strong>Art. 100 Abs. 1 des Schweizerischen Obligationenrechts</strong> ausgeschlossen.</p>
+        <p class="legal-subsec-title">5.2 Hilfspersonen</p>
+        <p class="legal-text">Die Haftung für Hilfspersonen (Art. 101 OR), wie Drittanbieter von Hosting oder Datenlieferanten, wird <strong>vollständig ausgeschlossen</strong>.</p>
+        <p class="legal-subsec-title">5.3 Datenherkunft und indirekte Schäden</p>
+        <div class="legal-callout">Der Betreiber beansprucht kein Eigentum an den Treibstoffpreisdaten und handelt ausschliesslich als unabhängiger technischer Aggregator. Etwaige Abweichungen zwischen den App-Daten und dem tatsächlichen Preis an der Zapfsäule sind auf technische Einschränkungen der Drittanbieter-Synchronisation zurückzuführen. Die Nutzung der Daten erfolgt auf eigenes Risiko des Nutzers.</div>
+        <p class="legal-text">Die Haftung für indirekte Schäden, entgangenen Gewinn, Datenverlust oder Schäden infolge von Fahrentscheidungen/Verkehrsverstössen wird explizit ausgeschlossen.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">06</span><span class="legal-sec-title">Datenschutz (Einhaltung des DSG)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">6.1 Datenschutzerklärung</p>
+        <p class="legal-text">Die Verarbeitung personenbezogener Daten unterliegt der <strong>SFF-Datenschutzerklärung</strong>.</p>
+        <p class="legal-subsec-title">6.2 Offenlegung des Datenexports</p>
+        <p class="legal-text">Der Nutzer nimmt zur Kenntnis und willigt ein, dass personenbezogene Daten (z. B. Google-ID, Zahlungsprotokolle) auf Servern in der <strong>Europäischen Union (EU)</strong> oder den <strong>Vereinigten Staaten (USA)</strong> verarbeitet werden können, sofern angemessene Schutzmassnahmen (wie Standardvertragsklauseln) vorhanden sind, um die Anforderungen des <strong>DSG</strong> zu erfüllen.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Geistiges Eigentum und Verbot von Reverse Engineering</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">Der Quellcode, das Design und das "Swiss Fuel Finder"-Logo der App sind ausschliessliches Eigentum von WTRH. Jede unbefugte Vervielfältigung oder Reverse Engineering stellt einen Verstoss gegen das <strong>Bundesgesetz über das Urheberrecht und verwandte Schutzrechte (URG)</strong> dar.</p>
+        <div class="legal-callout">Die Nutzung automatisierter Systeme oder Software zur Extraktion von Daten aus dieser App ("Screen Scraping" oder "API-Hooking") für kommerzielle Zwecke ist strengstens untersagt und stellt einen Verstoss gegen das Bundesgesetz gegen den unlauteren Wettbewerb (UWG) dar.</div>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">08</span><span class="legal-sec-title">Änderungen der AGB</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">Der Betreiber behält sich das Recht vor, diese AGB jederzeit zu ändern. Nutzer werden über wesentliche Änderungen per In-App-Hinweis informiert. Die Fortsetzung der Nutzung nach der Benachrichtigung gilt als Annahme der geänderten Bedingungen.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">09</span><span class="legal-sec-title">Anwendbares Recht und Gerichtsstand</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">9.1 Anwendbares Recht</p>
+        <p class="legal-text">Diese AGB und alle daraus resultierenden Streitigkeiten unterliegen ausschliesslich <strong>materiellem Schweizer Recht</strong>, unter Ausschluss des UN-Kaufrechts (CISG).</p>
+        <p class="legal-subsec-title">9.2 Exklusiver Gerichtsstand</p>
+        <p class="legal-text">Ausschliesslicher Gerichtsstand für alle rechtlichen Verfahren ist <strong>Lausanne (Waadt), Schweiz</strong>. Für Konsumenten bleiben zwingende gesetzliche Gerichtsstände vorbehalten.</p>
+        <div class="contact-block">Kontakt: WTRH, Schweiz · <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div>
+      </div>
+    </div>
+
+  </div><!-- /DE -->
+
+  <!-- ══════════════ ITALIANO ══════════════ -->
+  <div class="lang-content" data-lang="it">
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">01</span><span class="legal-sec-title">Ambito di applicazione e Operatore</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">Le presenti Condizioni Generali (<strong>"CGC"</strong>) regolano il rapporto giuridico tra <strong>WTRH, Svizzera</strong> (<strong>"Operatore"</strong>) e gli utenti (<strong>"Utente"</strong>) dell'applicazione mobile <strong>"Swiss Fuel Finder"</strong> (<strong>"App"</strong>).</p>
+        <p class="legal-text">Scaricando o utilizzando l'App, l'Utente accetta le presenti CGC nella loro interezza. Qualsiasi condizione conflittuale fornita dall'Utente è esplicitamente esclusa.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Servizi e fornitura "così com'è"</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">2.1 Natura delle informazioni</p>
+        <p class="legal-text">L'App fornisce una piattaforma per il confronto dei prezzi del carburante e delle posizioni basata su dati forniti dalla community, fonti pubbliche e aggregazione tecnica indipendente di dati di terze parti.</p>
+        <p class="legal-subsec-title">2.2 Accuratezza e interruzione da parte di terzi</p>
+        <p class="legal-text">Le informazioni riguardanti i prezzi, gli orari di apertura e la disponibilità del carburante sono soggette a rapidi cambiamenti. L'Operatore fornisce questi dati <strong>"così come sono"</strong>. Non viene fornita alcuna garanzia per l'accuratezza, la completezza o la validità in tempo reale dei dati.</p>
+        <div class="legal-callout">L'Utente riconosce che l'App si basa su interfacce dati di terze parti che non sono sotto il controllo dell'Operatore. L'Operatore si riserva il diritto di sospendere o modificare i servizi senza preavviso se una fonte di dati diventa non disponibile, limitata o bloccata da una terza parte.</div>
+        <p class="legal-subsec-title">2.3 Stime di risparmio</p>
+        <p class="legal-text">I calcoli dei "Risparmi netti" sono stime indicative. Non costituiscono una garanzia finanziaria o un'offerta vincolante.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">03</span><span class="legal-sec-title">Account utente e buona fede</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">3.1 Registrazione obbligatoria</p>
+        <p class="legal-text">L'accesso agli aggiornamenti dei prezzi e alle funzioni personalizzate richiede il login tramite un Account Google.</p>
+        <p class="legal-subsec-title">3.2 Dovere di buona fede (Art. 2 CC)</p>
+        <p class="legal-text">Gli utenti accettano di fornire aggiornamenti sui prezzi in buona fede. L'inserimento intenzionale di dati falsi costituisce una violazione contrattuale e comporterà un ban permanente.</p>
+        <p class="legal-subsec-title">3.3 Pseudo degli utenti</p>
+        <p class="legal-text">I nomi utente ("Pseudo") non devono violare i marchi di terze parti o l'ordine pubblico. È vietato l'uso di nomi di marchi ufficiali o titoli "Admin".</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">04</span><span class="legal-sec-title">Abbonamenti e indicazione dei prezzi (OIP)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">4.1 Prezzi e IVA</p>
+        <p class="legal-text">Tutti i prezzi per le funzioni Premium sono indicati in <strong>Franchi Svizzeri (CHF)</strong> e includono l'<strong>IVA svizzera legale dell'8,1%</strong> in conformità con l'Ordinanza sull'indicazione dei prezzi (OIP).</p>
+        <div class="price-list">
+          <div class="price-row"><span class="price-label">Abbonamento mensile</span><span class="price-amount">CHF 2.50<span class="price-note">IVA incl.</span></span></div>
+          <div class="price-row"><span class="price-label">Acquisto a vita</span><span class="price-amount">CHF 10.99<span class="price-note">IVA incl.</span></span></div>
+        </div>
+        <p class="legal-subsec-title">4.2 Pagamenti</p>
+        <ul class="legal-list">
+          <li><div><strong>App Store / Google Play:</strong> Soggetti ai termini delle rispettive piattaforme.</div></li>
+          <li><div><strong>TWINT (Payrexx AG):</strong> L'Utente deve fornire il proprio Pseudo SFF per l'attivazione manuale. L'Operatore non è responsabile per ritardi causati dall'inserimento di uno Pseudo errato.</div></li>
+        </ul>
+        <p class="legal-subsec-title">4.3 Nessun rimborso</p>
+        <p class="legal-text">In conformità con il diritto svizzero, il diritto di recesso non si applica ai contenuti digitali una volta che l'esecuzione è iniziata con il preventivo consenso espresso dell'Utente. Tutte le vendite sono definitive, salvo in caso di comprovato inadempimento tecnico da parte dell'Operatore. I diritti legali di recesso o rimborso ai sensi della legge svizzera sulla protezione dei consumatori rimangono impregiudicati in caso di mancata prestazione del servizio.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">05</span><span class="legal-sec-title">Limitazione di responsabilità (Art. 100 e 101 CO)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">5.1 Limite generale</p>
+        <p class="legal-text">L'Operatore è responsabile solo per i danni causati da <strong>dolo o colpa grave</strong>. La responsabilità per colpa lieve o media è esclusa nella misura massima consentita dall'<strong>Art. 100 cpv. 1 del Codice delle obbligazioni svizzero</strong>.</p>
+        <p class="legal-subsec-title">5.2 Ausiliari</p>
+        <p class="legal-text">La responsabilità per gli ausiliari (Art. 101 CO), come i fornitori di hosting di terze parti o i contributori di dati, è <strong>interamente esclusa</strong>.</p>
+        <p class="legal-subsec-title">5.3 Provenienza dei dati e danni indiretti</p>
+        <div class="legal-callout">L'Operatore non rivendica la proprietà dei dati sui prezzi del carburante e agisce esclusivamente come aggregatore tecnico indipendente. Eventuali discrepanze tra i dati dell'App e il prezzo effettivo alla pompa sono dovute alle limitazioni tecniche della sincronizzazione di terze parti. L'Utente utilizza i dati a proprio rischio.</div>
+        <p class="legal-text">La responsabilità per danni indiretti, perdita di profitti, perdita di dati o danni derivanti da decisioni di guida/infrazioni stradali è esplicitamente esclusa.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">06</span><span class="legal-sec-title">Protezione dei dati (Conformità LPD)</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">6.1 Informativa sulla privacy</p>
+        <p class="legal-text">Il trattamento dei dati personali è regolato dall'<strong>Informativa sulla privacy di SFF</strong>.</p>
+        <p class="legal-subsec-title">6.2 Divulgazione dell'esportazione dei dati</p>
+        <p class="legal-text">L'Utente riconosce e acconsente che i dati personali (ad es. ID Google, log di pagamento) possano essere trattati su server situati nell'<strong>Unione Europea (UE)</strong> o negli <strong>Stati Uniti (USA)</strong>, a condizione che siano in atto salvaguardie adeguate (come le clausole contrattuali standard) per soddisfare i requisiti della <strong>LPD</strong>.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Proprietà intellettuale e divieto di ingegneria inversa</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">Il codice sorgente dell'App, il design e il logo "Swiss Fuel Finder" sono di proprietà esclusiva di WTRH. Qualsiasi riproduzione non autorizzata o ingegneria inversa costituisce una violazione della <strong>Legge federale sul diritto d'autore e sui diritti affini (LDA)</strong>.</p>
+        <div class="legal-callout">L'uso di sistemi automatizzati o software per estrarre dati da questa App ("screen scraping" o "API hooking") per scopi commerciali è severamente vietato e costituisce una violazione della Legge federale contro la concorrenza sleale (LCSl).</div>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">08</span><span class="legal-sec-title">Modifiche alle CGC</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-text">L'Operatore si riserva il diritto di modificare le presenti CGC in qualsiasi momento. Gli Utenti saranno informati di modifiche significative tramite una notifica in-app. L'uso continuato dopo la notifica costituisce accettazione dei termini revisionati.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="legal-sec-head"><span class="legal-sec-num">09</span><span class="legal-sec-title">Legge applicabile e foro competente</span></div>
+      <div class="legal-sec-body">
+        <p class="legal-subsec-title">9.1 Legge applicabile</p>
+        <p class="legal-text">Le presenti CGC e tutte le controversie da esse derivanti sono soggette esclusivamente al <strong>Diritto sostanziale svizzero</strong>, con esclusione della Convenzione delle Nazioni Unite sui contratti di compravendita internazionale di merci (CISG).</p>
+        <p class="legal-subsec-title">9.2 Foro competente esclusivo</p>
+        <p class="legal-text">Il foro competente esclusivo per tutti i procedimenti legali è <strong>Losanna (Vaud), Svizzera</strong>. Per i consumatori, restano riservati i fori prescritti dalla legge.</p>
+        <div class="contact-block">Contatto: WTRH, Svizzera · <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div>
+      </div>
+    </div>
+
+  </div><!-- /IT -->
+
+</main>
+
+<footer>
+  <a href="legal.html">← Back to Legal</a>
+  <span>© 2025 WTRH — Swiss Fuel Finder</span>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.lang-content').forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === lang);
+    });
+    document.querySelectorAll('.lang-tab').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('sff-lang', lang); } catch(e) {}
+  }
+  document.querySelectorAll('.lang-tab').forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+  (function() {
+    let saved; try { saved = localStorage.getItem('sff-lang'); } catch(e) {}
+    const browser = (navigator.language || 'en').slice(0,2).toLowerCase();
+    const langs = ['en','fr','de','it'];
+    setLang((saved && langs.includes(saved)) ? saved : (langs.includes(browser) ? browser : 'en'));
+  })();
+</script>
+</body>
+</html>
