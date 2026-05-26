@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité — Swiss Fuel Finder</title>
+  <link rel="icon" type="image/png" href="../../assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0A0A0A;--bg-card:#141414;--bg-card-2:#1C1C1C;--red:#CC1F1F;--green:#22C55E;--white:#FFFFFF;--grey:#888888;--grey-lt:#CCCCCC;--border:#242424;--border-lt:#333333}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100dvh;display:flex;flex-direction:column;line-height:1.65}
+nav{height:64px;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-brand img{width:32px;height:32px;border-radius:7px;object-fit:cover}
+.nav-brand-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;letter-spacing:.04em;color:var(--white)}
+.nav-brand-name em{color:var(--red);font-style:normal}
+.nav-back{font-size:13px;color:var(--grey);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--white)}
+main{flex:1;max-width:820px;margin:0 auto;padding:3rem 2rem 5rem;width:100%}
+.page-label{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,6vw,56px);font-weight:900;line-height:.95;margin-bottom:.75rem}
+.page-meta{font-size:13px;color:var(--grey);margin-bottom:2rem}
+.lang-switcher{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:2rem;background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:5px}
+.lang-link{flex:1;min-width:60px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:7px;text-decoration:none;font-size:13px;font-weight:600;color:var(--grey);transition:color .15s,background .15s;white-space:nowrap}
+.lang-link:hover{color:var(--white);background:var(--bg-card-2)}
+.lang-link.active{background:var(--red);color:var(--white)}
+.lang-link .flag{font-size:16px}
+.legal-section{margin-bottom:1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.legal-sec-head{padding:1.2rem 1.75rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.legal-sec-num{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);flex-shrink:0;min-width:24px}
+.legal-sec-title{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;letter-spacing:.01em}
+.legal-sec-body{padding:1.5rem 1.75rem;display:flex;flex-direction:column;gap:1rem}
+.legal-text{font-size:15px;color:var(--grey-lt);line-height:1.7}
+.legal-text strong{color:var(--white);font-weight:600}
+.legal-subsec-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--grey-lt);letter-spacing:.05em;text-transform:uppercase;padding-top:.25rem}
+.legal-callout{background:rgba(204,31,31,.06);border:1px solid rgba(204,31,31,.18);border-radius:8px;padding:1rem 1.25rem;font-size:14px;color:var(--grey-lt);line-height:1.7}
+.legal-callout strong{color:var(--white)}
+.legal-list{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.legal-list li{font-size:15px;color:var(--grey-lt);line-height:1.65;display:flex;gap:10px;align-items:flex-start}
+.legal-list li::before{content:'·';color:var(--red);font-weight:900;font-size:20px;line-height:1.3;flex-shrink:0}
+.legal-list li strong{color:var(--white);font-weight:600}
+.price-list{display:flex;flex-direction:column;gap:.5rem}
+.price-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg-card-2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;flex-wrap:wrap;gap:.5rem}
+.price-label{font-size:14px;color:var(--grey-lt);font-weight:500}
+.price-amount{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--green)}
+.price-note{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;color:var(--grey);margin-left:4px}
+.contact-block{background:var(--bg-card-2);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;font-size:14px;color:var(--grey-lt);line-height:1.7}
+.contact-block a{color:var(--grey-lt);text-decoration:underline;text-underline-offset:3px}
+.contact-block a:hover{color:var(--white)}
+footer{border-top:1px solid var(--border);padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--grey);flex-wrap:wrap;gap:.5rem}
+footer a{color:var(--grey-lt);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--white)}
+@media(max-width:560px){nav{padding:0 1.25rem}.nav-brand-name{display:none}.lang-link span:not(.flag){display:none}footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="nav-brand">
+    <img src="../../assets/logo.png" alt="SFF">
+    <span class="nav-brand-name">Swiss Fuel <em>Finder</em></span>
+  </a>
+  <a href="../../legal.html" class="nav-back">← Legal</a>
+</nav>
+<main>
+  <p class="page-label">Légal</p>
+  <h1>Politique de confidentialité</h1>
+  <p class="page-meta">Date d'entrée en vigueur : 15 mai 2026 · WTRH, Suisse</p>
+  <div class="lang-switcher">
+    <a href="/en/privacy" class="lang-link"><span class="flag">🇬🇧</span><span>English</span></a>
+    <a href="/fr/privacy" class="lang-link active"><span class="flag">🇫🇷</span><span>Français</span></a>
+    <a href="/de/privacy" class="lang-link"><span class="flag">🇩🇪</span><span>Deutsch</span></a>
+    <a href="/it/privacy" class="lang-link"><span class="flag">🇮🇹</span><span>Italiano</span></a>
+  </div>
+  
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">01</span><span class="legal-sec-title">Responsable du traitement</span></div><div class="legal-sec-body"><p class="legal-text"><strong>WTRH, Suisse</strong> — <a href="mailto:info@swissfuelfinder.com" style="color:var(--grey-lt)">info@swissfuelfinder.com</a><br>L'Opérateur est le responsable du traitement de vos données personnelles en vertu de la <strong>Loi fédérale sur la protection des données (LPD)</strong> et, le cas échéant, du <strong>RGPD</strong>.</p></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Collecte et traitement des données</span></div><div class="legal-sec-body"><p class="legal-text">Nous collectons uniquement les données nécessaires à la fourniture des services de SFF :</p><ul class="legal-list"><li><div><strong>Données d'authentification :</strong> Adresse e-mail et identifiant Google (via Google Firebase).</div></li><li><div><strong>Profils utilisateur :</strong> Pseudo, taille du réservoir et consommation moyenne. <strong>Note :</strong> Le "Pseudo" ne peut pas être modifié une fois enregistré.</div></li><li><div><strong>Données de localisation :</strong> Coordonnées GPS utilisées <strong>uniquement en premier plan</strong> pour identifier les stations proches. Non stockées de manière permanente.</div></li><li><div><strong>Contributions communautaires :</strong> Votre identifiant est lié à chaque mise à jour de prix pour prévenir la fraude.</div></li></ul></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">03</span><span class="legal-sec-title">Base juridique du traitement</span></div><div class="legal-sec-body"><ul class="legal-list"><li><div><strong>Nécessité contractuelle</strong> (Art. 6(1)(b) RGPD / Art. 31(2)(a) LPD) : Pour fournir les fonctions demandées.</div></li><li><div><strong>Intérêts légitimes :</strong> Prévention de la fraude et amélioration des performances.</div></li><li><div><strong>Consentement :</strong> Pour la publicité personnalisée (AdMob) et la localisation précise.</div></li></ul></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">04</span><span class="legal-sec-title">Services tiers et transfert international de données</span></div><div class="legal-sec-body"><p class="legal-text">Vos données peuvent être transférées hors de la Suisse/EEE, notamment aux <strong>États-Unis</strong>.</p><ul class="legal-list"><li><div><strong>Google Cloud / Firebase :</strong> Infrastructure et hébergement.</div></li><li><div><strong>Google AdMob :</strong> Diffusion de publicités. Opt-out disponible dans les paramètres.</div></li><li><div><strong>Payrexx / TWINT :</strong> Paiements. Aucune donnée bancaire stockée.</div></li><li><div><strong>Garanties :</strong> Clauses Contractuelles Types (CCT) approuvées par les autorités suisses.</div></li></ul></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">05</span><span class="legal-sec-title">Conservation des données</span></div><div class="legal-sec-body"><ul class="legal-list"><li><div><strong>Données du compte :</strong> Conservées tant que le compte est actif.</div></li><li><div><strong>Journaux techniques :</strong> Supprimés après 30 jours.</div></li><li><div><strong>Obligations légales :</strong> Données de paiement conservées <strong>10 ans</strong> (Code des obligations).</div></li></ul></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">06</span><span class="legal-sec-title">Vos droits</span></div><div class="legal-sec-body"><ul class="legal-list"><li><div><strong>Accès :</strong> Demander des détails sur vos données.</div></li><li><div><strong>Rectification :</strong> Mettre à jour votre profil (sauf le Pseudo — exercez le droit d'effacement pour le changer).</div></li><li><div><strong>Effacement :</strong> Demander la suppression de votre compte et de toutes les données.</div></li><li><div><strong>Portabilité :</strong> Recevoir vos données dans un format structuré.</div></li><li><div><strong>Opposition :</strong> Vous opposer au traitement à des fins marketing.</div></li></ul></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Sécurité des données</span></div><div class="legal-sec-body"><p class="legal-text">Nous mettons en œuvre des mesures techniques et organisationnelles de pointe (HTTPS, cryptage) pour protéger vos données.</p><div class="contact-block">Contact : <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div></div></div>
+
+</main>
+<footer>
+  <a href="../../legal.html">← Légal</a>
+  <span>© 2025 WTRH — Swiss Fuel Finder</span>
+</footer>
+</body>
+</html>
