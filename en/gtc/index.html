@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Terms & Conditions — Swiss Fuel Finder</title>
+  <link rel="icon" type="image/png" href="../../assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0A0A0A;--bg-card:#141414;--bg-card-2:#1C1C1C;--red:#CC1F1F;--green:#22C55E;--white:#FFFFFF;--grey:#888888;--grey-lt:#CCCCCC;--border:#242424;--border-lt:#333333}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100dvh;display:flex;flex-direction:column;line-height:1.65}
+nav{height:64px;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-brand img{width:32px;height:32px;border-radius:7px;object-fit:cover}
+.nav-brand-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;letter-spacing:.04em;color:var(--white)}
+.nav-brand-name em{color:var(--red);font-style:normal}
+.nav-back{font-size:13px;color:var(--grey);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--white)}
+main{flex:1;max-width:820px;margin:0 auto;padding:3rem 2rem 5rem;width:100%}
+.page-label{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,6vw,56px);font-weight:900;line-height:.95;margin-bottom:.75rem}
+.page-meta{font-size:13px;color:var(--grey);margin-bottom:2rem}
+.lang-switcher{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:2rem;background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:5px}
+.lang-link{flex:1;min-width:60px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:7px;text-decoration:none;font-size:13px;font-weight:600;color:var(--grey);transition:color .15s,background .15s;white-space:nowrap}
+.lang-link:hover{color:var(--white);background:var(--bg-card-2)}
+.lang-link.active{background:var(--red);color:var(--white)}
+.lang-link .flag{font-size:16px}
+.legal-section{margin-bottom:1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.legal-sec-head{padding:1.2rem 1.75rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.legal-sec-num{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);flex-shrink:0;min-width:24px}
+.legal-sec-title{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;letter-spacing:.01em}
+.legal-sec-body{padding:1.5rem 1.75rem;display:flex;flex-direction:column;gap:1rem}
+.legal-text{font-size:15px;color:var(--grey-lt);line-height:1.7}
+.legal-text strong{color:var(--white);font-weight:600}
+.legal-subsec-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--grey-lt);letter-spacing:.05em;text-transform:uppercase;padding-top:.25rem}
+.legal-callout{background:rgba(204,31,31,.06);border:1px solid rgba(204,31,31,.18);border-radius:8px;padding:1rem 1.25rem;font-size:14px;color:var(--grey-lt);line-height:1.7}
+.legal-callout strong{color:var(--white)}
+.legal-list{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.legal-list li{font-size:15px;color:var(--grey-lt);line-height:1.65;display:flex;gap:10px;align-items:flex-start}
+.legal-list li::before{content:'·';color:var(--red);font-weight:900;font-size:20px;line-height:1.3;flex-shrink:0}
+.legal-list li strong{color:var(--white);font-weight:600}
+.price-list{display:flex;flex-direction:column;gap:.5rem}
+.price-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg-card-2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;flex-wrap:wrap;gap:.5rem}
+.price-label{font-size:14px;color:var(--grey-lt);font-weight:500}
+.price-amount{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--green)}
+.price-note{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;color:var(--grey);margin-left:4px}
+.contact-block{background:var(--bg-card-2);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;font-size:14px;color:var(--grey-lt);line-height:1.7}
+.contact-block a{color:var(--grey-lt);text-decoration:underline;text-underline-offset:3px}
+.contact-block a:hover{color:var(--white)}
+footer{border-top:1px solid var(--border);padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--grey);flex-wrap:wrap;gap:.5rem}
+footer a{color:var(--grey-lt);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--white)}
+@media(max-width:560px){nav{padding:0 1.25rem}.nav-brand-name{display:none}.lang-link span:not(.flag){display:none}footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="nav-brand">
+    <img src="../../assets/logo.png" alt="SFF">
+    <span class="nav-brand-name">Swiss Fuel <em>Finder</em></span>
+  </a>
+  <a href="../../legal.html" class="nav-back">← Legal</a>
+</nav>
+<main>
+  <p class="page-label">Legal</p>
+  <h1>General Terms & Conditions</h1>
+  <p class="page-meta">Last updated: May 2026 · WTRH, Switzerland</p>
+  <div class="lang-switcher">
+    <a href="/en/gtc" class="lang-link active"><span class="flag">🇬🇧</span><span>English</span></a>
+    <a href="/fr/gtc" class="lang-link"><span class="flag">🇫🇷</span><span>Français</span></a>
+    <a href="/de/gtc" class="lang-link"><span class="flag">🇩🇪</span><span>Deutsch</span></a>
+    <a href="/it/gtc" class="lang-link"><span class="flag">🇮🇹</span><span>Italiano</span></a>
+  </div>
+  
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">01</span><span class="legal-sec-title">Scope and Operator</span></div><div class="legal-sec-body"><p class="legal-text">These GTC govern the relationship between <strong>WTRH, Switzerland</strong> ("Operator") and users ("User") of <strong>Swiss Fuel Finder</strong> ("App"). By downloading or using the App, the User accepts these GTC in full.</p></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Services and "As-Is" Provision</span></div><div class="legal-sec-body"><p class="legal-subsec-title">2.1 Nature of Information</p><p class="legal-text">The App provides fuel price comparison based on community data, public sources, and independent third-party aggregation.</p><p class="legal-subsec-title">2.2 Accuracy and Third-Party Interruption</p><p class="legal-text">Data is provided <strong>"as-is"</strong> with no guarantee of accuracy or real-time validity.</p><div class="legal-callout">The User acknowledges the App relies on third-party interfaces not under the Operator's control. The Operator may suspend services without notice if a data source becomes unavailable.</div><p class="legal-subsec-title">2.3 Savings Estimates</p><p class="legal-text">"Net Savings" calculations are indicative estimates only — not a financial guarantee or binding offer.</p></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">03</span><span class="legal-sec-title">User Accounts and Good Faith</span></div><div class="legal-sec-body"><p class="legal-subsec-title">3.1 Registration</p><p class="legal-text">Access to price updates requires a Google Account login.</p><p class="legal-subsec-title">3.2 Good Faith (Art. 2 ZGB)</p><p class="legal-text">Intentional entry of false data is a breach of contract and will result in a permanent ban.</p><p class="legal-subsec-title">3.3 Pseudos</p><p class="legal-text">Usernames must not infringe trademarks or public order. Use of brand names or "Admin" titles is prohibited.</p></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">04</span><span class="legal-sec-title">Subscriptions and Pricing (PBV)</span></div><div class="legal-sec-body"><p class="legal-text">All prices in <strong>CHF</strong> including <strong>8.1% Swiss VAT</strong>.</p><div class="price-list"><div class="price-row"><span class="price-label">Monthly Subscription</span><span class="price-amount">CHF 2.50<span class="price-note">incl. VAT</span></span></div><div class="price-row"><span class="price-label">Lifetime Purchase</span><span class="price-amount">CHF 10.99<span class="price-note">incl. VAT</span></span></div></div><p class="legal-text">Payments via App Store/Google Play or TWINT (Payrexx AG — User must provide SFF Pseudo for activation). <strong>No refunds</strong> once digital content delivery has begun, except in cases of proven technical non-performance by the Operator.</p></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">05</span><span class="legal-sec-title">Limitation of Liability (Art. 100 &amp; 101 CO)</span></div><div class="legal-sec-body"><p class="legal-text">The Operator is liable only for <strong>unlawful intent or gross negligence</strong>. Liability for slight negligence is excluded (Art. 100 para. 1 CO). Liability for auxiliary persons (Art. 101 CO) is entirely excluded.</p><div class="legal-callout">The Operator acts solely as an independent technical aggregator and does not claim ownership of fuel price data. Discrepancies between App data and pump prices are due to third-party sync limitations. Use of data is at the User's own risk.</div></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">06</span><span class="legal-sec-title">Data Protection (nFADP)</span></div><div class="legal-sec-body"><p class="legal-text">Data processing is governed by the SFF Privacy Policy. Personal data may be processed on servers in the <strong>EU or USA</strong> under adequate safeguards (Standard Contractual Clauses).</p></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Intellectual Property</span></div><div class="legal-sec-body"><p class="legal-text">All source code, design, and the "Swiss Fuel Finder" logo are exclusive property of WTRH (protected under URG).</p><div class="legal-callout">Use of automated systems to extract data ("screen scraping" or "API hooking") for commercial purposes is strictly prohibited (UWG violation).</div></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">08</span><span class="legal-sec-title">Modifications to GTC</span></div><div class="legal-sec-body"><p class="legal-text">The Operator may amend these GTC at any time. Continued use after notification constitutes acceptance of the revised terms.</p></div></div>
+<div class="legal-section"><div class="legal-sec-head"><span class="legal-sec-num">09</span><span class="legal-sec-title">Governing Law and Jurisdiction</span></div><div class="legal-sec-body"><p class="legal-text">Exclusive governing law: <strong>Swiss Substantive Law</strong> (CISG excluded). Exclusive jurisdiction: <strong>Lausanne (Vaud), Switzerland</strong>.</p><div class="contact-block">WTRH, Switzerland · <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div></div></div>
+
+</main>
+<footer>
+  <a href="../../legal.html">← Back to Legal</a>
+  <span>© 2025 WTRH — Swiss Fuel Finder</span>
+</footer>
+</body>
+</html>
