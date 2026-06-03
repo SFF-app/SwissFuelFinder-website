@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swiss Fuel Finder — Stop Guessing. Start Saving.</title>
-  <meta name="description" content="The only Swiss fuel app that calculates if a detour is actually worth it. Save up to 15 CHF per tank with smart math tailored to your vehicle.">
+  <title data-i18n="page-title">Swiss Fuel Finder — Stop Guessing. Start Saving.</title>
+  <meta name="description" data-i18n-attr="content" data-i18n="page-desc" content="The only Swiss fuel app that calculates if a detour is actually worth it. Save up to 15 CHF per tank with smart math tailored to your vehicle.">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,6 +91,65 @@
     }
     .nav-links a:hover { color: var(--white); }
 
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .lang-btn {
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--grey);
+      background: none;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+      line-height: 1;
+    }
+    .lang-btn:hover {
+      color: var(--white);
+      border-color: var(--border-lt);
+    }
+    .lang-btn.active {
+      color: var(--white);
+      background: var(--bg-card-2);
+      border-color: var(--border-lt);
+    }
+
+    /* Lang badge row in hero */
+    .hero-lang-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: floatIn .8s .48s cubic-bezier(.22,.97,.44,1) both;
+    }
+    .hero-lang-badge {
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-lt);
+      background: var(--bg-card);
+      color: var(--grey-lt);
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .hero-lang-badge:hover,
+    .hero-lang-badge.active {
+      color: var(--white);
+      border-color: var(--red);
+      background: rgba(204,31,31,0.10);
+    }
+
     /* ── HERO ── */
     .hero {
       min-height: 100dvh;
@@ -110,7 +169,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 700px;
-      height: 100px;
+      height: 700px;
       background: radial-gradient(circle, rgba(204,31,31,0.10) 0%, transparent 65%);
       pointer-events: none;
     }
@@ -621,29 +680,40 @@
       <span class="nav-brand-name">Swiss Fuel <em>Finder</em></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="legal.html">Legal</a></li>
+      <li><a href="#features" data-i18n="nav-features">Features</a></li>
+      <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+      <li><a href="legal.html" data-i18n="nav-legal">Legal</a></li>
     </ul>
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-glow"></div>
     <img src="assets/logo.png" alt="Swiss Fuel Finder" class="hero-logo">
-    <p class="hero-eyebrow">Switzerland's Smartest Fuel App</p>
-    <h1 class="hero-headline">
-      Stop Guessing.<br>
-      <span class="green">Start Saving.</span>
+    <p class="hero-eyebrow" data-i18n="hero-eyebrow">Switzerland's Smartest Fuel App</p>
+    <h1 class="hero-headline" data-i18n-html="hero-headline">
+      Stop Guessing.<br><span class="green">Start Saving.</span>
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n-html="hero-sub">
       Most apps show you the cheapest price. SFF calculates if the detour is
       <em>actually worth it</em> — using your tank size and fuel consumption.
     </p>
     <div class="savings-widget">
-      <span class="savings-label">Maximum savings per full tank</span>
+      <span class="savings-label" data-i18n="savings-label">Maximum savings per full tank</span>
       <span class="savings-amount" id="counter">0.00<sup>CHF</sup></span>
-      <span class="savings-sub">Calculated to your vehicle profile</span>
+      <span class="savings-sub" data-i18n="savings-sub">Calculated to your vehicle profile</span>
+    </div>
+    <div class="hero-lang-row" aria-label="Available languages">
+      <span class="hero-lang-badge active" data-lang="en" onclick="setLang('en')">🇬🇧 English</span>
+      <span class="hero-lang-badge" data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</span>
+      <span class="hero-lang-badge" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</span>
+      <span class="hero-lang-badge" data-lang="it" onclick="setLang('it')">🇮🇹 Italiano</span>
     </div>
     <div class="platform-row">
       <a href="#" class="platform-btn">
@@ -659,28 +729,28 @@
 
   <!-- DIFFERENCE -->
   <section class="section reveal">
-    <p class="sec-label">Why SFF is different</p>
-    <h2 class="sec-title">Other apps show you the price.<br>SFF tells you the truth.</h2>
-    <p class="sec-sub">The nearest station is rarely the most profitable one. SFF does the maths so you don't have to.</p>
+    <p class="sec-label" data-i18n="diff-label">Why SFF is different</p>
+    <h2 class="sec-title" data-i18n-html="diff-title">Other apps show you the price.<br>SFF tells you the truth.</h2>
+    <p class="sec-sub" data-i18n="diff-sub">The nearest station is rarely the most profitable one. SFF does the maths so you don't have to.</p>
     <div class="diff-grid">
       <div class="diff-col">
-        <p class="diff-col-header others">Other fuel apps</p>
+        <p class="diff-col-header others" data-i18n="diff-others-header">Other fuel apps</p>
         <ul class="diff-list">
           <li class="diff-item">
             <span class="diff-ico x">✕</span>
-            <span class="muted">Show the cheapest price at the pump — nothing else</span>
+            <span class="muted" data-i18n="diff-others-1">Show the cheapest price at the pump — nothing else</span>
           </li>
           <li class="diff-item">
             <span class="diff-ico x">✕</span>
-            <span class="muted">Ignore the fuel cost of getting there</span>
+            <span class="muted" data-i18n="diff-others-2">Ignore the fuel cost of getting there</span>
           </li>
           <li class="diff-item">
             <span class="diff-ico x">✕</span>
-            <span class="muted">Treat every car the same regardless of tank or consumption</span>
+            <span class="muted" data-i18n="diff-others-3">Treat every car the same regardless of tank or consumption</span>
           </li>
           <li class="diff-item">
             <span class="diff-ico x">✕</span>
-            <span class="muted">List closed or private stations that waste your time</span>
+            <span class="muted" data-i18n="diff-others-4">List closed or private stations that waste your time</span>
           </li>
         </ul>
       </div>
@@ -689,19 +759,19 @@
         <ul class="diff-list">
           <li class="diff-item">
             <span class="diff-ico chk">✓</span>
-            <span class="bright">Calculates your real <strong>Net Profit</strong> — savings after detour cost</span>
+            <span class="bright" data-i18n-html="diff-sff-1">Calculates your real <strong>Net Profit</strong> — savings after detour cost</span>
           </li>
           <li class="diff-item">
             <span class="diff-ico chk">✓</span>
-            <span class="bright">Uses <strong>your vehicle profile</strong> for personalised maths</span>
+            <span class="bright" data-i18n-html="diff-sff-2">Uses <strong>your vehicle profile</strong> for personalised maths</span>
           </li>
           <li class="diff-item">
             <span class="diff-ico chk">✓</span>
-            <span class="bright">Stamps stations as <span class="g">WORTH THE DETOUR</span> or not</span>
+            <span class="bright" data-i18n-html="diff-sff-3">Stamps stations as <span class="g">WORTH THE DETOUR</span> or not</span>
           </li>
           <li class="diff-item">
             <span class="diff-ico chk">✓</span>
-            <span class="bright">Community-verified prices, synced 3× daily from official sources</span>
+            <span class="bright" data-i18n="diff-sff-4">Community-verified prices, synced 3× daily from official sources</span>
           </li>
         </ul>
       </div>
@@ -711,26 +781,26 @@
   <!-- HOW IT WORKS -->
   <div class="how-wrap">
     <div class="how-inner">
-      <p class="sec-label reveal">How it works</p>
-      <h2 class="sec-title reveal" style="margin-bottom:3rem;">Three steps to smarter refuelling</h2>
+      <p class="sec-label reveal" data-i18n="how-label">How it works</p>
+      <h2 class="sec-title reveal" style="margin-bottom:3rem;" data-i18n="how-title">Three steps to smarter refuelling</h2>
       <div class="steps">
         <div class="step reveal">
           <span class="step-bar"></span>
           <span class="step-num">01</span>
-          <h3 class="step-title">Set Your Vehicle Profile</h3>
-          <p class="step-desc">Enter your tank size and average fuel consumption once. SFF uses this to personalise every single calculation to your car — not someone else's.</p>
+          <h3 class="step-title" data-i18n="step1-title">Set Your Vehicle Profile</h3>
+          <p class="step-desc" data-i18n="step1-desc">Enter your tank size and average fuel consumption once. SFF uses this to personalise every single calculation to your car — not someone else's.</p>
         </div>
         <div class="step reveal">
           <span class="step-bar"></span>
           <span class="step-num">02</span>
-          <h3 class="step-title">See Stations Near You</h3>
-          <p class="step-desc">3,989+ stations updated 3× daily from official Swiss sources. Advanced filters and community reports remove closed or private stations automatically.</p>
+          <h3 class="step-title" data-i18n="step2-title">See Stations Near You</h3>
+          <p class="step-desc" data-i18n="step2-desc">3,989+ stations updated 3× daily from official Swiss sources. Advanced filters and community reports remove closed or private stations automatically.</p>
         </div>
         <div class="step reveal">
           <span class="step-bar"></span>
           <span class="step-num">03</span>
-          <h3 class="step-title">Act on Real Numbers</h3>
-          <p class="step-desc">Each station shows your estimated net CHF savings — not just the price per litre. Drive only when it's genuinely worth it.</p>
+          <h3 class="step-title" data-i18n="step3-title">Act on Real Numbers</h3>
+          <p class="step-desc" data-i18n="step3-desc">Each station shows your estimated net CHF savings — not just the price per litre. Drive only when it's genuinely worth it.</p>
         </div>
       </div>
     </div>
@@ -741,37 +811,37 @@
     <div class="stats-inner">
       <div class="reveal">
         <p class="stat-n">3,989+</p>
-        <p class="stat-l">Stations across Switzerland</p>
+        <p class="stat-l" data-i18n="stat1">Stations across Switzerland</p>
       </div>
       <div class="reveal">
         <p class="stat-n">3×</p>
-        <p class="stat-l">Price updates per day</p>
+        <p class="stat-l" data-i18n="stat2">Price updates per day</p>
       </div>
       <div class="reveal">
         <p class="stat-n">4</p>
-        <p class="stat-l">Languages supported</p>
+        <p class="stat-l" data-i18n="stat3">Languages supported</p>
       </div>
       <div class="reveal">
         <p class="stat-n">15 CHF</p>
-        <p class="stat-l">Max savings per tank</p>
+        <p class="stat-l" data-i18n="stat4">Max savings per tank</p>
       </div>
     </div>
   </div>
 
   <!-- SCREENSHOTS -->
   <section class="shots-section">
-    <p class="sec-label reveal">See it in action</p>
-    <h2 class="sec-title reveal">Built for the Swiss driver</h2>
-    <p class="sec-sub reveal">Every screen is designed to give you the right answer at a glance. "Worth the detour?" answered in seconds.</p>
+    <p class="sec-label reveal" data-i18n="shots-label">See it in action</p>
+    <h2 class="sec-title reveal" data-i18n="shots-title">Built for the Swiss driver</h2>
+    <p class="sec-sub reveal" data-i18n="shots-sub">Every screen is designed to give you the right answer at a glance. "Worth the detour?" answered in seconds.</p>
     <div class="phones reveal">
       <div class="phone-wrap">
-        <span class="callout callout-r">← Net savings for your car</span>
+        <span class="callout callout-r" data-i18n="callout-savings">← Net savings for your car</span>
         <div class="phone-shell">
           <img src="assets/screenshot1.jpg" alt="SFF showing nearby stations with net savings">
         </div>
       </div>
       <div class="phone-wrap">
-        <span class="callout callout-g">Worth the detour ✓ →</span>
+        <span class="callout callout-g" data-i18n="callout-detour">Worth the detour ✓ →</span>
         <div class="phone-shell">
           <img src="assets/screenshot2.jpg" alt="SFF showing VAUT LE DÉTOUR and station comparison">
         </div>
@@ -782,38 +852,38 @@
   <!-- FEATURES -->
   <div class="feat-wrap" id="features">
     <div class="feat-inner">
-      <p class="sec-label reveal">What's inside</p>
-      <h2 class="sec-title reveal" style="margin-bottom:3rem;">Every feature earns its place</h2>
+      <p class="sec-label reveal" data-i18n="feat-label">What's inside</p>
+      <h2 class="sec-title reveal" style="margin-bottom:3rem;" data-i18n="feat-title">Every feature earns its place</h2>
       <div class="feat-grid">
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(204,31,31,0.10);">⛽</div>
-          <h3 class="feat-title">Official Swiss Data</h3>
-          <p class="feat-desc">3,989+ stations synced from official Swiss sources three times daily. Always accurate, always current — no user-submitted guesses.</p>
+          <h3 class="feat-title" data-i18n="feat1-title">Official Swiss Data</h3>
+          <p class="feat-desc" data-i18n="feat1-desc">3,989+ stations synced from official Swiss sources three times daily. Always accurate, always current — no user-submitted guesses.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(34,197,94,0.10);">🧮</div>
-          <h3 class="feat-title">Smart Net Savings</h3>
-          <p class="feat-desc">We calculate the real profit after factoring in the detour. The nearest station is not always the most profitable one — SFF finds the one that is.</p>
+          <h3 class="feat-title" data-i18n="feat2-title">Smart Net Savings</h3>
+          <p class="feat-desc" data-i18n="feat2-desc">We calculate the real profit after factoring in the detour. The nearest station is not always the most profitable one — SFF finds the one that is.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(245,158,11,0.10);">👥</div>
-          <h3 class="feat-title">Community Verified</h3>
-          <p class="feat-desc">Real drivers update prices in real time. Each price shows a "Verified by User" count so you know exactly how fresh it is.</p>
+          <h3 class="feat-title" data-i18n="feat3-title">Community Verified</h3>
+          <p class="feat-desc" data-i18n="feat3-desc">Real drivers update prices in real time. Each price shows a "Verified by User" count so you know exactly how fresh it is.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(100,149,237,0.10);">🌐</div>
-          <h3 class="feat-title">Fully Localised</h3>
-          <p class="feat-desc">English, Deutsch, Français, and Italiano. SFF speaks all four Swiss national languages — switch anytime from settings.</p>
+          <h3 class="feat-title" data-i18n="feat4-title">Fully Localised</h3>
+          <p class="feat-desc" data-i18n="feat4-desc">English, Deutsch, Français, and Italiano. SFF speaks all four Swiss national languages — switch anytime from settings.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(34,197,94,0.10);">🚫</div>
-          <h3 class="feat-title">No Junk Stations</h3>
-          <p class="feat-desc">Advanced filters and community reports automatically remove closed or private stations. Every result in your list is a real option.</p>
+          <h3 class="feat-title" data-i18n="feat5-title">No Junk Stations</h3>
+          <p class="feat-desc" data-i18n="feat5-desc">Advanced filters and community reports automatically remove closed or private stations. Every result in your list is a real option.</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon" style="background:rgba(204,31,31,0.10);">🚗</div>
-          <h3 class="feat-title">Your Car, Your Maths</h3>
-          <p class="feat-desc">Set your tank size and consumption once. From that point, every calculation is tailored precisely to your vehicle — not a generic average.</p>
+          <h3 class="feat-title" data-i18n="feat6-title">Your Car, Your Maths</h3>
+          <p class="feat-desc" data-i18n="feat6-desc">Set your tank size and consumption once. From that point, every calculation is tailored precisely to your vehicle — not a generic average.</p>
         </div>
       </div>
     </div>
@@ -821,9 +891,9 @@
 
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
-    <p class="sec-label">Get in touch</p>
-    <h2 class="sec-title">Have a question?</h2>
-    <p class="sec-sub" style="margin: 0 auto 0; text-align:center;">We're always happy to hear from users — feedback, bug reports, or just to say hello.</p>
+    <p class="sec-label" data-i18n="contact-label">Get in touch</p>
+    <h2 class="sec-title" data-i18n="contact-title">Have a question?</h2>
+    <p class="sec-sub" style="margin: 0 auto 0; text-align:center;" data-i18n="contact-sub">We're always happy to hear from users — feedback, bug reports, or just to say hello.</p>
     <a href="mailto:info@swissfuelfinder.com" class="contact-email">
       ✉&nbsp; info@swissfuelfinder.com
     </a>
@@ -832,17 +902,298 @@
   <!-- FOOTER -->
   <footer>
     <div class="foot-links">
-      <a href="#">Home</a>
-      <a href="#features">Features</a>
-      <a href="#contact">Contact</a>
-      <a href="legal.html">Legal</a>
+      <a href="#" data-i18n="foot-home">Home</a>
+      <a href="#features" data-i18n="nav-features">Features</a>
+      <a href="#contact" data-i18n="nav-contact">Contact</a>
+      <a href="legal.html" data-i18n="nav-legal">Legal</a>
       <a href="legal-notice.html" data-i18n="foot-legal-notice">Legal Notice</a>
     </div>
-    <p>© 2025 Swiss Fuel Finder. All rights reserved.</p>
+    <p data-i18n="foot-copy">© 2025 Swiss Fuel Finder. All rights reserved.</p>
   </footer>
 
   <script>
-    /* Scroll reveal */
+    /* ── TRANSLATIONS ── */
+    const translations = {
+      en: {
+        "page-title":        "Swiss Fuel Finder — Stop Guessing. Start Saving.",
+        "page-desc":         "The only Swiss fuel app that calculates if a detour is actually worth it. Save up to 15 CHF per tank with smart math tailored to your vehicle.",
+        "nav-features":      "Features",
+        "nav-contact":       "Contact",
+        "nav-legal":         "Legal",
+        "hero-eyebrow":      "Switzerland's Smartest Fuel App",
+        "hero-headline":     "Stop Guessing.<br><span class=\"green\">Start Saving.</span>",
+        "hero-sub":          "Most apps show you the cheapest price. SFF calculates if the detour is <em>actually worth it</em> — using your tank size and fuel consumption.",
+        "savings-label":     "Maximum savings per full tank",
+        "savings-sub":       "Calculated to your vehicle profile",
+        "diff-label":        "Why SFF is different",
+        "diff-title":        "Other apps show you the price.<br>SFF tells you the truth.",
+        "diff-sub":          "The nearest station is rarely the most profitable one. SFF does the maths so you don't have to.",
+        "diff-others-header":"Other fuel apps",
+        "diff-others-1":     "Show the cheapest price at the pump — nothing else",
+        "diff-others-2":     "Ignore the fuel cost of getting there",
+        "diff-others-3":     "Treat every car the same regardless of tank or consumption",
+        "diff-others-4":     "List closed or private stations that waste your time",
+        "diff-sff-1":        "Calculates your real <strong>Net Profit</strong> — savings after detour cost",
+        "diff-sff-2":        "Uses <strong>your vehicle profile</strong> for personalised maths",
+        "diff-sff-3":        "Stamps stations as <span class=\"g\">WORTH THE DETOUR</span> or not",
+        "diff-sff-4":        "Community-verified prices, synced 3× daily from official sources",
+        "how-label":         "How it works",
+        "how-title":         "Three steps to smarter refuelling",
+        "step1-title":       "Set Your Vehicle Profile",
+        "step1-desc":        "Enter your tank size and average fuel consumption once. SFF uses this to personalise every single calculation to your car — not someone else's.",
+        "step2-title":       "See Stations Near You",
+        "step2-desc":        "3,989+ stations updated 3× daily from official Swiss sources. Advanced filters and community reports remove closed or private stations automatically.",
+        "step3-title":       "Act on Real Numbers",
+        "step3-desc":        "Each station shows your estimated net CHF savings — not just the price per litre. Drive only when it's genuinely worth it.",
+        "stat1":             "Stations across Switzerland",
+        "stat2":             "Price updates per day",
+        "stat3":             "Languages supported",
+        "stat4":             "Max savings per tank",
+        "shots-label":       "See it in action",
+        "shots-title":       "Built for the Swiss driver",
+        "shots-sub":         "Every screen is designed to give you the right answer at a glance. \"Worth the detour?\" answered in seconds.",
+        "callout-savings":   "← Net savings for your car",
+        "callout-detour":    "Worth the detour ✓ →",
+        "feat-label":        "What's inside",
+        "feat-title":        "Every feature earns its place",
+        "feat1-title":       "Official Swiss Data",
+        "feat1-desc":        "3,989+ stations synced from official Swiss sources three times daily. Always accurate, always current — no user-submitted guesses.",
+        "feat2-title":       "Smart Net Savings",
+        "feat2-desc":        "We calculate the real profit after factoring in the detour. The nearest station is not always the most profitable one — SFF finds the one that is.",
+        "feat3-title":       "Community Verified",
+        "feat3-desc":        "Real drivers update prices in real time. Each price shows a \"Verified by User\" count so you know exactly how fresh it is.",
+        "feat4-title":       "Fully Localised",
+        "feat4-desc":        "English, Deutsch, Français, and Italiano. SFF speaks all four Swiss national languages — switch anytime from settings.",
+        "feat5-title":       "No Junk Stations",
+        "feat5-desc":        "Advanced filters and community reports automatically remove closed or private stations. Every result in your list is a real option.",
+        "feat6-title":       "Your Car, Your Maths",
+        "feat6-desc":        "Set your tank size and consumption once. From that point, every calculation is tailored precisely to your vehicle — not a generic average.",
+        "contact-label":     "Get in touch",
+        "contact-title":     "Have a question?",
+        "contact-sub":       "We're always happy to hear from users — feedback, bug reports, or just to say hello.",
+        "foot-home":         "Home",
+        "foot-legal-notice": "Legal Notice",
+        "foot-copy":         "© 2025 Swiss Fuel Finder. All rights reserved."
+      },
+      de: {
+        "page-title":        "Swiss Fuel Finder — Schluss mit Raten. Jetzt sparen.",
+        "page-desc":         "Die einzige Schweizer Kraft­stoff-App, die berechnet, ob ein Umweg wirklich lohnt. Spare bis zu 15 CHF pro Tank.",
+        "nav-features":      "Funktionen",
+        "nav-contact":       "Kontakt",
+        "nav-legal":         "Impressum",
+        "hero-eyebrow":      "Die klügste Tankstellen-App der Schweiz",
+        "hero-headline":     "Schluss mit Raten.<br><span class=\"green\">Jetzt sparen.</span>",
+        "hero-sub":          "Andere Apps zeigen dir den günstigsten Preis. SFF berechnet, ob der Umweg <em>wirklich rentiert</em> — basierend auf deinem Tank und Verbrauch.",
+        "savings-label":     "Maximale Ersparnis pro Volltankung",
+        "savings-sub":       "Berechnet für dein Fahrzeugprofil",
+        "diff-label":        "Warum SFF anders ist",
+        "diff-title":        "Andere Apps zeigen dir den Preis.<br>SFF sagt dir die Wahrheit.",
+        "diff-sub":          "Die nächste Tankstelle ist selten die profitabelste. SFF rechnet für dich.",
+        "diff-others-header":"Andere Tankapps",
+        "diff-others-1":     "Zeigen nur den günstigsten Preis — sonst nichts",
+        "diff-others-2":     "Ignorieren die Kraftstoffkosten des Umwegs",
+        "diff-others-3":     "Behandeln alle Autos gleich, unabhängig von Tank oder Verbrauch",
+        "diff-others-4":     "Listen geschlossene oder private Stationen, die deine Zeit verschwenden",
+        "diff-sff-1":        "Berechnet deinen echten <strong>Netto-Gewinn</strong> — Ersparnis nach Umwegkosten",
+        "diff-sff-2":        "Nutzt <strong>dein Fahrzeugprofil</strong> für personalisierte Berechnungen",
+        "diff-sff-3":        "Kennzeichnet Stationen als <span class=\"g\">UMWEG LOHNT SICH</span> oder nicht",
+        "diff-sff-4":        "Community-verifizierte Preise, 3× täglich aus offiziellen Quellen synchronisiert",
+        "how-label":         "So funktioniert's",
+        "how-title":         "Drei Schritte zum cleveren Tanken",
+        "step1-title":       "Fahrzeugprofil einrichten",
+        "step1-desc":        "Gib einmalig deine Tankgrösse und deinen Durchschnittsverbrauch ein. SFF personalisiert damit jede Berechnung für dein Auto.",
+        "step2-title":       "Tankstellen in der Nähe sehen",
+        "step2-desc":        "Über 3'989 Stationen, 3× täglich aus offiziellen Schweizer Quellen aktualisiert. Filter und Community-Meldungen entfernen geschlossene Stationen automatisch.",
+        "step3-title":       "Auf echte Zahlen vertrauen",
+        "step3-desc":        "Jede Station zeigt deine geschätzte Netto-CHF-Ersparnis — nicht nur den Literpreis. Fahr nur, wenn es sich wirklich lohnt.",
+        "stat1":             "Tankstellen in der ganzen Schweiz",
+        "stat2":             "Preisaktualisierungen pro Tag",
+        "stat3":             "Unterstützte Sprachen",
+        "stat4":             "Max. Ersparnis pro Tank",
+        "shots-label":       "In Aktion sehen",
+        "shots-title":       "Gebaut für den Schweizer Fahrer",
+        "shots-sub":         "Jeder Bildschirm ist darauf ausgelegt, dir auf einen Blick die richtige Antwort zu geben. „Lohnt sich der Umweg?" — in Sekunden beantwortet.",
+        "callout-savings":   "← Netto-Ersparnis für dein Auto",
+        "callout-detour":    "Umweg lohnt sich ✓ →",
+        "feat-label":        "Was drin steckt",
+        "feat-title":        "Jede Funktion hat ihren Grund",
+        "feat1-title":       "Offizielle Schweizer Daten",
+        "feat1-desc":        "Über 3'989 Stationen, dreimal täglich aus offiziellen Schweizer Quellen synchronisiert. Immer genau, immer aktuell.",
+        "feat2-title":       "Intelligente Netto-Ersparnis",
+        "feat2-desc":        "Wir berechnen den echten Gewinn nach Abzug des Umwegs. Die nächste Station ist nicht immer die profitabelste — SFF findet die richtige.",
+        "feat3-title":       "Community-verifiziert",
+        "feat3-desc":        "Echte Fahrer aktualisieren die Preise in Echtzeit. Jeder Preis zeigt eine „Verifiziert durch Nutzer"-Anzahl.",
+        "feat4-title":       "Vollständig lokalisiert",
+        "feat4-desc":        "Englisch, Deutsch, Französisch und Italienisch. SFF spricht alle vier Landessprachen der Schweiz.",
+        "feat5-title":       "Keine Phantom-Stationen",
+        "feat5-desc":        "Filter und Community-Meldungen entfernen automatisch geschlossene oder private Stationen. Jedes Ergebnis ist eine echte Option.",
+        "feat6-title":       "Dein Auto, deine Rechnung",
+        "feat6-desc":        "Tankgrösse und Verbrauch einmal eingeben. Ab dann wird jede Berechnung genau auf dein Fahrzeug zugeschnitten.",
+        "contact-label":     "Kontakt aufnehmen",
+        "contact-title":     "Hast du eine Frage?",
+        "contact-sub":       "Wir freuen uns immer über Rückmeldungen — Feedback, Fehlerberichte oder einfach ein Hallo.",
+        "foot-home":         "Startseite",
+        "foot-legal-notice": "Impressum",
+        "foot-copy":         "© 2025 Swiss Fuel Finder. Alle Rechte vorbehalten."
+      },
+      fr: {
+        "page-title":        "Swiss Fuel Finder — Fini les doutes. Commencez à économiser.",
+        "page-desc":         "La seule app suisse qui calcule si un détour vaut vraiment la peine. Économisez jusqu'à 15 CHF par plein.",
+        "nav-features":      "Fonctionnalités",
+        "nav-contact":       "Contact",
+        "nav-legal":         "Mentions légales",
+        "hero-eyebrow":      "L'app carburant la plus intelligente de Suisse",
+        "hero-headline":     "Fini les doutes.<br><span class=\"green\">Commencez à économiser.</span>",
+        "hero-sub":          "La plupart des apps vous montrent le prix le moins cher. SFF calcule si le détour <em>vaut vraiment la peine</em> — selon votre réservoir et votre consommation.",
+        "savings-label":     "Économies maximales par plein",
+        "savings-sub":       "Calculé selon votre profil véhicule",
+        "diff-label":        "Pourquoi SFF est différent",
+        "diff-title":        "Les autres apps vous montrent le prix.<br>SFF vous dit la vérité.",
+        "diff-sub":          "La station la plus proche est rarement la plus rentable. SFF fait les calculs à votre place.",
+        "diff-others-header":"Autres apps carburant",
+        "diff-others-1":     "Affichent le prix le moins cher à la pompe — rien d'autre",
+        "diff-others-2":     "Ignorent le coût en carburant pour s'y rendre",
+        "diff-others-3":     "Traitent chaque voiture pareil, peu importe le réservoir ou la consommation",
+        "diff-others-4":     "Listent des stations fermées ou privées qui font perdre votre temps",
+        "diff-sff-1":        "Calcule votre vrai <strong>Bénéfice Net</strong> — économies après le coût du détour",
+        "diff-sff-2":        "Utilise <strong>votre profil véhicule</strong> pour des calculs personnalisés",
+        "diff-sff-3":        "Classe les stations comme <span class=\"g\">VAUT LE DÉTOUR</span> ou non",
+        "diff-sff-4":        "Prix vérifiés par la communauté, synchronisés 3× par jour depuis des sources officielles",
+        "how-label":         "Comment ça marche",
+        "how-title":         "Trois étapes pour faire le plein intelligemment",
+        "step1-title":       "Créez votre profil véhicule",
+        "step1-desc":        "Entrez une seule fois la taille de votre réservoir et votre consommation moyenne. SFF personalise chaque calcul pour votre voiture.",
+        "step2-title":       "Voyez les stations près de vous",
+        "step2-desc":        "Plus de 3'989 stations mises à jour 3× par jour depuis des sources officielles suisses. Les filtres et signalements suppriment automatiquement les stations fermées.",
+        "step3-title":       "Agissez sur de vrais chiffres",
+        "step3-desc":        "Chaque station affiche vos économies nettes estimées en CHF — pas seulement le prix au litre. Conduisez uniquement quand c'est vraiment rentable.",
+        "stat1":             "Stations dans toute la Suisse",
+        "stat2":             "Mises à jour des prix par jour",
+        "stat3":             "Langues prises en charge",
+        "stat4":             "Économies max. par plein",
+        "shots-label":       "Voir en action",
+        "shots-title":       "Conçu pour le conducteur suisse",
+        "shots-sub":         "Chaque écran est conçu pour vous donner la bonne réponse en un coup d'œil. «Vaut le détour ?» répondu en secondes.",
+        "callout-savings":   "← Économies nettes pour votre voiture",
+        "callout-detour":    "Vaut le détour ✓ →",
+        "feat-label":        "Ce qu'il y a dedans",
+        "feat-title":        "Chaque fonction mérite sa place",
+        "feat1-title":       "Données officielles suisses",
+        "feat1-desc":        "Plus de 3'989 stations synchronisées depuis des sources officielles suisses trois fois par jour. Toujours précis, toujours à jour.",
+        "feat2-title":       "Économies nettes intelligentes",
+        "feat2-desc":        "Nous calculons le vrai bénéfice après le détour. La station la plus proche n'est pas toujours la plus rentable — SFF trouve celle qui l'est.",
+        "feat3-title":       "Vérifié par la communauté",
+        "feat3-desc":        "De vrais conducteurs mettent à jour les prix en temps réel. Chaque prix affiche un compteur «Vérifié par l'utilisateur».",
+        "feat4-title":       "Entièrement localisé",
+        "feat4-desc":        "Anglais, Allemand, Français et Italien. SFF parle les quatre langues nationales suisses.",
+        "feat5-title":       "Pas de stations fantômes",
+        "feat5-desc":        "Les filtres avancés et les signalements suppriment automatiquement les stations fermées ou privées. Chaque résultat est une vraie option.",
+        "feat6-title":       "Votre voiture, vos calculs",
+        "feat6-desc":        "Entrez la taille du réservoir et la consommation une seule fois. Chaque calcul est alors adapté précisément à votre véhicule.",
+        "contact-label":     "Nous contacter",
+        "contact-title":     "Une question ?",
+        "contact-sub":       "Nous sommes toujours heureux d'entendre nos utilisateurs — retours, signalements de bugs ou juste un bonjour.",
+        "foot-home":         "Accueil",
+        "foot-legal-notice": "Mentions légales",
+        "foot-copy":         "© 2025 Swiss Fuel Finder. Tous droits réservés."
+      },
+      it: {
+        "page-title":        "Swiss Fuel Finder — Basta indovinare. Inizia a risparmiare.",
+        "page-desc":         "L'unica app svizzera che calcola se una deviazione vale davvero la pena. Risparmia fino a 15 CHF per pieno.",
+        "nav-features":      "Funzionalità",
+        "nav-contact":       "Contatto",
+        "nav-legal":         "Note legali",
+        "hero-eyebrow":      "L'app carburante più intelligente della Svizzera",
+        "hero-headline":     "Basta indovinare.<br><span class=\"green\">Inizia a risparmiare.</span>",
+        "hero-sub":          "La maggior parte delle app ti mostra il prezzo più basso. SFF calcola se la deviazione <em>vale davvero la pena</em> — usando il tuo serbatoio e il tuo consumo.",
+        "savings-label":     "Risparmio massimo per pieno",
+        "savings-sub":       "Calcolato per il tuo profilo veicolo",
+        "diff-label":        "Perché SFF è diverso",
+        "diff-title":        "Le altre app ti mostrano il prezzo.<br>SFF ti dice la verità.",
+        "diff-sub":          "La stazione più vicina è raramente quella più conveniente. SFF fa i calcoli al posto tuo.",
+        "diff-others-header":"Altre app carburante",
+        "diff-others-1":     "Mostrano solo il prezzo più basso al distributore",
+        "diff-others-2":     "Ignorano il costo del carburante per arrivarci",
+        "diff-others-3":     "Trattano ogni auto allo stesso modo, indipendentemente da serbatoio o consumo",
+        "diff-others-4":     "Elencano stazioni chiuse o private che fanno perdere tempo",
+        "diff-sff-1":        "Calcola il tuo vero <strong>Profitto Netto</strong> — risparmio dopo il costo della deviazione",
+        "diff-sff-2":        "Usa <strong>il tuo profilo veicolo</strong> per calcoli personalizzati",
+        "diff-sff-3":        "Classifica le stazioni come <span class=\"g\">VALE LA DEVIAZIONE</span> o no",
+        "diff-sff-4":        "Prezzi verificati dalla community, sincronizzati 3× al giorno da fonti ufficiali",
+        "how-label":         "Come funziona",
+        "how-title":         "Tre passi per fare rifornimento in modo più intelligente",
+        "step1-title":       "Imposta il tuo profilo veicolo",
+        "step1-desc":        "Inserisci una sola volta la capacità del serbatoio e il consumo medio. SFF personalizza ogni calcolo per la tua auto.",
+        "step2-title":       "Vedi le stazioni vicino a te",
+        "step2-desc":        "Oltre 3'989 stazioni aggiornate 3× al giorno da fonti svizzere ufficiali. Filtri e segnalazioni della community rimuovono automaticamente le stazioni chiuse.",
+        "step3-title":       "Agisci su numeri reali",
+        "step3-desc":        "Ogni stazione mostra il risparmio netto stimato in CHF — non solo il prezzo al litro. Guida solo quando ne vale davvero la pena.",
+        "stat1":             "Stazioni in tutta la Svizzera",
+        "stat2":             "Aggiornamenti prezzi al giorno",
+        "stat3":             "Lingue supportate",
+        "stat4":             "Risparmio max. per pieno",
+        "shots-label":       "Vedi in azione",
+        "shots-title":       "Progettato per il guidatore svizzero",
+        "shots-sub":         "Ogni schermata è progettata per darti la risposta giusta a colpo d'occhio. «Vale la deviazione?» risposto in secondi.",
+        "callout-savings":   "← Risparmio netto per la tua auto",
+        "callout-detour":    "Vale la deviazione ✓ →",
+        "feat-label":        "Cosa c'è dentro",
+        "feat-title":        "Ogni funzione si guadagna il suo posto",
+        "feat1-title":       "Dati ufficiali svizzeri",
+        "feat1-desc":        "Oltre 3'989 stazioni sincronizzate da fonti ufficiali svizzere tre volte al giorno. Sempre precisi, sempre aggiornati.",
+        "feat2-title":       "Risparmio netto intelligente",
+        "feat2-desc":        "Calcoliamo il profitto reale dopo la deviazione. La stazione più vicina non è sempre quella più conveniente — SFF trova quella che lo è.",
+        "feat3-title":       "Verificato dalla community",
+        "feat3-desc":        "Veri guidatori aggiornano i prezzi in tempo reale. Ogni prezzo mostra un contatore «Verificato dall'utente».",
+        "feat4-title":       "Completamente localizzato",
+        "feat4-desc":        "Inglese, Tedesco, Francese e Italiano. SFF parla tutte e quattro le lingue nazionali svizzere.",
+        "feat5-title":       "Nessuna stazione fantasma",
+        "feat5-desc":        "Filtri avanzati e segnalazioni della community rimuovono automaticamente le stazioni chiuse o private. Ogni risultato è un'opzione reale.",
+        "feat6-title":       "La tua auto, i tuoi calcoli",
+        "feat6-desc":        "Inserisci la capacità del serbatoio e il consumo una volta sola. Da quel momento ogni calcolo è adattato precisamente al tuo veicolo.",
+        "contact-label":     "Contattaci",
+        "contact-title":     "Hai una domanda?",
+        "contact-sub":       "Siamo sempre felici di sentire gli utenti — feedback, segnalazioni di bug o semplicemente un saluto.",
+        "foot-home":         "Home",
+        "foot-legal-notice": "Note legali",
+        "foot-copy":         "© 2025 Swiss Fuel Finder. Tutti i diritti riservati."
+      }
+    };
+
+    /* ── LANGUAGE SWITCHER ── */
+    function setLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+
+      // Update <html lang="...">
+      document.documentElement.lang = lang;
+
+      // Update all [data-i18n] elements (textContent)
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // Update all [data-i18n-html] elements (innerHTML — for bold/em/span)
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      // Update <meta name="description"> content attribute
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && t['page-desc']) metaDesc.setAttribute('content', t['page-desc']);
+
+      // Highlight active lang buttons (nav + hero badges)
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.dataset.lang === lang);
+      });
+
+      // Save preference
+      try { localStorage.setItem('sff-lang', lang); } catch(e) {}
+    }
+
+    /* ── SCROLL REVEAL ── */
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
@@ -850,7 +1201,7 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* CHF counter */
+    /* ── CHF COUNTER ── */
     function runCounter(el, target, dur) {
       const start = performance.now();
       function tick(now) {
@@ -865,6 +1216,12 @@
       const c = document.getElementById('counter');
       runCounter(c, 15, 1600);
     }, 900);
+
+    /* ── RESTORE SAVED LANGUAGE ── */
+    try {
+      const saved = localStorage.getItem('sff-lang');
+      if (saved && translations[saved]) setLang(saved);
+    } catch(e) {}
   </script>
 </body>
 </html>
