@@ -1217,11 +1217,18 @@
       runCounter(c, 15, 1600);
     }, 900);
 
-    /* ── RESTORE SAVED LANGUAGE ── */
+    /* ── RESTORE SAVED LANGUAGE (default: FR, then DE, IT, EN) ── */
     try {
       const saved = localStorage.getItem('sff-lang');
-      if (saved && translations[saved]) setLang(saved);
-    } catch(e) {}
+      if (saved && translations[saved]) {
+        setLang(saved);
+      } else {
+        const browserLang = (navigator.language || '').toLowerCase().substring(0, 2);
+        const preferred = ['fr', 'de', 'it', 'en'];
+        const detected = preferred.includes(browserLang) ? browserLang : 'fr';
+        setLang(detected);
+      }
+    } catch(e) { setLang('fr'); }
   </script>
 </body>
 </html>
