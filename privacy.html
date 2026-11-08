@@ -117,18 +117,16 @@
     </div>
 
     <div class="legal-section">
-      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Data Collection and Processing</span></div>
+      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Data Collection, Purpose &amp; Where It Is Stored</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">We collect and process only the minimal data necessary to provide the services of SFF:</p>
+        <p class="legal-text">Your privacy comes first. <strong>We never sell, rent, or share your personal or vehicle data with advertisers, insurers, data brokers, or authorities.</strong> We only process the minimal data needed to run the features you choose to use, and all sensitive account and garage data is <strong>encrypted in transit (TLS/HTTPS) and at rest (AES-256)</strong>:</p>
         <ul class="legal-list">
-          <li><div><strong>Authentication Data:</strong> Email address and Google User ID (processed securely via Google Firebase Authentication).</div></li>
-          <li><div><strong>User Profile &amp; Identifiers:</strong> Chosen Pseudo (username) and app settings. <strong>Note:</strong> For reasons of technical integrity and fraud prevention, the "Pseudo" cannot be modified once registered.</div></li>
-          <li><div><strong>Multi-Vehicle Garage Data:</strong> Vehicle profiles entered by the user (make, model, year, fuel type, tank volume, nominal fuel consumption, and current/historical odometer readings) stored in encrypted Google Firestore databases to sync across your devices.</div></li>
-          <li><div><strong>Fuel Logbook &amp; Refuel Records:</strong> User-submitted refueling records (date, liters filled, total cost in CHF, odometer at refuel, station identifier, and computed consumption economy).</div></li>
-          <li><div><strong>Vehicle Maintenance &amp; Telemetry Baselines:</strong> Maintenance logs and service baselines for oil changes, seasonal tire swaps &amp; tread wear, and brake pad/disc replacements.</div></li>
-          <li><div><strong>Tax &amp; Mileage Export Data:</strong> Aggregated business mileage logs and cantonal tax deduction reports generated upon user request.</div></li>
-          <li><div><strong>Precise Location Data:</strong> GPS coordinates are used <strong>only while the app is in the foreground</strong> to identify nearby stations and calculate routes. Precise coordinates are processed locally on your device and are not stored permanently on our servers.</div></li>
-          <li><div><strong>Community Contributions:</strong> If you update a price, your User ID is linked to that update to prevent fraud and maintain community data integrity.</div></li>
+          <li><div><strong>Account &amp; Sign-In (Why &amp; Where):</strong> Your email address and Google User ID are processed securely via Google Firebase Authentication solely to sign you in and protect your account.</div></li>
+          <li><div><strong>Public Nickname ("Pseudo"):</strong> Shown only when you voluntarily share a fuel price update with the community. <strong>Note:</strong> To prevent abuse, the "Pseudo" cannot be modified once registered.</div></li>
+          <li><div><strong>Optional Vehicle Garage &amp; Service Reminders (Why &amp; Where):</strong> If you choose to add your vehicle details (make, model, fuel type, tank size, consumption, odometer, and optional oil/tire/brake service intervals), they are used <strong>exclusively to calculate your personal fuel savings, range, and maintenance reminders</strong>. This data is stored locally on your phone and backed up in your private, encrypted Firebase Cloud Firestore vault (strictly isolated so only your authenticated account can read it) so you never lose your garage when switching phones.</div></li>
+          <li><div><strong>Optional Fuel Logbook &amp; On-Device Tax Exports (Why &amp; Where):</strong> Refuel entries you log (date, liters filled, cost in CHF, odometer) are synced to your private encrypted cloud vault solely to compute your fuel economy and expense history. <strong>Annual mileage and cantonal tax reports are generated 100% locally on your device</strong> only when you tap export, and are never shared with anyone unless you send the file yourself.</div></li>
+          <li><div><strong>Foreground-Only Location (Why &amp; Where):</strong> GPS coordinates are used <strong>only while the app is open on your screen</strong> to identify nearby stations and calculate routes. Your live coordinates are processed locally on your device and are <strong>never stored or tracked on our servers</strong>.</div></li>
+          <li><div><strong>Community Price Updates:</strong> When you update a price, your User ID is linked internally to prevent spam and maintain community data integrity.</div></li>
         </ul>
       </div>
     </div>
@@ -184,9 +182,9 @@
     </div>
 
     <div class="legal-section">
-      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Data Security</span></div>
+      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Data Security &amp; Encryption</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">We implement state-of-the-art technical and organizational measures (HTTPS, encryption) to protect your data.</p>
+        <p class="legal-text">We protect your private data using strict, industry-standard security measures: all communications are encrypted in transit via <strong>HTTPS/TLS</strong>, all cloud-stored account and vehicle data is <strong>encrypted at rest (AES-256)</strong>, and cryptographic access rules ensure that <strong>only you</strong> can access your private garage and fuel logs.</p>
         <div class="contact-block">Contact: <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div>
       </div>
     </div>
@@ -204,18 +202,16 @@
     </div>
 
     <div class="legal-section">
-      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Collecte et traitement des données</span></div>
+      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Collecte des données : Pourquoi et Où elles sont stockées</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">Nous collectons uniquement les données nécessaires à la fourniture des services de SFF :</p>
+        <p class="legal-text">Votre vie privée est notre priorité. <strong>Nous ne vendons, ne louons et ne partageons jamais vos données personnelles ou celles de vos véhicules avec des annonceurs, des assureurs, des courtiers en données ou des autorités.</strong> Nous traitons uniquement les données strictement nécessaires aux fonctionnalités que vous choisissez d'utiliser, et toutes vos données sensibles sont <strong>chiffrées en transit (TLS/HTTPS) et au repos (AES-256)</strong> :</p>
         <ul class="legal-list">
-          <li><div><strong>Données d'authentification :</strong> Adresse e-mail et identifiant Google (traités de manière sécurisée via Google Firebase Authentication).</div></li>
-          <li><div><strong>Profils d'utilisateurs et identifiants :</strong> Pseudo choisi et paramètres d'application. <strong>Note :</strong> Pour des raisons d'intégrité technique et de prévention des fraudes, le "Pseudo" ne peut pas être modifié une fois enregistré.</div></li>
-          <li><div><strong>Données du Garage Multi-Véhicules :</strong> Profils de véhicules saisis par l'utilisateur (marque, modèle, année, type de carburant, volume du réservoir, consommation moyenne et relevés kilométriques) stockés dans les bases de données chiffrées Google Firestore pour la synchronisation.</div></li>
-          <li><div><strong>Carnet de pleins et ravitaillements :</strong> Historique des pleins saisi par l'utilisateur (date, litres ravitaillés, coût total en CHF, compteur kilométrique, identifiant de station et calculs d'économie de carburant).</div></li>
-          <li><div><strong>Télémétrie et entretien du véhicule :</strong> Suivi des vidanges d'huile, changements et usure des pneus, et révision des plaquettes/disques de freins.</div></li>
-          <li><div><strong>Rapports fiscaux cantonaux et kilométrage :</strong> Relevés kilométriques consolidés et synthèses de déductions fiscales cantonales générés à la demande de l'utilisateur.</div></li>
-          <li><div><strong>Données de localisation précise :</strong> Les coordonnées GPS sont utilisées <strong>uniquement lorsque l'application est au premier plan</strong> pour identifier les stations à proximité et calculer les itinéraires. Les coordonnées sont traitées localement sur votre appareil et ne sont pas stockées de manière permanente sur nos serveurs.</div></li>
-          <li><div><strong>Contributions communautaires :</strong> Si vous mettez à jour un prix, votre identifiant utilisateur est lié à cette mise à jour pour prévenir la fraude et maintenir l'intégrité des données.</div></li>
+          <li><div><strong>Compte et connexion (Pourquoi et Où) :</strong> Votre adresse e-mail et votre identifiant Google sont traités de manière sécurisée via Google Firebase Authentication uniquement pour vous connecter et protéger votre compte.</div></li>
+          <li><div><strong>Pseudonyme public (« Pseudo ») :</strong> Affiché uniquement lorsque vous partagez volontairement un prix avec la communauté. <strong>Note :</strong> Pour prévenir les abus, le Pseudo ne peut pas être modifié après l'inscription.</div></li>
+          <li><div><strong>Garage multi-véhicules et rappels d'entretien facultatifs (Pourquoi et Où) :</strong> Si vous choisissez d'ajouter les caractéristiques de votre véhicule (marque, modèle, carburant, réservoir, consommation, kilométrage et suivis facultatifs d'huile, pneus ou freins), ces informations servent <strong>exclusivement à calculer vos économies de carburant, votre autonomie et vos rappels d'entretien</strong>. Elles sont stockées sur votre téléphone et sauvegardées dans votre espace privé et chiffré Firebase Cloud Firestore (strictement isolé afin que seul votre compte authentifié puisse y accéder) pour ne rien perdre en cas de changement d'appareil.</div></li>
+          <li><div><strong>Journal de pleins facultatif et exports fiscaux locaux (Pourquoi et Où) :</strong> Vos ravitaillements (date, litres, coût en CHF, kilométrage) sont synchronisés dans votre espace cloud privé et chiffré uniquement pour calculer votre consommation réelle et suivre vos dépenses. <strong>Les récapitulatifs annuels et rapports fiscaux cantonaux sont générés à 100 % localement sur votre téléphone</strong> à votre demande et ne sont jamais transmis à des tiers.</div></li>
+          <li><div><strong>Localisation au premier plan uniquement (Pourquoi et Où) :</strong> Les coordonnées GPS sont utilisées <strong>uniquement lorsque l'application est ouverte à l'écran</strong> pour afficher les stations proches et calculer un itinéraire. Vos coordonnées sont traitées sur votre appareil et ne sont <strong>jamais enregistrées ni pistées sur nos serveurs</strong>.</div></li>
+          <li><div><strong>Contributions communautaires :</strong> Lorsque vous mettez à jour un prix, votre identifiant de compte est lié en interne uniquement pour empêcher le spam et garantir la fiabilité des prix.</div></li>
         </ul>
       </div>
     </div>
@@ -271,9 +267,9 @@
     </div>
 
     <div class="legal-section">
-      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Sécurité des données</span></div>
+      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Sécurité et chiffrement des données</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">Nous mettons en œuvre des mesures techniques et organisationnelles de pointe (HTTPS, cryptage) pour protéger vos données.</p>
+        <p class="legal-text">Nous protégeons vos données privées par des mesures de sécurité de pointe : toutes les communications sont chiffrées en transit via <strong>HTTPS/TLS</strong>, toutes les données de compte et de véhicules stockées dans le cloud sont <strong>chiffrées au repos (AES-256)</strong>, et des règles d'accès cryptographiques strictes garantissent que <strong>vous seul</strong> pouvez consulter votre garage et votre journal de carburant.</p>
         <div class="contact-block">Contact : <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div>
       </div>
     </div>
@@ -291,18 +287,16 @@
     </div>
 
     <div class="legal-section">
-      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Datenerhebung und -verarbeitung</span></div>
+      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Datenerhebung: Warum und wo Ihre Daten gespeichert werden</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">Wir erheben und verarbeiten nur die Daten, die für die Bereitstellung der Dienste von SFF erforderlich sind:</p>
+        <p class="legal-text">Ihre Privatsphäre steht an erster Stelle. <strong>Wir verkaufen, vermieten oder teilen Ihre persönlichen Daten oder Fahrzeugdaten niemals mit Werbetreibenden, Versicherungen, Datenhändlern oder Behörden.</strong> Wir verarbeiten nur die minimal notwendigen Daten für die Funktionen, die Sie selbst nutzen möchten, und alle sensiblen Konto- und Garagendaten sind <strong>bei der Übertragung (TLS/HTTPS) und im Ruhezustand (AES-256) verschlüsselt</strong>:</p>
         <ul class="legal-list">
-          <li><div><strong>Authentifizierungsdaten:</strong> E-Mail-Adresse und Google-Nutzer-ID (sicher verarbeitet über Google Firebase Authentication).</div></li>
-          <li><div><strong>Nutzerprofil &amp; Kennungen:</strong> Gewähltes Pseudonym (Benutzername) und App-Einstellungen. <strong>Hinweis:</strong> Aus Gründen der technischen Integrität und Missbrauchsverhinderung kann das "Pseudonym" nach der Registrierung nicht mehr geändert werden.</div></li>
-          <li><div><strong>Mehrfahrzeug-Garagendaten:</strong> Vom Nutzer hinterlegte Fahrzeugprofile (Marke, Modell, Baujahr, Treibstoffart, Tankvolumen, Normverbrauch und aktuelle/historische Kilometerstände), verschlüsselt in Google Firestore gespeichert.</div></li>
-          <li><div><strong>Tankbuch &amp; Tankbelege:</strong> Vom Nutzer erfasste Betankungen (Datum, getankte Liter, Gesamtkosten in CHF, Kilometerstand beim Tanken, Tankstellenkennung und ermittelte Verbrauchswerte).</div></li>
-          <li><div><strong>Fahrzeugwartungs- &amp; Telemetriebasis:</strong> Service-Aufzeichnungen für Ölwechsel, saisonalen Reifenwechsel &amp; Profiltiefe sowie Bremsbelag-/Scheiben-Inspektionen.</div></li>
-          <li><div><strong>Steuer- &amp; Fahrtenbuch-Exporte:</strong> Konsolidierte geschäftliche Fahrten und kantonale Steuerabzug-Berichte, die auf Anforderung des Nutzers erstellt werden.</div></li>
-          <li><div><strong>Präzise Standortdaten:</strong> GPS-Koordinaten werden <strong>nur verwendet, während die App im Vordergrund ausgeführt wird</strong>, um nahegelegene Tankstellen zu identifizieren und Routen zu berechnen. Die Koordinaten werden lokal auf Ihrem Gerät verarbeitet und nicht dauerhaft auf unseren Servern gespeichert.</div></li>
-          <li><div><strong>Community-Beiträge:</strong> Wenn Sie einen Preis aktualisieren, wird Ihre Nutzer-ID mit dieser Aktualisierung verknüpft, um Missbrauch zu verhindern und die Datenintegrität sicherzustellen.</div></li>
+          <li><div><strong>Konto &amp; Anmeldung (Warum &amp; Wo):</strong> Ihre E-Mail-Adresse und Google-Nutzer-ID werden sicher über Google Firebase Authentication verarbeitet, ausschliesslich um Sie anzumelden und Ihr Konto zu schützen.</div></li>
+          <li><div><strong>Öffentliches Pseudonym («Pseudo»):</strong> Wird nur angezeigt, wenn Sie freiwillig einen Kraftstoffpreis für die Community aktualisieren. <strong>Hinweis:</strong> Um Missbrauch zu verhindern, kann das Pseudonym nach der Registrierung nicht mehr geändert werden.</div></li>
+          <li><div><strong>Optionale Fahrzeuggarage &amp; Wartungserinnerungen (Warum &amp; Wo):</strong> Wenn Sie freiwillig Fahrzeugdaten eintragen (Marke, Modell, Kraftstoffart, Tankgrösse, Verbrauch, Kilometerstand sowie optionale Intervalle für Öl, Reifen oder Bremsen), dienen diese <strong>ausschliesslich zur Berechnung Ihrer persönlichen Ersparnis, Reichweite und Service-Erinnerungen</strong>. Diese Daten werden lokal auf Ihrem Smartphone gespeichert und in Ihrem privaten, verschlüsselten Firebase Cloud Firestore-Tresor gesichert (streng isoliert, sodass nur Ihr authentifiziertes Konto Zugriff hat), damit Ihre Daten bei einem Gerätewechsel erhalten bleiben.</div></li>
+          <li><div><strong>Optionales Tankbuch &amp; lokale Steuerexporte (Warum &amp; Wo):</strong> Ihre erfassten Tankvorgänge (Datum, Liter, Kosten in CHF, Kilometerstand) werden nur in Ihrem privaten, verschlüsselten Cloud-Speicher synchronisiert, um Ihren Realverbrauch und Ihre Kostenhistorie zu berechnen. <strong>Jährliche Kilometer- und kantonale Steuerberichte werden zu 100 % lokal auf Ihrem Gerät erstellt</strong>, nur wenn Sie selbst auf Exportieren tippen, und niemals an Dritte übermittelt.</div></li>
+          <li><div><strong>Standort nur im Vordergrund (Warum &amp; Wo):</strong> GPS-Koordinaten werden <strong>nur verwendet, solange die App geöffnet ist</strong>, um Tankstellen in der Nähe anzuzeigen und Routen zu berechnen. Ihre Live-Koordinaten werden auf Ihrem Gerät verarbeitet und <strong>niemals dauerhaft auf unseren Servern gespeichert oder verfolgt</strong>.</div></li>
+          <li><div><strong>Community-Preisupdates:</strong> Wenn Sie einen Preis melden, wird Ihre Konto-ID intern verknüpft, um Spam zu verhindern und die Preisqualität zu sichern.</div></li>
         </ul>
       </div>
     </div>
@@ -358,9 +352,9 @@
     </div>
 
     <div class="legal-section">
-      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Datensicherheit</span></div>
+      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Datensicherheit &amp; Verschlüsselung</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">Wir setzen modernste technische und organisatorische Massnahmen (HTTPS, Verschlüsselung) ein, um Ihre Daten zu schützen.</p>
+        <p class="legal-text">Wir schützen Ihre privaten Daten durch modernste Sicherheitsmassnahmen: Alle Verbindungen sind während der Übertragung via <strong>HTTPS/TLS</strong> verschlüsselt, sämtliche in der Cloud gespeicherten Konto- und Fahrzeugdaten sind <strong>im Ruhezustand verschlüsselt (AES-256)</strong>, und strenge kryptografische Zugriffsregeln stellen sicher, dass <strong>ausschliesslich Sie selbst</strong> auf Ihre Garage und Ihr Tankbuch zugreifen können.</p>
         <div class="contact-block">Kontakt: <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div>
       </div>
     </div>
@@ -378,18 +372,16 @@
     </div>
 
     <div class="legal-section">
-      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Raccolta e trattamento dei dati</span></div>
+      <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Raccolta dei dati: Perché e dove vengono archiviati</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">Raccogliamo ed elaboriamo solo i dati strettamente necessari per fornire i servizi di SFF:</p>
+        <p class="legal-text">La tua privacy viene prima di tutto. <strong>Non vendiamo, non affittiamo e non condividiamo mai i tuoi dati personali o quelli dei tuoi veicoli con inserzionisti, assicurazioni, broker di dati o autorità.</strong> Trattiamo solo i dati minimi necessari per le funzioni che scegli di utilizzare, e tutti i dati sensibili dell'account e del garage sono <strong>crittografati in transito (TLS/HTTPS) e a riposo (AES-256)</strong>:</p>
         <ul class="legal-list">
-          <li><div><strong>Dati di autenticazione:</strong> Indirizzo e-mail e ID utente Google (elaborati in modo sicuro tramite Google Firebase Authentication).</div></li>
-          <li><div><strong>Profilo utente e identificativi:</strong> Pseudo scelto (nome utente) e preferenze dell'app. <strong>Nota:</strong> Per motivi di integrità tecnica e prevenzione delle frodi, lo "Pseudo" non può essere modificato una volta registrato.</div></li>
-          <li><div><strong>Dati del Garage Multi-Veicolo:</strong> Profili del veicolo inseriti dall'utente (marca, modello, anno, tipo di carburante, capacità serbatoio, consumo medio e letture del contachilometri), archiviati in modo crittografato su Google Firestore.</div></li>
-          <li><div><strong>Registro carburante e rifornimenti:</strong> Storico dei rifornimenti inseriti dall'utente (data, litri erogati, costo totale in CHF, chilometraggio, stazione e statistiche di consumo calcolate).</div></li>
-          <li><div><strong>Telemetria e manutenzione del veicolo:</strong> Registro degli interventi per cambio olio, sostituzione pneumatici e usura battistrada, e controllo pastiglie/dischi freni.</div></li>
-          <li><div><strong>Esportazioni fiscali cantonali e chilometraggio:</strong> Riepiloghi dei chilometri percorsi e report per detrazioni fiscali cantonali generati su richiesta dell'utente.</div></li>
-          <li><div><strong>Dati di posizione precisa:</strong> Le coordinate GPS vengono utilizzate <strong>solo mentre l'app è in primo piano</strong> per identificare le stazioni vicine e calcolare i percorsi. Le coordinate vengono elaborate localmente sul dispositivo e non vengono memorizzate in modo permanente sui nostri server.</div></li>
-          <li><div><strong>Contributi della community:</strong> Se aggiorni un prezzo, il tuo ID utente viene collegato a tale aggiornamento per prevenire frodi e preservare l'integrità dei dati.</div></li>
+          <li><div><strong>Account e accesso (Perché e Dove):</strong> Il tuo indirizzo e-mail e il tuo ID utente Google vengono elaborati in modo sicuro tramite Google Firebase Authentication esclusivamente per consentirti l'accesso e proteggere il tuo account.</div></li>
+          <li><div><strong>Nickname pubblico («Pseudo»):</strong> Mostrato solo quando condividi volontariamente un aggiornamento di prezzo con la community. <strong>Nota:</strong> Per prevenire abusi, lo Pseudo non può essere modificato dopo la registrazione.</div></li>
+          <li><div><strong>Garage multi-veicolo e promemoria di manutenzione facoltativi (Perché e Dove):</strong> Se scegli di aggiungere i dati del tuo veicolo (marca, modello, carburante, serbatoio, consumo, contachilometri e intervalli facoltativi per olio, pneumatici o freni), questi vengono utilizzati <strong>esclusivamente per calcolare i tuoi risparmi personali, l'autonomia e i promemoria di manutenzione</strong>. Questi dati sono salvati sul tuo telefono e sincronizzati nel tuo spazio cloud privato e crittografato su Firebase Cloud Firestore (rigorosamente isolato affinché solo il tuo account autenticato possa leggerlo) per non perdere i dati cambiando telefono.</div></li>
+          <li><div><strong>Registro rifornimenti facoltativo ed esportazioni fiscali locali (Perché e Dove):</strong> I rifornimenti che registri (data, litri, costo in CHF, chilometraggio) sono sincronizzati nel tuo spazio cloud privato e crittografato solo per calcolare i consumi reali e lo storico delle spese. <strong>I riepiloghi chilometrici annuali e i report fiscali cantonali vengono generati al 100% localmente sul tuo dispositivo</strong> solo su tua richiesta e non vengono mai inviati a terzi.</div></li>
+          <li><div><strong>Posizione solo in primo piano (Perché e Dove):</strong> Le coordinate GPS vengono utilizzate <strong>solo mentre l'app è aperta sullo schermo</strong> per mostrare le stazioni vicine e calcolare i percorsi. Le coordinate vengono elaborate localmente sul dispositivo e <strong>non vengono mai memorizzate o tracciate sui nostri server</strong>.</div></li>
+          <li><div><strong>Contributi della community:</strong> Quando aggiorni un prezzo, il tuo ID account viene collegato internamente solo per prevenire lo spam e garantire l'affidabilità dei prezzi.</div></li>
         </ul>
       </div>
     </div>
@@ -445,9 +437,9 @@
     </div>
 
     <div class="legal-section">
-      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Sicurezza dei dati</span></div>
+      <div class="legal-sec-head"><span class="legal-sec-num">07</span><span class="legal-sec-title">Sicurezza e crittografia dei dati</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">Implementiamo misure tecniche e organizzative all'avanguardia (HTTPS, crittografia) per proteggere i tuoi dati.</p>
+        <p class="legal-text">Proteggiamo i tuoi dati privati con rigorose misure di sicurezza all'avanguardia: tutte le comunicazioni sono crittografate in transito tramite <strong>HTTPS/TLS</strong>, tutti i dati dell'account e dei veicoli salvati nel cloud sono <strong>crittografati a riposo (AES-256)</strong>, e regole di accesso crittografiche garantiscono che <strong>solo tu</strong> possa accedere al tuo garage privato e al tuo registro rifornimenti.</p>
         <div class="contact-block">Contatto: <a href="mailto:info@swissfuelfinder.com">info@swissfuelfinder.com</a></div>
       </div>
     </div>
