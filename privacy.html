@@ -96,7 +96,7 @@
   <div class="page-header">
     <p class="page-label">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="page-meta">Effective date: 15 May 2026 · WTRH, Switzerland</p>
+    <p class="page-meta">Effective date: November 2026 · WTRH, Switzerland</p>
   </div>
 
   <div class="lang-tabs">
@@ -119,12 +119,16 @@
     <div class="legal-section">
       <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Data Collection and Processing</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">We collect only the data necessary to provide the services of SFF:</p>
+        <p class="legal-text">We collect and process only the minimal data necessary to provide the services of SFF:</p>
         <ul class="legal-list">
-          <li><div><strong>Authentication Data:</strong> Email address and Google ID (processed via Google Firebase).</div></li>
-          <li><div><strong>User-Provided Profiles:</strong> Pseudo, vehicle tank size, and average consumption. <strong>Note:</strong> For reasons of technical integrity and security, the "Pseudo" cannot be modified once registered.</div></li>
+          <li><div><strong>Authentication Data:</strong> Email address and Google User ID (processed securely via Google Firebase Authentication).</div></li>
+          <li><div><strong>User Profile &amp; Identifiers:</strong> Chosen Pseudo (username) and app settings. <strong>Note:</strong> For reasons of technical integrity and fraud prevention, the "Pseudo" cannot be modified once registered.</div></li>
+          <li><div><strong>Multi-Vehicle Garage Data:</strong> Vehicle profiles entered by the user (make, model, year, fuel type, tank volume, nominal fuel consumption, and current/historical odometer readings) stored in encrypted Google Firestore databases to sync across your devices.</div></li>
+          <li><div><strong>Fuel Logbook &amp; Refuel Records:</strong> User-submitted refueling records (date, liters filled, total cost in CHF, odometer at refuel, station identifier, and computed consumption economy).</div></li>
+          <li><div><strong>Vehicle Maintenance &amp; Telemetry Baselines:</strong> Maintenance logs and service baselines for oil changes, seasonal tire swaps &amp; tread wear, and brake pad/disc replacements.</div></li>
+          <li><div><strong>Tax &amp; Mileage Export Data:</strong> Aggregated business mileage logs and cantonal tax deduction reports generated upon user request.</div></li>
           <li><div><strong>Precise Location Data:</strong> GPS coordinates are used <strong>only while the app is in the foreground</strong> to identify nearby stations and calculate routes. Precise coordinates are processed locally on your device and are not stored permanently on our servers.</div></li>
-          <li><div><strong>Community Contributions:</strong> If you update a price, your User ID is linked to that update to prevent fraud and maintain data integrity.</div></li>
+          <li><div><strong>Community Contributions:</strong> If you update a price, your User ID is linked to that update to prevent fraud and maintain community data integrity.</div></li>
         </ul>
       </div>
     </div>
@@ -204,10 +208,14 @@
       <div class="legal-sec-body">
         <p class="legal-text">Nous collectons uniquement les données nécessaires à la fourniture des services de SFF :</p>
         <ul class="legal-list">
-          <li><div><strong>Données d'authentification :</strong> Adresse e-mail et identifiant Google (traités via Google Firebase).</div></li>
-          <li><div><strong>Profils fournis par l'utilisateur :</strong> Pseudo, taille du réservoir du véhicule et consommation moyenne. <strong>Note :</strong> Pour des raisons d'intégrité technique, le "Pseudo" ne peut pas être modifié une fois enregistré.</div></li>
+          <li><div><strong>Données d'authentification :</strong> Adresse e-mail et identifiant Google (traités de manière sécurisée via Google Firebase Authentication).</div></li>
+          <li><div><strong>Profils d'utilisateurs et identifiants :</strong> Pseudo choisi et paramètres d'application. <strong>Note :</strong> Pour des raisons d'intégrité technique et de prévention des fraudes, le "Pseudo" ne peut pas être modifié une fois enregistré.</div></li>
+          <li><div><strong>Données du Garage Multi-Véhicules :</strong> Profils de véhicules saisis par l'utilisateur (marque, modèle, année, type de carburant, volume du réservoir, consommation moyenne et relevés kilométriques) stockés dans les bases de données chiffrées Google Firestore pour la synchronisation.</div></li>
+          <li><div><strong>Carnet de pleins et ravitaillements :</strong> Historique des pleins saisi par l'utilisateur (date, litres ravitaillés, coût total en CHF, compteur kilométrique, identifiant de station et calculs d'économie de carburant).</div></li>
+          <li><div><strong>Télémétrie et entretien du véhicule :</strong> Suivi des vidanges d'huile, changements et usure des pneus, et révision des plaquettes/disques de freins.</div></li>
+          <li><div><strong>Rapports fiscaux cantonaux et kilométrage :</strong> Relevés kilométriques consolidés et synthèses de déductions fiscales cantonales générés à la demande de l'utilisateur.</div></li>
           <li><div><strong>Données de localisation précise :</strong> Les coordonnées GPS sont utilisées <strong>uniquement lorsque l'application est au premier plan</strong> pour identifier les stations à proximité et calculer les itinéraires. Les coordonnées sont traitées localement sur votre appareil et ne sont pas stockées de manière permanente sur nos serveurs.</div></li>
-          <li><div><strong>Contributions communautaires :</strong> Si vous mettez à jour un prix, votre identifiant utilisateur est lié à cette mise à jour pour prévenir la fraude.</div></li>
+          <li><div><strong>Contributions communautaires :</strong> Si vous mettez à jour un prix, votre identifiant utilisateur est lié à cette mise à jour pour prévenir la fraude et maintenir l'intégrité des données.</div></li>
         </ul>
       </div>
     </div>
@@ -285,12 +293,16 @@
     <div class="legal-section">
       <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Datenerhebung und -verarbeitung</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">Wir erheben nur die Daten, die für die Bereitstellung der Dienste von SFF erforderlich sind:</p>
+        <p class="legal-text">Wir erheben und verarbeiten nur die Daten, die für die Bereitstellung der Dienste von SFF erforderlich sind:</p>
         <ul class="legal-list">
-          <li><div><strong>Authentifizierungsdaten:</strong> E-Mail-Adresse und Google-ID (verarbeitet über Google Firebase).</div></li>
-          <li><div><strong>Vom Nutzer bereitgestellte Profile:</strong> Pseudonym, Tankgrösse des Fahrzeugs und Durchschnittsverbrauch. <strong>Hinweis:</strong> Aus Gründen der technischen Integrität kann das "Pseudonym" nach der Registrierung nicht mehr geändert werden.</div></li>
+          <li><div><strong>Authentifizierungsdaten:</strong> E-Mail-Adresse und Google-Nutzer-ID (sicher verarbeitet über Google Firebase Authentication).</div></li>
+          <li><div><strong>Nutzerprofil &amp; Kennungen:</strong> Gewähltes Pseudonym (Benutzername) und App-Einstellungen. <strong>Hinweis:</strong> Aus Gründen der technischen Integrität und Missbrauchsverhinderung kann das "Pseudonym" nach der Registrierung nicht mehr geändert werden.</div></li>
+          <li><div><strong>Mehrfahrzeug-Garagendaten:</strong> Vom Nutzer hinterlegte Fahrzeugprofile (Marke, Modell, Baujahr, Treibstoffart, Tankvolumen, Normverbrauch und aktuelle/historische Kilometerstände), verschlüsselt in Google Firestore gespeichert.</div></li>
+          <li><div><strong>Tankbuch &amp; Tankbelege:</strong> Vom Nutzer erfasste Betankungen (Datum, getankte Liter, Gesamtkosten in CHF, Kilometerstand beim Tanken, Tankstellenkennung und ermittelte Verbrauchswerte).</div></li>
+          <li><div><strong>Fahrzeugwartungs- &amp; Telemetriebasis:</strong> Service-Aufzeichnungen für Ölwechsel, saisonalen Reifenwechsel &amp; Profiltiefe sowie Bremsbelag-/Scheiben-Inspektionen.</div></li>
+          <li><div><strong>Steuer- &amp; Fahrtenbuch-Exporte:</strong> Konsolidierte geschäftliche Fahrten und kantonale Steuerabzug-Berichte, die auf Anforderung des Nutzers erstellt werden.</div></li>
           <li><div><strong>Präzise Standortdaten:</strong> GPS-Koordinaten werden <strong>nur verwendet, während die App im Vordergrund ausgeführt wird</strong>, um nahegelegene Tankstellen zu identifizieren und Routen zu berechnen. Die Koordinaten werden lokal auf Ihrem Gerät verarbeitet und nicht dauerhaft auf unseren Servern gespeichert.</div></li>
-          <li><div><strong>Community-Beiträge:</strong> Wenn Sie einen Preis aktualisieren, wird Ihre Nutzer-ID mit dieser Aktualisierung verknüpft, um Missbrauch zu verhindern.</div></li>
+          <li><div><strong>Community-Beiträge:</strong> Wenn Sie einen Preis aktualisieren, wird Ihre Nutzer-ID mit dieser Aktualisierung verknüpft, um Missbrauch zu verhindern und die Datenintegrität sicherzustellen.</div></li>
         </ul>
       </div>
     </div>
@@ -368,12 +380,16 @@
     <div class="legal-section">
       <div class="legal-sec-head"><span class="legal-sec-num">02</span><span class="legal-sec-title">Raccolta e trattamento dei dati</span></div>
       <div class="legal-sec-body">
-        <p class="legal-text">Raccogliamo solo i dati necessari per fornire i servizi di SFF:</p>
+        <p class="legal-text">Raccogliamo ed elaboriamo solo i dati strettamente necessari per fornire i servizi di SFF:</p>
         <ul class="legal-list">
-          <li><div><strong>Dati di autenticazione:</strong> Indirizzo e-mail e ID Google (elaborati tramite Google Firebase).</div></li>
-          <li><div><strong>Profili forniti dall'utente:</strong> Pseudo, capacità del serbatoio del veicolo e consumo medio. <strong>Nota:</strong> Per ragioni di integrità tecnica, lo "Pseudo" non può essere modificato una volta registrato.</div></li>
+          <li><div><strong>Dati di autenticazione:</strong> Indirizzo e-mail e ID utente Google (elaborati in modo sicuro tramite Google Firebase Authentication).</div></li>
+          <li><div><strong>Profilo utente e identificativi:</strong> Pseudo scelto (nome utente) e preferenze dell'app. <strong>Nota:</strong> Per motivi di integrità tecnica e prevenzione delle frodi, lo "Pseudo" non può essere modificato una volta registrato.</div></li>
+          <li><div><strong>Dati del Garage Multi-Veicolo:</strong> Profili del veicolo inseriti dall'utente (marca, modello, anno, tipo di carburante, capacità serbatoio, consumo medio e letture del contachilometri), archiviati in modo crittografato su Google Firestore.</div></li>
+          <li><div><strong>Registro carburante e rifornimenti:</strong> Storico dei rifornimenti inseriti dall'utente (data, litri erogati, costo totale in CHF, chilometraggio, stazione e statistiche di consumo calcolate).</div></li>
+          <li><div><strong>Telemetria e manutenzione del veicolo:</strong> Registro degli interventi per cambio olio, sostituzione pneumatici e usura battistrada, e controllo pastiglie/dischi freni.</div></li>
+          <li><div><strong>Esportazioni fiscali cantonali e chilometraggio:</strong> Riepiloghi dei chilometri percorsi e report per detrazioni fiscali cantonali generati su richiesta dell'utente.</div></li>
           <li><div><strong>Dati di posizione precisa:</strong> Le coordinate GPS vengono utilizzate <strong>solo mentre l'app è in primo piano</strong> per identificare le stazioni vicine e calcolare i percorsi. Le coordinate vengono elaborate localmente sul dispositivo e non vengono memorizzate in modo permanente sui nostri server.</div></li>
-          <li><div><strong>Contributi della community:</strong> Se aggiorni un prezzo, il tuo ID utente viene collegato a tale aggiornamento per prevenire frodi.</div></li>
+          <li><div><strong>Contributi della community:</strong> Se aggiorni un prezzo, il tuo ID utente viene collegato a tale aggiornamento per prevenire frodi e preservare l'integrità dei dati.</div></li>
         </ul>
       </div>
     </div>
